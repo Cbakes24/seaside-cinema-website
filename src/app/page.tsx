@@ -4,7 +4,7 @@ export default function Home() {
       {/* Hero Section with Parallax */}
 
       <section
-        className="bg-[url('/verticalPicnic.jpeg')] bg-contain bg-top
+        className="bg-[url('/verticalSunset.jpeg')] bg-cover bg-top
 //  relative h-[90vh] w-full bg-no-repeat  bg-fixed"
         // style={{ backgroundImage: "url('/verticalSunset.jpeg')" }}
       >
