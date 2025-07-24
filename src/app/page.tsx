@@ -36,19 +36,17 @@ export default function Home() {
       </section>
 
       {/* Second Parallax Section */}
-<section className="relative h-[60vh] w-full overflow-hidden">
-  {/* Fixed background image */}
-  <div
-    className="fixed top-0 left-0 w-full h-[60vh] bg-cover bg-center z-[-1]"
-    style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
-  />
-  <div className="absolute inset-0 bg-black/30 z-0" />
-  <div className="relative z-10 h-full flex items-center justify-center text-center text-offwhite px-6">
-    <h2 className="text-3xl text-peach sm:text-5xl font-semibold drop-shadow-md">
-      Custom Packages For Any Occasion
-    </h2>
-  </div>
-</section>
+      <section
+        className="relative h-[60vh] w-full bg-fixed bg-cover bg-center"
+        style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
+      >
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="relative z-10 h-full flex items-center justify-center text-center text-offwhite px-6">
+          <h2 className="text-3xl text-peach sm:text-5xl font-semibold drop-shadow-md">
+            Custom Packages For Any Occasion
+          </h2>
+        </div>
+      </section>
 
       {/* Content Section 2 */}
       <section className="py-20 px-6 bg-sand text-center">
