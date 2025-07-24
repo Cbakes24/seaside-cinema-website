@@ -10,19 +10,52 @@ export default function Home() {
     <main className="w-full">
       {/* Hero Section with Parallax */}
 
-      <section className="relative h-[90vh] w-full">
+      <section className="relative h-[90vh] w-full overflow-hidden">
+        {/* <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover scale-100 blur-xs"
+          style={{ transform: 'translateY(-10px)' }}
+        >
+          <source src="/LoveBoat3.mp4" type="video/mp4" />
+        
+          Your browser does not support the video tag.
+        </video> */}
         <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white">
-          <h1 className="text-3xl text-peach sm:text-5xl font-semibold leading-tight drop-shadow-md">
+        <div 
+          className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white"
+          style={{
+            transform: `translateY(${scrollY * 0.3}px)`,
+              transition: 'transform 0.01s ease-out'
+          }}
+        >
+          <h1 
+            className="text-3xl text-peach sm:text-5xl font-semibold leading-tight drop-shadow-md"
+            style={{
+                    transition: 'transform 0.01s ease-in'
+            }}
+          >
             Luxury Beach Movie Nights
           </h1>
-          <p className="mt-4 text-base sm:text-lg max-w-xl drop-shadow-sm text-offwhite">
+          <p 
+            className="mt-4 text-base sm:text-lg max-w-xl drop-shadow-sm text-offwhite"
+            style={{
+              // transform: `translateY(${scrollY * 0.3}px)`,
+              transition: 'transform 0.01s ease-in'
+            }}
+          >
             Curated sunset experiences on the San Diego bay. Movie magic, cozy
             vibes, unforgettable memories.
           </p>
           <a
             href="/book"
             className="mt-6 bg-offwhite inline-block text-teal px-6 py-3 rounded-lg font-medium hover:bg-sand transition"
+            style={{
+              // transform: `translateY(${scrollY * -0.0}px)`,
+                     transition: 'transform 0.01s ease-in'
+            }}
           >
             Book Your Experience
           </a>
