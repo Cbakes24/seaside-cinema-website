@@ -2,6 +2,8 @@ import Image from "next/image";
 import React from "react";
 import GalleryExample from "./components/GalleryExample";
 import Gallery from "./components/Gallery";
+import ImageTest from "./components/ImageTest";
+import SimpleGallery from "./components/SimpleGallery";
 
 export default function Home() {
   return (
@@ -103,14 +105,10 @@ export default function Home() {
           and enjoy.
         </p>
       </section>
-        <Gallery aspectRatio="16/9" gridCols={{
-        sm: 1,
-        md: 2,
-        lg: 3,
-        xl: 4,
-        '2xl': 5
-      }}  showLoading={false}  
-       maxImages={5}/>
+      <Gallery />
+      <GalleryExample />
+      <ImageTest />
+      <SimpleGallery />
     </main>
   );
 }
