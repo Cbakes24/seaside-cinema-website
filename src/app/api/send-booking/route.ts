@@ -34,7 +34,7 @@ Add-ons: ${addons?.join(', ') || 'None'}
     `;
 
     const { data, error } = await resend.emails.send({
-      from: 'Seaside Cinema <onboarding@resend.dev>', // or your verified domain
+      from: 'Seaside Cinema <booking@seasidecinemas.com>', // or your verified domain
       to: 'seasidecinemasd@gmail.com',
       subject: `🎟 Booking Request from ${fullName}`,
       text: message,
