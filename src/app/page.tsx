@@ -105,7 +105,8 @@ export default function Home() {
           and enjoy.
         </p>
       </section>
-
+      <Gallery />
+      <GalleryExample />
       <ImageTest />
       <SimpleGallery />
     </main>
