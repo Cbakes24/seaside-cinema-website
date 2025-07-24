@@ -48,6 +48,7 @@ export default function Home() {
           <h1 
             className="text-3xl text-peach sm:text-5xl font-semibold leading-tight drop-shadow-md"
             style={{
+                transform: `translateY(${scrollY * 0.1}px)`,
                     transition: 'transform 0.01s ease-in'
             }}
           >
@@ -56,8 +57,8 @@ export default function Home() {
           <p 
             className="mt-4 text-base sm:text-lg max-w-xl drop-shadow-sm text-offwhite"
             style={{
-              // transform: `translateY(${scrollY * 0.3}px)`,
-              transition: 'transform 10s ease-in'
+              transform: `translateY(${scrollY * 0.1}px)`,
+              transition: 'transform .01s ease-in'
             }}
           >
             Curated sunset experiences on the San Diego bay. Movie magic, cozy
@@ -67,8 +68,8 @@ export default function Home() {
             href="/book"
             className="mt-6 bg-offwhite inline-block text-teal px-6 py-3 rounded-lg font-medium hover:bg-sand transition"
             style={{
-              // transform: `translateY(${scrollY * -0.0}px)`,
-                     transition: 'transform 0.01s ease-in'
+              transform: `translateY(${scrollY * 0.1}px)`,
+                     transition: 'transform 0.001s ease-in'
             }}
           >
             Book Your Experience
