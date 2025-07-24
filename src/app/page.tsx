@@ -4,8 +4,9 @@ export default function Home() {
       {/* Hero Section with Parallax */}
 
       <section
-        className="relative h-[90vh] w-full bg-fixed bg-cover bg-center"
-        style={{ backgroundImage: "url('/verticalSunset.jpeg')" }}
+        className="bg-[url('/verticalPicnic.jpeg')] bg-contain bg-top
+//  relative h-[90vh] w-full bg-no-repeat  bg-fixed"
+        // style={{ backgroundImage: "url('/verticalSunset.jpeg')" }}
       >
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white">
