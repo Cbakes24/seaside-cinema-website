@@ -88,7 +88,7 @@ export default function BookingPage() {
                   zIndex: isActive ? 300 : idx,
                   left: `${leftPx}px`,
                   top: `${Math.abs(idx - 2) * 32}px`, //fan shape***
-                  transform: `rotate(${isActive ? 0 : deg}deg)  translateY(${isActive ? "-50px" : "0"})`,
+                  transform: `rotate(${isActive ? 0 : deg}deg)  translateY(${isActive ? "-55px" : "0"})`,
                   pointerEvents: isActive ? 'none' : 'auto',
                 }}
                 onMouseEnter={() => setActiveIdx(idx)}
