@@ -31,7 +31,7 @@ export default function Home() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover scale-100"
-          // style={{ transform: 'translateY(-10px)' }}
+          style={{ transform: 'translateY(-10px)' }}
         >
           <source src="/LoveBoat3.mp4" type="video/mp4" />
         
@@ -42,23 +42,23 @@ export default function Home() {
           className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white"
           style={{
             transform: `translateY(${scrollY * 0.3}px)`,
-              transition: 'transform .1s ease-out'
+              transition: 'transform 1s ease-out'
           }}
         >
           <h1 
             className="text-3xl text-peach sm:text-5xl font-semibold leading-tight drop-shadow-md"
-            // style={{
-            //         transition: 'transform 0.01s ease-in'
-            // }}
+            style={{
+                    transition: 'transform 0.01s ease-in'
+            }}
           >
             Luxury Beach Movie Nights
           </h1>
           <p 
             className="mt-4 text-base sm:text-lg max-w-xl drop-shadow-sm text-offwhite"
-            // style={{
-            //   // transform: `translateY(${scrollY * 0.3}px)`,
-            //   transition: 'transform 0.01s ease-in'
-            // }}
+            style={{
+              // transform: `translateY(${scrollY * 0.3}px)`,
+              transition: 'transform 10s ease-in'
+            }}
           >
             Curated sunset experiences on the San Diego bay. Movie magic, cozy
             vibes, unforgettable memories.
