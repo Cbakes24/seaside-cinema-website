@@ -1,30 +1,29 @@
+import Image from "next/image";
+import React from "react";
+
+
 export default function Home() {
   return (
     <main className="w-full">
       {/* Hero Section with Parallax */}
 
-      <section
-        className="bg-[url('/verticalSunset.jpeg')] bg-cover bg-top
-//  relative h-[90vh] w-full bg-no-repeat  bg-fixed"
-        // style={{ backgroundImage: "url('/verticalSunset.jpeg')" }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white">
-          <h1 className="text-3xl text-peach sm:text-5xl font-semibold leading-tight drop-shadow-md">
-            Luxury Beach Movie Nights
-          </h1>
-          <p className="mt-4 text-base sm:text-lg max-w-xl drop-shadow-sm text-offwhite">
-            Curated sunset experiences on the San Diego bay. Movie magic, cozy vibes, unforgettable memories.
-          </p>
-          <a
-            href="/book"
-            className="mt-6 bg-offwhite inline-block text-teal px-6 py-3 rounded-lg font-medium hover:bg-sand transition"
-          >
-            Book Your Experience
-          </a>
-        </div>
-      </section>
-
+      <section className="relative h-[90vh] w-full">
+  <div className="absolute inset-0 bg-black/40" />
+  <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white">
+    <h1 className="text-3xl text-peach sm:text-5xl font-semibold leading-tight drop-shadow-md">
+      Luxury Beach Movie Nights
+    </h1>
+    <p className="mt-4 text-base sm:text-lg max-w-xl drop-shadow-sm text-offwhite">
+      Curated sunset experiences on the San Diego bay. Movie magic, cozy vibes, unforgettable memories.
+    </p>
+    <a
+      href="/book"
+      className="mt-6 bg-offwhite inline-block text-teal px-6 py-3 rounded-lg font-medium hover:bg-sand transition"
+    >
+      Book Your Experience
+    </a>
+  </div>
+</section>
       {/* Content Section 1 */}
       <section className="py-20 px-6 bg-offwhite h-300 text-center">
         <h2 className="text-2xl sm:text-4xl text-teal font-bold text-orange">An Unforgettable Experience</h2>
