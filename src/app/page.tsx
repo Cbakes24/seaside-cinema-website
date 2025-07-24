@@ -25,7 +25,7 @@ export default function Home() {
         </div>
       </section>
       {/* Content Section 1 */}
-      <section className="py-20 px-6 bg-offwhite h-300 text-center">
+      <section className="py-20 px-6 bg-offwhite h-100 text-center">
         <h2 className="text-2xl sm:text-4xl text-teal font-bold text-orange">
           An Unforgettable Experience
         </h2>
@@ -34,7 +34,50 @@ export default function Home() {
           create cozy, curated memories that last.
         </p>
       </section>
-
+  <section className="py-16 px-6 bg-sand grid gap-12 md:grid-cols-3 text-center">
+        {/* Movie Nights */}
+        <div>
+          <Image
+            src="/fall_night_back.jpeg"
+            alt="Outdoor Movie Night"
+            width={400}
+            height={250}
+            className="rounded-xl mx-auto mb-4 object-cover"
+          />
+          <h3 className="text-xl font-semibold text-teal mb-2">Movie Nights</h3>
+          <p className="text-teal">
+            Enjoy classic films under the stars with cozy blankets, popcorn, and the sound of waves nearby.
+          </p>
+        </div>
+        {/* Parties */}
+        <div>
+          <Image
+            src="/poolsBday5.JPG"
+            alt="Beach Party"
+            width={400}
+            height={250}
+            className="rounded-xl mx-auto mb-4 object-cover"
+          />
+          <h3 className="text-xl font-semibold text-teal mb-2">Parties & Celebrations</h3>
+          <p className="text-teal">
+            Celebrate birthdays, engagements, or any special occasion with a unique beachside cinema experience.
+          </p>
+        </div>
+        {/* San Diego Local */}
+        <div>
+          <Image
+            src="/fall_decor3.jpeg"
+            alt="San Diego Local"
+            width={400}
+            height={250}
+            className="rounded-xl mx-auto mb-4 object-cover"
+          />
+          <h3 className="text-xl font-semibold text-teal mb-2">San Diego Local</h3>
+          <p className="text-teal">
+            Proudly serving the San Diego community with curated events that highlight our beautiful coastline.
+          </p>
+        </div>
+      </section>
       {/* Second Parallax Section */}
       <section
         className="relative h-[60vh] w-full bg-fixed bg-cover bg-center"
