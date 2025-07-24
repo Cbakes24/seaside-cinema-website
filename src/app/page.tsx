@@ -1,28 +1,42 @@
+"use client"
+
 import Image from "next/image";
 import React from "react";
+import { useEffect, useState } from "react";
 import GalleryExample from "./components/GalleryExample";
 import Gallery from "./components/Gallery";
 import ImageTest from "./components/ImageTest";
 import SimpleGallery from "./components/SimpleGallery";
 
 export default function Home() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <main className="w-full">
       {/* Hero Section with Parallax */}
 
       <section className="relative h-[90vh] w-full overflow-hidden">
-        {/* <video
+        <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover scale-100 blur-xs"
+          className="absolute inset-0 w-full h-full object-cover scale-100"
           style={{ transform: 'translateY(-10px)' }}
         >
           <source src="/LoveBoat3.mp4" type="video/mp4" />
         
           Your browser does not support the video tag.
-        </video> */}
+        </video>
         <div className="absolute inset-0 bg-black/40" />
         <div 
           className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white"

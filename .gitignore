@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/public/LoveBoat3.mp4
+*.mp4
+*.mov
