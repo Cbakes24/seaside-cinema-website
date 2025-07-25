@@ -358,9 +358,7 @@ export default function Home() {
       </section>
 
       <Gallery />
-      <GalleryExample />
-      <ImageTest />
-      <SimpleGallery />
+
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-12 px-6">
