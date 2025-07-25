@@ -8,7 +8,7 @@ import GalleryExample from "./components/GalleryExample";
 import Gallery from "./components/Gallery";
 import ImageTest from "./components/ImageTest";
 import SimpleGallery from "./components/SimpleGallery";
-
+import InstagramSection from "./components/InstagramSection";
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
 
@@ -75,7 +75,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
+      <section className="py-16 px-6 bg-sand grid gap-12 md:grid-cols-3 text-center">
       {/* Value Proposition / Quick Intro */}
       <section className="py-16 px-6 bg-offwhite text-center">
         <div className="max-w-4xl mx-auto">
@@ -93,7 +93,175 @@ export default function Home() {
           </Link>
         </div>
       </section>
+{/* Movie Nights */}
+<div>
+  <Image
+    src="/fall_night_back.jpeg"
+    alt="Outdoor Movie Night"
+    width={400}
+    height={250}
+    className="rounded-xl mx-auto mb-4 object-cover"
+  />
+  <h3 className="text-xl font-semibold text-teal mb-2">Movie Nights</h3>
+  <p className="text-teal">
+    Enjoy classic films under the stars with cozy blankets, popcorn, and the sound of waves nearby.
+  </p>
+</div>
+{/* Parties */}
+<div>
+  <Image
+    src="/poolsBday5.JPG"
+    alt="Beach Party"
+    width={400}
+    height={250}
+    className="rounded-xl mx-auto mb-4 object-cover"
+  />
+  <h3 className="text-xl font-semibold text-teal mb-2">Parties &amp; Celebrations</h3>
+  <p className="text-teal">
+    Celebrate birthdays, engagements, or any special occasion with a unique beachside cinema experience.
+  </p>
+</div>
+{/* San Diego Local */}
+<div>
+  <Image
+    src="/fall_decor3.jpeg"
+    alt="San Diego Local"
+    width={400}
+    height={250}
+    className="rounded-xl mx-auto mb-4 object-cover"
+  />
+  <h3 className="text-xl font-semibold text-teal mb-2">San Diego Local</h3>
+  <p className="text-teal">
+    Proudly serving the San Diego community with curated events that highlight our beautiful coastline.
+  </p>
+</div>
+</section>
 
+
+
+
+      {/* Seasonal Packages Section */}
+      <section className="py-20 px-6 bg-offwhite">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-teal text-center mb-12">
+            Seasonal Experiences
+          </h2>
+          <p className="text-lg text-teal text-center mb-12 max-w-3xl mx-auto">
+            Celebrate special moments with our themed packages. Each season brings its own magic to the bay.
+          </p>
+          
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Halloween */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative h-64">
+                <Image
+                  src="/IMG_1255.jpeg"
+                  alt="Halloween Movie Night"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-orange text-white px-3 py-1 rounded-full text-sm font-medium">
+                    🎃 Halloween
+                  </span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-teal mb-3">Pumpkin Spice & Everything Nice</h3>
+                <p className="text-gray-600 mb-4">
+                  Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. Picture yourself under the stars, surrounded by pumpkins, rustic lanterns, and warm, earthy tones of autumn decor.
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-bold text-teal">$349</span>
+                  <Link
+                    href="/book"
+                    className="bg-teal text-white px-4 py-2 rounded-lg hover:bg-orange transition"
+                  >
+                    Book Now
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Valentine's Day */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative h-64">
+                <Image
+                  src="/vday3.jpg"
+                  alt="Valentine's Day Movie Night"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    💕 Valentine&apos;s
+                  </span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-teal mb-3">Love Under the Stars</h3>
+                <p className="text-gray-600 mb-4">
+                  Our Valentine&apos;s Day Movie Night offers the perfect ambiance — surrounded by the glow of candles, roses, and chocolates. Whether you&apos;re watching a romance classic or a film that means something to you, it&apos;s a truly unforgettable experience.
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-bold text-teal">$599</span>
+                  <Link
+                    href="/book"
+                    className="bg-teal text-white px-4 py-2 rounded-lg hover:bg-orange transition"
+                  >
+                    Book Now
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Christmas */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative h-64">
+                <Image
+                  src="/holiday1.JPG"
+                  alt="Christmas Movie Night"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    🎄 Christmas
+                  </span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-teal mb-3">Holiday Magic</h3>
+                <p className="text-gray-600 mb-4">
+                  Celebrate the magic of the season with our Christmas Movie Night experience — twinkling lights, trees, cozy blankets, and the bay as your backdrop. Perfect for creating memories with loved ones in a whimsical holiday setting.
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-bold text-teal">$449</span>
+                  <Link
+                    href="/book"
+                    className="bg-teal text-white px-4 py-2 rounded-lg hover:bg-orange transition"
+                  >
+                    Book Now
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/experiences"
+              className="bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
+            >
+              View All Experiences
+            </Link>
+          </div>
+        </div>
+      </section>
+      <InstagramSection />
       {/* What We Offer / Features Section */}
       <section className="py-20 px-6 bg-sand">
         <div className="max-w-6xl mx-auto">
@@ -125,16 +293,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Content Section 1 */}
-      <section className="py-20 px-6 bg-offwhite h-100 text-center">
-        <h2 className="text-2xl sm:text-4xl text-teal font-bold text-orange">
-          An Unforgettable Experience
-        </h2>
-        <p className="mt-4 max-w-2xl mx-auto text-teal">
-          Whether its a romantic date, girls night, or special celebration, we
-          create cozy, curated memories that last.
-        </p>
-      </section>
+
       {/* Nostalgic Movie Magic Section */}
       <section
         className="relative h-[60vh] w-full bg-fixed bg-cover bg-center text-center"
@@ -167,52 +326,16 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section className="py-16 px-6 bg-sand grid gap-12 md:grid-cols-3 text-center">
-
-        {/* Movie Nights */}
-        <div>
-          <Image
-            src="/fall_night_back.jpeg"
-            alt="Outdoor Movie Night"
-            width={400}
-            height={250}
-            className="rounded-xl mx-auto mb-4 object-cover"
-          />
-          <h3 className="text-xl font-semibold text-teal mb-2">Movie Nights</h3>
-          <p className="text-teal">
-            Enjoy classic films under the stars with cozy blankets, popcorn, and the sound of waves nearby.
-          </p>
-        </div>
-        {/* Parties */}
-        <div>
-          <Image
-            src="/poolsBday5.JPG"
-            alt="Beach Party"
-            width={400}
-            height={250}
-            className="rounded-xl mx-auto mb-4 object-cover"
-          />
-          <h3 className="text-xl font-semibold text-teal mb-2">Parties &amp; Celebrations</h3>
-          <p className="text-teal">
-            Celebrate birthdays, engagements, or any special occasion with a unique beachside cinema experience.
-          </p>
-        </div>
-        {/* San Diego Local */}
-        <div>
-          <Image
-            src="/fall_decor3.jpeg"
-            alt="San Diego Local"
-            width={400}
-            height={250}
-            className="rounded-xl mx-auto mb-4 object-cover"
-          />
-          <h3 className="text-xl font-semibold text-teal mb-2">San Diego Local</h3>
-          <p className="text-teal">
-            Proudly serving the San Diego community with curated events that highlight our beautiful coastline.
-          </p>
-        </div>
+            {/* Content Section 1 */}
+            <section className="py-20 px-6 bg-offwhite h-100 text-center">
+        <h2 className="text-2xl sm:text-4xl text-teal font-bold text-orange">
+          An Unforgettable Experience
+        </h2>
+        <p className="mt-4 max-w-2xl mx-auto text-teal">
+          Whether its a romantic date, girls night, or special celebration, we
+          create cozy, curated memories that last.
+        </p>
       </section>
-
       {/* How It Works / Booking Steps */}
       {/* <section className="py-20 px-6 bg-offwhite">
         <div className="max-w-4xl mx-auto text-center">
@@ -286,44 +409,6 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Instagram Feed / Recent Events */}
-      <section className="py-20 px-6 bg-offwhite">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-teal mb-12">Recent Events</h2>
-          <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-4">
-            <Image
-              src="/verticalSunset.jpeg"
-              alt="Recent Event"
-              width={200}
-              height={200}
-              className="rounded-lg object-contain"
-            />
-            <Image
-              src="/bayview_behind.jpg"
-              alt="Recent Event"
-              width={300}
-              height={200}
-              className="rounded-lg object-cover"
-            />
-            <Image
-              src="/big_bali.JPG"
-              alt="Recent Event"
-              width={300}
-              height={200}
-              className="rounded-lg object-cover"
-            />
-            <Image
-              src="/verticalPicnic.jpeg"
-              alt="Recent Event"
-              width={300}
-              height={200}
-              className="rounded-lg object-cover"
-            />
-          </div>
-          <p className="mt-6 text-teal">Follow us on Instagram for more behind-the-scenes moments!</p>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="py-20 px-6 bg-sand">
         <div className="max-w-4xl mx-auto">
@@ -359,7 +444,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <Gallery className="p-5" />
+      <Gallery className="p-5" maxImages={24}/>
 
 
       {/* Footer */}
