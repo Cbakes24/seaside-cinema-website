@@ -27,7 +27,7 @@ export default function ExperiencePage() {
     {/* The Bali */}
     <div>
       <Image
-        src="/bali_setup_placeholder.jpg"
+        src="/bayview_behind.jpg"
         alt="The Bali"
         width={400}
         height={250}
@@ -67,7 +67,7 @@ export default function ExperiencePage() {
       </p>
     </div>
     {/* Birthday Package */}
-    <div>
+    <div className="w-4/5 mx-auto">
       <Image
         src="/poolsBday5.JPG"
         alt="Birthday Package"
@@ -83,7 +83,7 @@ export default function ExperiencePage() {
     {/* Proposal Package */}
     <div>
       <Image
-        src="/proposal_package_placeholder.jpg"
+        src="/vday3.jpg"
         alt="Proposal Package"
         width={400}
         height={250}
