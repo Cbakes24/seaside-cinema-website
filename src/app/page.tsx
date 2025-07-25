@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import GalleryExample from "./components/GalleryExample";
 import Gallery from "./components/Gallery";
 import ImageTest from "./components/ImageTest";
@@ -62,7 +63,7 @@ export default function Home() {
             Curated sunset experiences on the San Diego bay. Movie magic, cozy
             vibes, unforgettable memories.
           </p>
-          <a
+          <Link
             href="/book"
             className="mt-6 bg-offwhite inline-block text-teal px-6 py-3 rounded-lg font-medium hover:bg-sand transition"
             style={{
@@ -71,7 +72,7 @@ export default function Home() {
             }}
           >
             📅 Book Your Experience
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -79,17 +80,17 @@ export default function Home() {
       <section className="py-16 px-6 bg-offwhite text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-teal mb-6">
-            Luxury popup picnics & outdoor movie nights on the beaches of San Diego
+            Luxury popup picnics &amp; outdoor movie nights on the beaches of San Diego
           </h2>
           <p className="text-lg text-teal mb-8">
             Book an unforgettable sunset experience in seconds. We handle everything - you just show up and enjoy.
           </p>
-          <a
+          <Link
             href="/book"
             className="bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
           >
             🎥 Check Availability
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -167,6 +168,7 @@ export default function Home() {
         </div>
       </section>
       <section className="py-16 px-6 bg-sand grid gap-12 md:grid-cols-3 text-center">
+
         {/* Movie Nights */}
         <div>
           <Image
@@ -190,7 +192,7 @@ export default function Home() {
             height={250}
             className="rounded-xl mx-auto mb-4 object-cover"
           />
-          <h3 className="text-xl font-semibold text-teal mb-2">Parties & Celebrations</h3>
+          <h3 className="text-xl font-semibold text-teal mb-2">Parties &amp; Celebrations</h3>
           <p className="text-teal">
             Celebrate birthdays, engagements, or any special occasion with a unique beachside cinema experience.
           </p>
@@ -212,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* How It Works / Booking Steps */}
-      <section className="py-20 px-6 bg-offwhite">
+      {/* <section className="py-20 px-6 bg-offwhite">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-teal mb-12">How It Works</h2>
           <div className="grid gap-8 md:grid-cols-3">
@@ -228,18 +230,18 @@ export default function Home() {
             </div>
             <div className="text-center">
               <div className="text-4xl mb-4">3️⃣</div>
-              <h3 className="text-xl font-semibold text-teal mb-2">You Show Up & Enjoy</h3>
+              <h3 className="text-xl font-semibold text-teal mb-2">You Show Up &amp; Enjoy</h3>
               <p className="text-teal">Just arrive and create unforgettable memories</p>
             </div>
           </div>
-          <a
+          <Link
             href="/book"
             className="mt-8 bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
           >
             📅 Book Now
-          </a>
+          </Link>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials / Reviews */}
       <section className="py-20 px-6 bg-sand">
@@ -248,12 +250,12 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-2">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="text-yellow-400 text-2xl mb-2">⭐⭐⭐⭐⭐</div>
-              <p className="text-teal mb-4">"Absolutely magical! The sunset movie night was perfect for our anniversary. Everything was set up beautifully."</p>
-              <p className="text-sm text-gray-600">- Sarah & Mike</p>
+              <p className="text-teal mb-4">&ldquo;Absolutely magical! The sunset movie night was perfect for our anniversary. Everything was set up beautifully.&rdquo;</p>
+              <p className="text-sm text-gray-600">- Sarah &amp; Mike</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="text-yellow-400 text-2xl mb-2">⭐⭐⭐⭐⭐</div>
-              <p className="text-teal mb-4">"Best birthday party ever! The picnic setup was gorgeous and the service was incredible. Highly recommend!"</p>
+              <p className="text-teal mb-4">&ldquo;Best birthday party ever! The picnic setup was gorgeous and the service was incredible. Highly recommend!&rdquo;</p>
               <p className="text-sm text-gray-600">- Jessica</p>
             </div>
           </div>
@@ -276,7 +278,7 @@ export default function Home() {
       {/* Content Section 2 */}
       <section className="py-20 px-6 bg-sand text-center">
         <h2 className="text-2xl sm:text-4xl font-bold text-orange">
-          Relax. Well Handle the Details.
+          Relax. We&apos;ll Handle the Details.
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-teal">
           We bring the picnic, the movie setup, and the magic. You just show up
@@ -328,12 +330,12 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-teal text-center mb-12">Frequently Asked Questions</h2>
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold text-teal mb-2">What's included in each package?</h3>
+              <h3 className="text-xl font-semibold text-teal mb-2">What&apos;s included in each package?</h3>
               <p className="text-teal">Each package includes setup, blankets, pillows, decor, and basic refreshments. Custom add-ons available.</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-teal mb-2">Can I bring my own food?</h3>
-              <p className="text-teal">Absolutely! You're welcome to bring your own food and drinks. We also offer charcuterie boards and other add-ons.</p>
+              <p className="text-teal">Absolutely! You&apos;re welcome to bring your own food and drinks. We also offer charcuterie boards and other add-ons.</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-teal mb-2">What if the weather is bad?</h3>
@@ -349,15 +351,15 @@ export default function Home() {
         <p className="text-white mb-8 max-w-2xl mx-auto">
           Book your unforgettable beach experience today and let us handle the rest.
         </p>
-        <a
+        <Link
           href="/book"
           className="bg-white text-teal px-8 py-3 rounded-lg font-medium hover:bg-sand transition inline-block"
         >
           🎬 Book Your Experience Now
-        </a>
+        </Link>
       </section>
 
-      <Gallery />
+      <Gallery className="p-5" />
 
 
       {/* Footer */}
@@ -371,9 +373,9 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-gray-300">
-                <li><a href="/" className="hover:text-white">Home</a></li>
-                <li><a href="/experiences" className="hover:text-white">Experiences</a></li>
-                <li><a href="/book" className="hover:text-white">Book Now</a></li>
+                <li><Link href="/" className="hover:text-white">Home</Link></li>
+                <li><Link href="/experiences" className="hover:text-white">Experiences</Link></li>
+                <li><Link href="/book" className="hover:text-white">Book Now</Link></li>
               </ul>
             </div>
             <div>

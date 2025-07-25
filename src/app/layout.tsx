@@ -3,6 +3,7 @@ import './globals.css'
 import { ReactNode } from 'react'
 import Link from 'next/link'
 import Header from './components/header'
+import Footer from './components/footer'
 
 
 export const metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="bg-white text-gray-900 font-sans">
       <Header />
         <main className="min-h-[calc(100vh-80px)]">{children}</main>
+        <Footer />
         <footer className="text-center py-6 text-sm text-gray-500">
           &copy; {new Date().getFullYear()} Seaside Cinema · San Diego, CA
         </footer>

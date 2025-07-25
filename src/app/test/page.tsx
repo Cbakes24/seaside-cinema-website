@@ -102,7 +102,7 @@ export default function Home() {
           An Unforgettable Experience
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-teal">
-          Whether it's a romantic date, girls night, or special celebration, we
+          Whether its a romantic date, girls night, or special celebration, we
           create cozy, curated memories that last.
         </p>
       </section>
@@ -173,10 +173,10 @@ export default function Home() {
         </p>
       </section>
 
-      <Gallery />
-      <GalleryExample />
-      <ImageTest />
-      <SimpleGallery />
+      <Gallery className="w-full h-full object-cover p-5" />
+      {/* <GalleryExample />
+      <ImageTest /> */}
+      {/* <SimpleGallery /> */}
     </main>
   );
 }

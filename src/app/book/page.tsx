@@ -72,7 +72,7 @@ export default function BookingPage() {
           Book Your Experience
         </h1>
 
-        {/* Fan w-whatever num you want the width*/}
+        Fan w-whatever num you want the width
         <div className="relative w-40 max-w-[320px] aspect-square mx-auto flex justify-center items-center mb-25 sm:mb-14 sm:w-80 lg:mb-20">
           {rotations.map((deg: number, idx: number) => {
             const isActive = activeIdx === idx;
@@ -104,10 +104,24 @@ export default function BookingPage() {
             );
           })}
         </div>
-
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Package Selection */}
           <div className="bg-white p-6 rounded-lg shadow-md">
+        {mainImage && (
+            <div className="relative w-full h-64 mb-6 rounded-lg overflow-hidden">
+              <Image
+                src={mainImage}
+                alt="Package Preview"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black/20"></div>
+              <div className="absolute bottom-4 left-4 text-white">
+                <h3 className="text-xl font-semibold">{currentPackage?.name}</h3>
+                <p className="text-sm opacity-90">{currentPackage?.description}</p>
+              </div>
+            </div>
+          )}
             <h2 className="text-2xl font-bold text-teal mb-6">Choose Your Package</h2>
             <div className="space-y-4">
               {packages.map((pkg) => (
@@ -116,7 +130,7 @@ export default function BookingPage() {
                   className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
                     selectedPackage === pkg.id
                       ? 'border-teal bg-teal/10'
-                      : 'border-gray-200 hover:border-teal/50'
+                      : 'border-blue-200 hover:border-teal/50'
                   }`}
                   onClick={() => setSelectedPackage(pkg.id)}
                 >

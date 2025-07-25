@@ -1,3 +1,18 @@
+// Type definitions
+export interface PackageOption {
+  price: number;
+  addons: string[];
+  image: string;
+}
+
+export interface PackageOptions {
+  [key: string]: PackageOption;
+}
+
+export interface AddonPricing {
+  [key: string]: number | null;
+}
+
 // export const packageBasePricing = {
 //     "Classic": 299,
 //     "Bali": 399,
@@ -24,7 +39,7 @@
 //     "Proposal": "/vday3.jpg",
 //     "Seasonal": "/IMG_1255.jpeg",
 //   };
-export const packageOptions = {
+export const packageOptions: PackageOptions = {
     Classic: {
       price: 299,
       addons: ["2 Seats", "2 Hours", "Setup and Cleanup", "projector and AV", "Enhanced Refreshments"],
@@ -57,7 +72,7 @@ export const packageOptions = {
     },
   };
 
-  export const addonPricing = {
+  export const addonPricing: AddonPricing = {
     
     "Additional Blankets": 10,
     "Additional Pillows": 10,

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { packageOptions, addonPricing } from "../utils/pricingByPackage"; // make sure this file has the combined structure
+import { packageOptions, addonPricing, PackageOptions, AddonPricing } from "../utils/pricingByPackage";
 
 export default function BookingPage() {
   const router = useRouter();
@@ -13,9 +13,9 @@ export default function BookingPage() {
   const [phone, setPhone] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [style, setStyle] = useState("Classic");
-  const [selectedAddons, setSelectedAddons] = useState(packageOptions["Classic"].addons);
-  const [mainImage, setMainImage] = useState(packageOptions["Classic"].image);
+  const [style, setStyle] = useState<keyof PackageOptions>("Classic");
+  const [selectedAddons, setSelectedAddons] = useState<string[]>(packageOptions["Classic"].addons);
+  const [mainImage, setMainImage] = useState<string>(packageOptions["Classic"].image);
 
   const addonKeys = Object.keys(addonPricing);
 
@@ -25,7 +25,7 @@ export default function BookingPage() {
     return base + addonsTotal;
   };
 
-  const handleAddonToggle = (addon) => {
+  const handleAddonToggle = (addon: string) => {
     setSelectedAddons((prev) =>
       prev.includes(addon) ? prev.filter((a) => a !== addon) : [...prev, addon]
     );
@@ -33,10 +33,10 @@ export default function BookingPage() {
 
   useEffect(() => {
     setSelectedAddons(packageOptions[style]?.addons || []);
-    setMainImage(packageOptions[style]?.image);
+    setMainImage(packageOptions[style]?.image || "");
   }, [style]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = {
       fullName,
@@ -79,13 +79,17 @@ export default function BookingPage() {
             <select
               className="w-full p-2 border rounded"
               value={style}
-              onChange={(e) => setStyle(e.target.value)}
+              onChange={(e) => setStyle(e.target.value as keyof PackageOptions)}
             >
-              {Object.entries(packageOptions).map(([pkg, data]) => (
-                <option key={pkg} value={pkg}>
-                  {pkg} - ${data.price.toFixed(2)}
-                </option>
-              ))}
+              {Object.entries(packageOptions).map(([pkg, data]) => {
+                console.log('Package:', pkg);
+                console.log('Data:', data);
+                return (
+                  <option key={pkg} value={pkg}>
+                    {pkg} - ${data.price.toFixed(2)}
+                  </option>
+                );
+              })}
             </select>
           </div>
 
