@@ -23,7 +23,6 @@ export default function Home() {
   return (
     <main className="w-full">
       {/* Hero Section with Parallax */}
-
       <section className="relative h-[90vh] w-full overflow-hidden">
         <video
           autoPlay
@@ -34,7 +33,6 @@ export default function Home() {
           style={{ transform: 'translateY(-10px)' }}
         >
           <source src="/LoveBoat3.mp4" type="video/mp4" />
-        
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-black/40" />
@@ -42,14 +40,14 @@ export default function Home() {
           className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white"
           style={{
             transform: `translateY(${scrollY * 0.3}px)`,
-              transition: 'transform 1s ease-out'
+            transition: 'transform 1s ease-out'
           }}
         >
           <h1 
             className="text-3xl text-peach sm:text-5xl font-semibold leading-tight drop-shadow-md"
             style={{
-                transform: `translateY(${scrollY * 0.1}px)`,
-                    transition: 'transform 0.01s ease-in'
+              transform: `translateY(${scrollY * 0.1}px)`,
+              transition: 'transform 0.01s ease-in'
             }}
           >
             Luxury Beach Movie Nights
@@ -69,13 +67,63 @@ export default function Home() {
             className="mt-6 bg-offwhite inline-block text-teal px-6 py-3 rounded-lg font-medium hover:bg-sand transition"
             style={{
               transform: `translateY(${scrollY * 0.1}px)`,
-                     transition: 'transform 0.001s ease-in'
+              transition: 'transform 0.001s ease-in'
             }}
           >
-            Book Your Experience
+            📅 Book Your Experience
           </a>
         </div>
       </section>
+
+      {/* Value Proposition / Quick Intro */}
+      <section className="py-16 px-6 bg-offwhite text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-teal mb-6">
+            Luxury popup picnics & outdoor movie nights on the beaches of San Diego
+          </h2>
+          <p className="text-lg text-teal mb-8">
+            Book an unforgettable sunset experience in seconds. We handle everything - you just show up and enjoy.
+          </p>
+          <a
+            href="/book"
+            className="bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
+          >
+            🎥 Check Availability
+          </a>
+        </div>
+      </section>
+
+      {/* What We Offer / Features Section */}
+      <section className="py-20 px-6 bg-sand">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-teal text-center mb-12">
+            What We Offer
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div className="text-center">
+              <div className="text-4xl mb-4">🎬</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">Outdoor Movie Nights</h3>
+              <p className="text-teal">Classic films under the stars with cozy blankets and popcorn</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl mb-4">🧺</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">Curated Picnic Setups</h3>
+              <p className="text-teal">Beautifully arranged picnics with premium blankets and decor</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl mb-4">💡</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">Custom Add-Ons</h3>
+              <p className="text-teal">Charcuterie boards, extra blankets, tiki torches, and more</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl mb-4">🕯</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">Seasonal Themes</h3>
+              <p className="text-teal">Special packages for holidays and seasonal celebrations</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Content Section 1 */}
       <section className="py-20 px-6 bg-offwhite h-100 text-center">
         <h2 className="text-2xl sm:text-4xl text-teal font-bold text-orange">
@@ -86,7 +134,39 @@ export default function Home() {
           create cozy, curated memories that last.
         </p>
       </section>
-  <section className="py-16 px-6 bg-sand grid gap-12 md:grid-cols-3 text-center">
+      {/* Nostalgic Movie Magic Section */}
+      <section
+        className="relative h-[60vh] w-full bg-fixed bg-cover bg-center text-center"
+        style={{ backgroundImage: "url('/drivein_night.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-offwhite">
+          <h2 className="text-2xl sm:text-4xl font-bold text-peach mb-4 drop-shadow-md">
+            Bringing Back That Classic Movie Feeling
+          </h2>
+          <p className="max-w-2xl text-offwhite text-center text-base sm:text-lg">
+            Drive-ins are a thing of the past, and most people watch movies on a screen at home. But something magical is missing — that feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. 
+         <p>   Seaside Cinema brings that back. We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
+         </p>
+          </p>
+        </div>
+      </section>
+
+      <section
+        className="relative h-[60vh] w-full bg-fixed bg-cover bg-center"
+        style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
+      >
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-offwhite px-6">
+          <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
+          Drive-ins are a thing of the past, and most people watch movies on a screen at home. But something magical is missing — that feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. Seaside Cinema brings that back. We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
+          </p>
+          <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
+          We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
+          </p>
+        </div>
+      </section>
+      <section className="py-16 px-6 bg-sand grid gap-12 md:grid-cols-3 text-center">
         {/* Movie Nights */}
         <div>
           <Image
@@ -130,6 +210,56 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* How It Works / Booking Steps */}
+      <section className="py-20 px-6 bg-offwhite">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-teal mb-12">How It Works</h2>
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="text-center">
+              <div className="text-4xl mb-4">1️⃣</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">Choose Your Package</h3>
+              <p className="text-teal">Select your date, package, and add custom options</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl mb-4">2️⃣</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">We Set Everything Up</h3>
+              <p className="text-teal">Our team handles all the details and setup</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl mb-4">3️⃣</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">You Show Up & Enjoy</h3>
+              <p className="text-teal">Just arrive and create unforgettable memories</p>
+            </div>
+          </div>
+          <a
+            href="/book"
+            className="mt-8 bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
+          >
+            📅 Book Now
+          </a>
+        </div>
+      </section>
+
+      {/* Testimonials / Reviews */}
+      <section className="py-20 px-6 bg-sand">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-teal mb-12">What Our Guests Say</h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="text-yellow-400 text-2xl mb-2">⭐⭐⭐⭐⭐</div>
+              <p className="text-teal mb-4">"Absolutely magical! The sunset movie night was perfect for our anniversary. Everything was set up beautifully."</p>
+              <p className="text-sm text-gray-600">- Sarah & Mike</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="text-yellow-400 text-2xl mb-2">⭐⭐⭐⭐⭐</div>
+              <p className="text-teal mb-4">"Best birthday party ever! The picnic setup was gorgeous and the service was incredible. Highly recommend!"</p>
+              <p className="text-sm text-gray-600">- Jessica</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Second Parallax Section */}
       <section
         className="relative h-[60vh] w-full bg-fixed bg-cover bg-center"
@@ -153,10 +283,122 @@ export default function Home() {
           and enjoy.
         </p>
       </section>
+
+      {/* Instagram Feed / Recent Events */}
+      <section className="py-20 px-6 bg-offwhite">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-teal mb-12">Recent Events</h2>
+          <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-4">
+            <Image
+              src="/verticalSunset.jpeg"
+              alt="Recent Event"
+              width={200}
+              height={200}
+              className="rounded-lg object-contain"
+            />
+            <Image
+              src="/bayview_behind.jpg"
+              alt="Recent Event"
+              width={300}
+              height={200}
+              className="rounded-lg object-cover"
+            />
+            <Image
+              src="/big_bali.JPG"
+              alt="Recent Event"
+              width={300}
+              height={200}
+              className="rounded-lg object-cover"
+            />
+            <Image
+              src="/verticalPicnic.jpeg"
+              alt="Recent Event"
+              width={300}
+              height={200}
+              className="rounded-lg object-cover"
+            />
+          </div>
+          <p className="mt-6 text-teal">Follow us on Instagram for more behind-the-scenes moments!</p>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-6 bg-sand">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-teal text-center mb-12">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-teal mb-2">What's included in each package?</h3>
+              <p className="text-teal">Each package includes setup, blankets, pillows, decor, and basic refreshments. Custom add-ons available.</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-teal mb-2">Can I bring my own food?</h3>
+              <p className="text-teal">Absolutely! You're welcome to bring your own food and drinks. We also offer charcuterie boards and other add-ons.</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-teal mb-2">What if the weather is bad?</h3>
+              <p className="text-teal">We monitor weather closely and will reschedule if needed. Your safety and comfort are our priority.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 px-6 bg-teal text-center">
+        <h2 className="text-3xl font-bold text-white mb-6">Ready to Create Magic?</h2>
+        <p className="text-white mb-8 max-w-2xl mx-auto">
+          Book your unforgettable beach experience today and let us handle the rest.
+        </p>
+        <a
+          href="/book"
+          className="bg-white text-teal px-8 py-3 rounded-lg font-medium hover:bg-sand transition inline-block"
+        >
+          🎬 Book Your Experience Now
+        </a>
+      </section>
+
       <Gallery />
       <GalleryExample />
       <ImageTest />
       <SimpleGallery />
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-12 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid gap-8 md:grid-cols-4">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Seaside Cinema</h3>
+              <p className="text-gray-300">Luxury beach experiences in San Diego</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-gray-300">
+                <li><a href="/" className="hover:text-white">Home</a></li>
+                <li><a href="/experiences" className="hover:text-white">Experiences</a></li>
+                <li><a href="/book" className="hover:text-white">Book Now</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2 text-gray-300">
+                <li>📧 hello@seasidecinema.com</li>
+                <li>📱 (619) 555-0123</li>
+                <li>📍 San Diego, CA</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Follow Us</h4>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-300 hover:text-white">📷 Instagram</a>
+                <a href="#" className="text-gray-300 hover:text-white">📘 Facebook</a>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+            <p>&copy; 2024 Seaside Cinema. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
