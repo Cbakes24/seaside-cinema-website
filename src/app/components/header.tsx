@@ -13,6 +13,7 @@ export default function Header() {
     { href: '/experiences', label: 'Experiences' },
     { href: '/occasions', label: 'Occasions' },
     { href: '/gallery', label: 'Gallery' },
+    { href: '/about', label: 'About' },
     { href: '/faq', label: 'FAQ' },
   ]
 

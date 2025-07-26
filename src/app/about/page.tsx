@@ -107,7 +107,7 @@ export default function AboutPage() {
                   className="rounded-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Sarah Johnson</h3>
+              <h3 className="text-xl font-semibold text-teal mb-2">Heather Baker</h3>
               <p className="text-teal mb-2">Founder & Creative Director</p>
               <p className="text-sm text-gray-600">
                 Passionate about bringing cinematic magic to life on the beach
@@ -122,7 +122,7 @@ export default function AboutPage() {
                   className="rounded-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Mike Chen</h3>
+              <h3 className="text-xl font-semibold text-teal mb-2">Cory Baker</h3>
               <p className="text-teal mb-2">Operations Manager</p>
               <p className="text-sm text-gray-600">
                 Ensures every event runs smoothly and exceeds expectations
@@ -137,7 +137,7 @@ export default function AboutPage() {
                   className="rounded-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Emma Rodriguez</h3>
+              <h3 className="text-xl font-semibold text-teal mb-2">Bailey Baker</h3>
               <p className="text-teal mb-2">Event Coordinator</p>
               <p className="text-sm text-gray-600">
                 Creates personalized experiences for every special occasion
