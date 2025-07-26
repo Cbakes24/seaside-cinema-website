@@ -7,9 +7,10 @@ export const experiences = [
     description: "Cozy blankets, rugs, and our signature sunset setup.",
     image: "/verticalSunset.jpeg",
     includes: [
-      "Seating area",
-      "Projector setup",
-      "Sunset timing",
+      "Theater Style Seating",
+      "2 hour booking",
+      "100 inch Projector setup with speaker",
+      "Mexican Blankets",
       "Beach-friendly decor"
     ]
   },
@@ -20,8 +21,12 @@ export const experiences = [
     description: "Boho-chic macrame pillows, tropical tones, and dreamy lighting.",
     image: "/bayview_behind.jpg",
     includes: [
-      "Macrame decor",
+      "Upgraded Bali Decor",
+      "Backdrop Seating",
+      "100 inch Projector setup with speaker",
+      "Large Low Table",
       "Boho pillows",
+      "2 hour booking",
       "Hanging lights",
       "Sunset-ready scene"
     ]
@@ -33,9 +38,14 @@ export const experiences = [
     description: "An intimate picnic setup without the movie screen.",
     image: "/verticalPicnic.jpeg",
     includes: [
-      "Picnic table",
-      "Plush floor seating",
-      "Decorative elements"
+      "2 hour booking",
+      "High quality and sustainably sourced decor",
+      "Macrame pillows",
+      "100 inch Projector setup with speaker",
+      "Blankets, throws or rugs",
+      "Low laying tables with place setting for each guest",
+      "Portable Bluetooth speaker",
+      "String Lights"
     ]
   },
   {
@@ -46,8 +56,12 @@ export const experiences = [
     image: "/IMG_1255.jpeg",
     includes: [
       "Seasonal decor",
+      "2 hour booking",
+      "100 inch Projector setup with speaker",
       "Themed props",
-      "Matching tableware"
+      "Matching tableware",
+      "Pillows and Blankets",
+      "Themed Lighting"
     ]
   },
 ];

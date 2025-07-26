@@ -19,6 +19,7 @@ module.exports = {
         'offwhite': '#FAFAFA',
         'teal': '#38B2AC',
         'orange': '#FF6B35',
+        'dark-teal': '#006B6B',
       },
     },
   },

@@ -159,7 +159,7 @@ export default function Home() {
           </Link>
         </div>
       </section> */}
-
+{/* 
       <section className="py-20 px-6 bg-sand rounded-2xl">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-teal text-center mb-12">
@@ -273,7 +273,7 @@ export default function Home() {
   </div>
 
   <a href="/experiences" className="mt-10 inline-block text-teal underline font-semibold hover:text-teal-dark">See All Experiences →</a>
-</section>
+</section> */}
 
 {/* Movie Nights */}
 <div>
@@ -344,7 +344,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="absolute top-4 left-4">
-                  <span className="bg-orange text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-medium rotate-45">
                     🎃 Halloween
                   </span>
                 </div>
