@@ -95,7 +95,7 @@ export default function Home() {
             href="/book"
             className="bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
           >
-            🎥 Check Availability
+             Check Availability
           </Link>
         </div>
       </section>
@@ -369,11 +369,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-offwhite px-6">
 
-          <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
-          Drive-ins are a thing of the past, and most people watch movies on a screen at home. But something magical something classical that we long for — that 
-          feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. Seaside Cinema brings that back.
-           We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
-          </p>
+        <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
+  Drive-ins are a thing of the past, and most people watch movies on a screen at home. But something magical — something classical — that we long for: that
+  feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. Seaside Cinema brings that back.
+</p>
 
           <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
           We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
