@@ -9,7 +9,9 @@ export default function BookingPage() {
   const searchParams = useSearchParams();
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
-  const [selectedPackage, setSelectedPackage] = useState('classic');
+  const [selectedExperience, setSelectedExperience] = useState('classic'); // new
+  const [selectedPackage, setSelectedPackage] = useState('birthday'); // default or empty
+  
   const [mainImage, setMainImage] = useState('/verticalSunset.jpeg');
   const [fullName, setFullName] = useState('');
   const [howHeard, setHowHeard] = useState('');
@@ -29,9 +31,10 @@ export default function BookingPage() {
   ]);
   const rotations = [-30, -15, 0, 15, 30];
 
-  const currentPackage = getPackageById(selectedPackage);
-  const totalPrice = calculateTotal(selectedPackage, selectedAddons);
 
+  const currentPackage = getPackageById(selectedPackage);
+  const totalPrice = calculateTotal(selectedExperience, selectedPackage, selectedAddons);
+  
   // Check for package parameter in URL and auto-select
   useEffect(() => {
     const packageParam = searchParams.get('package');

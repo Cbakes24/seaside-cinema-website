@@ -4,11 +4,11 @@ import Image from "next/image";
 import React from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import GalleryExample from "./components/GalleryExample";
-import Gallery from "./components/Gallery";
-import ImageTest from "./components/ImageTest";
-import SimpleGallery from "./components/SimpleGallery";
-import InstagramSection from "./components/InstagramSection";
+import GalleryExample from "../components/GalleryExample";
+import Gallery from "../components/Gallery";
+import ImageTest from "../components/ImageTest";
+import SimpleGallery from "../components/SimpleGallery";
+import InstagramSection from "../components/InstagramSection";
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
 
@@ -25,17 +25,27 @@ export default function Home() {
     <main className="w-full">
       {/* Hero Section with Parallax */}
       <section className="relative h-[90vh] w-full overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover scale-100"
-          style={{ transform: 'translateY(-1px)' }}
-        >
-          <source src="/LoveBoat3.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <section
+        className="relative h-[60vh] w-full bg-fixed bg-cover bg-center"
+        style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
+      >
+        {/* This div creates an inset overlay with a semi-transparent black color */}
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-offwhite px-6">
+
+          <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
+          Drive-ins are a thing of the past, and most people watch movies on a screen at home. But something magical something classical that we long for — that 
+          feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. Seaside Cinema brings that back.
+           We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
+          </p>
+
+          <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
+          We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
+          </p>
+
+
+        </div>
+      </section>
         <div className="absolute inset-0 bg-black/40" />
         <div 
           className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white"
@@ -44,15 +54,6 @@ export default function Home() {
             transition: 'transform 1s ease-out'
           }}
         >
-          <div className="mb-6">
-            <Image
-              src="/HeatherLogogpt.png"
-              alt="Seaside Cinema Logo"
-              width={120}
-              height={120}
-              className="object-contain mx-auto rounded-2xl"
-            />
-          </div>
           <h1 
             className="text-3xl text-peach sm:text-5xl font-semibold leading-tight drop-shadow-md"
             style={{
@@ -69,8 +70,7 @@ export default function Home() {
               transition: 'transform .01s ease-in'
             }}
           >
-            Curated sunset experiences on the San Diego bay. Movie magic, cozy
-            vibes, unforgettable memories.
+           Seaside picnics. Sunset backdrops. Movies under the stars.
           </p>
           <Link
             href="/book"
@@ -105,7 +105,7 @@ export default function Home() {
 
       <section className="py-20 px-6 bg-offwhite text-center">
   <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">What We Offer</h2>
-  <p className="text-teal mb-12 max-w-xl mx-auto">Whether you&apos;re planning a romantic date, surprise proposal, or group gathering, our curated setups deliver unforgettable moments with effortless style.</p>
+  <p className="text-teal mb-12 max-w-xl mx-auto">Whether you're planning a romantic date, surprise proposal, or group gathering, our curated setups deliver unforgettable moments with effortless style.</p>
 
   <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
     <div>
