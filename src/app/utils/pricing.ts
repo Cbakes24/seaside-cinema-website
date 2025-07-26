@@ -135,7 +135,8 @@ export const addons = [
 export function calculateTotal(
   selectedExperience: string,
   selectedPackage: string,
-  selectedAddons: string[]
+  selectedAddons: string[],
+  guestCount: number = 2
 ): number {
   const experiencePrice = experiences.find((e) => e.id === selectedExperience)?.price || 0;
   const packagePrice = packages.find((p) => p.id === selectedPackage)?.price || 0;
@@ -143,7 +144,11 @@ export function calculateTotal(
     .map((id) => addons.find((a) => a.id === id)?.price || 0)
     .reduce((sum, val) => sum + val, 0);
 
-  return experiencePrice + packagePrice + addonsPrice;
+  // Calculate guest pricing: base price includes 2 guests, each additional guest is $25
+  const additionalGuests = Math.max(0, guestCount - 2);
+  const guestPricing = additionalGuests * 25;
+
+  return experiencePrice + packagePrice + addonsPrice + guestPricing;
 }
 
 export function formatPrice(price: number): string {

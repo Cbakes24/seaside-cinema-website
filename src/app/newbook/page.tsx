@@ -45,7 +45,8 @@ export default function BookingPage() {
   const totalPrice = calculateTotal(
     selectedExperience,
     selectedPackage,
-    selectedAddons
+    selectedAddons,
+    parseInt(guestCount) || 2
   );
 
   // Update main image when package changes
@@ -424,17 +425,17 @@ export default function BookingPage() {
             <div className="relative w-full h-64 mb-6 rounded-lg overflow-hidden">
               <Image
                 src={mainImage}
-                alt="Package Preview"
+                alt="Experience Preview"
                 fill
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-black/20"></div>
               <div className="absolute bottom-4 left-4 text-white">
                 <h3 className="text-xl font-semibold">
-                  {currentPackage?.name}
+                  {currentExperience?.name}
                 </h3>
                 <p className="text-sm opacity-90">
-                  {currentPackage?.description}
+                  {currentExperience?.description}
                 </p>
               </div>
             </div>
@@ -442,9 +443,24 @@ export default function BookingPage() {
           <div className="space-y-2">
             {currentExperience && (
               <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                <span className="text-teal">{currentExperience.name}</span>
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal">
+                    {currentExperience.name}
+                  </span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-sm text-gray-600">Guests:</span>
+                    <input
+                      type="number"
+                      min="2"
+                      className="w-16 p-1 border border-gray-300 rounded text-sm text-center"
+                      value={guestCount}
+                      onChange={(e) => setGuestCount(e.target.value)}
+                      placeholder="2"
+                    />
+                  </div>
+                </div>
                 <span className="font-semibold text-teal">
-                  {formatPrice(currentExperience.price)}
+                  {formatPrice(currentExperience.price + (Math.max(0, (parseInt(guestCount) || 2) - 2) * 25))}
                 </span>
               </div>
             )}
@@ -565,15 +581,6 @@ export default function BookingPage() {
                 className="w-full p-2 border-b-2 rounded"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-              />
-            </div>
-            <div>
-              <label className="block font-medium mb-1">Guest Count</label>
-              <input
-                type="number"
-                className="w-full p-2 border-b-2 rounded"
-                value={guestCount}
-                onChange={(e) => setGuestCount(e.target.value)}
               />
             </div>
           </div>
