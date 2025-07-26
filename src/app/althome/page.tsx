@@ -105,7 +105,7 @@ export default function Home() {
 
       <section className="py-20 px-6 bg-offwhite text-center">
   <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">What We Offer</h2>
-  <p className="text-teal mb-12 max-w-xl mx-auto">Whether you're planning a romantic date, surprise proposal, or group gathering, our curated setups deliver unforgettable moments with effortless style.</p>
+  <p className="text-teal mb-12 max-w-xl mx-auto">Whether youre planning a romantic date, surprise proposal, or group gathering, our curated setups deliver unforgettable moments with effortless style.</p>
 
   <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
     <div>
@@ -203,7 +203,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-teal mb-3">Pumpkin Spice & Everything Nice</h3>
+                <h3 className="text-xl font-semibold text-teal mb-3">Pumpkin Spice and Everything Nice</h3>
                 <p className="text-gray-600 mb-4">
                   Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. Picture yourself under the stars, surrounded by pumpkins, rustic lanterns, and warm, earthy tones of autumn decor.
                 </p>

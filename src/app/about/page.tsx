@@ -108,7 +108,7 @@ export default function AboutPage() {
                 />
               </div>
               <h3 className="text-xl font-semibold text-teal mb-2">Heather Baker</h3>
-              <p className="text-teal mb-2">Founder & Creative Director</p>
+              <p className="text-teal mb-2">Founder &amp; Creative Director</p>
               <p className="text-sm text-gray-600">
                 Passionate about bringing cinematic magic to life on the beach
               </p>
@@ -155,7 +155,7 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-8">
             <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-semibold text-teal mb-4">✨ Quality & Attention to Detail</h3>
+              <h3 className="text-2xl font-semibold text-teal mb-4">✨ Quality and Attention to Detail</h3>
               <p className="text-teal">
                 Every setup is crafted with care, from the perfect blanket arrangement to the ideal movie selection. We believe the little details make the biggest difference.
               </p>

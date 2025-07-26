@@ -11,7 +11,7 @@ export default function PackagesPage() {
       {/* Hero Section */}
       <section className="py-20 px-6 text-center bg-offwhite">
         <h1 className="text-3xl sm:text-4xl font-bold text-teal mb-4">
-          Add the Whipped Cream & Sprinkles
+          Add the Whipped Cream &amp; Sprinkles
         </h1>
         <p className="text-teal max-w-2xl mx-auto text-lg">
           Once you&apos;ve selected your perfect experience, our curated packages are like the whipped cream and sprinkles on top — specially designed add-ons to make your movie night unforgettable. Whether you&apos;re planning a birthday bash, a romantic date, or a nostalgic drive-in vibe, we&apos;ve got just the thing.
@@ -41,7 +41,7 @@ export default function PackagesPage() {
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-teal mb-3">Birthday Package</h3>
                 <p className="text-gray-600 text-sm mb-4">
-                  Celebrate with balloons, birthday signage, treat tables & festive decor. Perfect for all ages.
+                  Celebrate with balloons, birthday signage, treat tables &amp; festive decor. Perfect for all ages.
                 </p>
                 <div className="text-left text-xs text-gray-500 space-y-1 mb-4">
                   {packages.find(p => p.id === 'birthday')?.includes.map((item, index) => (

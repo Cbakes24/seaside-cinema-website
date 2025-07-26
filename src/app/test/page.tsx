@@ -89,7 +89,7 @@ export default function Home() {
         <div>
           <Image src="/icon-calendar.png" alt="Seasonal Themes" width={60} height={60} className="mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-teal mb-2">Seasonal Themes</h3>
-          <p className="text-teal">Fall vibes, Valentine’s romance, or holiday magic — we theme it to the season.</p>
+          <p className="text-teal">Fall vibes, Valentines romance, or holiday magic — we theme it to the season.</p>
         </div>
       </section>
 
@@ -126,7 +126,7 @@ export default function Home() {
             height={250}
             className="rounded-xl mx-auto mb-4 object-cover"
           />
-          <h3 className="text-xl font-semibold text-teal mb-2">Parties & Celebrations</h3>
+          <h3 className="text-xl font-semibold text-teal mb-2">Parties &amp; Celebrations</h3>
           <p className="text-teal">
             Celebrate birthdays, engagements, or any special occasion with a unique beachside cinema experience.
           </p>

@@ -218,7 +218,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-teal mb-3">Pumpkin Spice & Everything Nice</h3>
+                <h3 className="text-xl font-semibold text-teal mb-3">Pumpkin Spice and Everything Nice</h3>
                 <p className="text-gray-600 mb-4">
                   Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. Picture yourself under the stars, surrounded by pumpkins, rustic lanterns, and warm, earthy tones of autumn decor.
                 </p>
