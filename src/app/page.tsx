@@ -51,7 +51,7 @@ export default function Home() {
             />
           </div>
           <h1 
-            className="text-3xl text-peach sm:text-5xl font-semibold leading-tight drop-shadow-md"
+            className="text-3xl text-peach sm:text-5xl font-playfair font-semibold leading-tight drop-shadow-md"
             style={{
               transform: `translateY(${scrollY * 0.1}px)`,
               transition: 'transform 0.01s ease-in'
@@ -81,9 +81,69 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <section className="py-16 px-6 bg-sand grid gap-12 md:grid-cols-3 text-center">
+
+      <section className="py-24 px-6 bg-gradient-to-br from-sand to-offwhite">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-teal mb-6">
+              What We Offer
+            </h2>
+            <p className="text-lg text-teal/80 max-w-2xl mx-auto leading-relaxed">
+              From intimate picnics to grand celebrations, we create unforgettable moments with every detail thoughtfully curated.
+            </p>
+          </div>
+          
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">🎬</div>
+                <div className="w-16 h-1 bg-gradient-to-r from-teal to-orange mx-auto rounded-full"></div>
+              </div>
+              <h3 className="text-xl font-playfair font-bold text-teal mb-4 text-center">Outdoor Movie Nights</h3>
+              <p className="text-teal/80 text-center leading-relaxed">
+                Classic films under the stars with cozy blankets, popcorn, and the gentle sound of waves nearby.
+              </p>
+            </div>
+            
+            <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">🧺</div>
+                <div className="w-16 h-1 bg-gradient-to-r from-teal to-orange mx-auto rounded-full"></div>
+              </div>
+              <h3 className="text-xl font-playfair font-bold text-teal mb-4 text-center">Curated Picnic Setups</h3>
+              <p className="text-teal/80 text-center leading-relaxed">
+                Beautifully arranged picnics with premium blankets, elegant decor, and Instagram-worthy styling.
+              </p>
+            </div>
+            
+            <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">✨</div>
+                <div className="w-16 h-1 bg-gradient-to-r from-teal to-orange mx-auto rounded-full"></div>
+              </div>
+              <h3 className="text-xl font-playfair font-bold text-teal mb-4 text-center">Custom Add-Ons</h3>
+              <p className="text-teal/80 text-center leading-relaxed">
+                Create and build your dream movie night with Charcuterie boards, extra blankets, tiki torches, and more to elevate your experience.
+              </p>
+            </div>
+            
+            <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">🎄</div>
+                <div className="w-10 h-1 bg-gradient-to-r from-teal to-orange mx-auto rounded-full"></div>
+              </div>
+              <h3 className="text-xl font-playfair font-bold text-teal mb-4 text-center">Seasonal Themes</h3>
+              <p className="text-teal/80 text-center leading-relaxed">
+                Special packages for holidays and seasonal celebrations with themed decor and ambiance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-6 bg-offwhite grid gap-12 md:grid-cols-3 text-center">
       {/* Value Proposition / Quick Intro */}
-      <section className="py-16 px-6 bg-offwhite text-center">
+      {/* <section className="py-16 px-6 bg-offwhite text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-teal mb-6">
             Luxury popup picnics &amp; outdoor movie nights on the beaches of San Diego
@@ -98,7 +158,79 @@ export default function Home() {
              Check Availability
           </Link>
         </div>
+      </section> */}
+
+      <section className="py-20 px-6 bg-sand rounded-2xl">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-teal text-center mb-12">
+            What We Offer
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div className="text-center">
+              <div className="text-4xl mb-4">🎬&nbsp;&nbsp;🍿&nbsp;&nbsp;🌟</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">Outdoor Movie Nights</h3>
+              <p className="text-teal">Classic films under the stars with cozy blankets and popcorn</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl mb-4">🧺&nbsp;&nbsp;🥪&nbsp;&nbsp;🌳</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">Curated Picnic Setups</h3>
+              <p className="text-teal">Beautifully arranged picnics with premium blankets and decor</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl mb-4">🍫&nbsp;&nbsp;🧀&nbsp;&nbsp;🕯️</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">Custom Add-Ons</h3>
+              <p className="text-teal">Charcuterie boards, extra blankets, tiki torches, and more</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl mb-4">🎄&nbsp;&nbsp;🎃&nbsp;&nbsp;❤️</div>
+              <h3 className="text-xl font-semibold text-teal mb-2">Seasonal Themes</h3>
+              <p className="text-teal">Special packages for holidays and seasonal celebrations</p>
+            </div>
+          </div>
+        </div>
       </section>
+
+      <section className="py-20 px-6 bg-sand/70 rounded-3xl ring-1 ring-teal/10 shadow-inner">
+  <div className="max-w-6xl mx-auto">
+    <h2 className="text-4xl font-bold text-teal text-center mb-16 tracking-tight">
+      What We Offer
+    </h2>
+
+    <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        {
+          icon: "🎬 🍿 🌟",
+          title: "Outdoor Movie Nights",
+          text: "Classic films under the stars with cozy blankets and popcorn",
+        },
+        {
+          icon: "🧺 🥪 🌳",
+          title: "Curated Picnic Setups",
+          text: "Beautifully arranged picnics with premium blankets and decor",
+        },
+        {
+          icon: "🎄 🎃 ❤️",
+          title: "Custom Add-Ons",
+          text: "Charcuterie boards, extra blankets, tiki torches, and more",
+        },
+        {
+          icon: "🍫 🧀 🕯️",
+          title: "Seasonal Themes",
+          text: "Special packages for holidays and seasonal celebrations",
+        },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="text-center bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+        >
+          <div className="text-4xl mb-4">{item.icon}</div>
+          <h3 className="text-xl font-semibold text-teal mb-2">{item.title}</h3>
+          <p className="text-teal text-sm leading-relaxed">{item.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
       <section className="py-20 px-6 bg-offwhite text-center">
   <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">What We Offer</h2>
@@ -313,36 +445,7 @@ export default function Home() {
       </section>
       <InstagramSection />
       {/* What We Offer / Features Section */}
-      <section className="py-20 px-6 bg-sand">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-teal text-center mb-12">
-            What We Offer
-          </h2>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="text-center">
-              <div className="text-4xl mb-4">🎬</div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Outdoor Movie Nights</h3>
-              <p className="text-teal">Classic films under the stars with cozy blankets and popcorn</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🧺</div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Curated Picnic Setups</h3>
-              <p className="text-teal">Beautifully arranged picnics with premium blankets and decor</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">💡</div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Custom Add-Ons</h3>
-              <p className="text-teal">Charcuterie boards, extra blankets, tiki torches, and more</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🕯</div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Seasonal Themes</h3>
-              <p className="text-teal">Special packages for holidays and seasonal celebrations</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
 
       {/* Nostalgic Movie Magic Section */}
       {/* <section

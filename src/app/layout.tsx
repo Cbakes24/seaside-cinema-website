@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Header from './components/header'
 import Footer from './components/footer'
 
-
 export const metadata = {
   title: 'Seaside Cinema',
   description: 'Luxury beachside movie nights in San Diego',
@@ -14,7 +13,12 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-white text-gray-900 font-sans">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+      </head>
+      <body className="bg-white text-gray-900 font-inter">
       <Header />
         <main className="min-h-[calc(100vh-80px)]">{children}</main>
         <Footer />

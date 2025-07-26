@@ -144,7 +144,7 @@ export default function BookingPage() {
   return (
     <main className="min-h-screen bg-peach text-gray-800 px-4 py-10">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-teal mb-8 text-center">
+        <h1 className="text-3xl font-playfair font-bold text-teal mb-8 text-center">
           Book Your Experience
         </h1>
         <div className="grid gap-8 lg:grid-cols-2">
@@ -169,7 +169,7 @@ export default function BookingPage() {
                 </div>
               </div>
             )}
-            <h2 className="text-2xl font-bold text-teal mb-6">
+            <h2 className="text-2xl font-playfair font-bold text-teal mb-6">
               Create Your Movie Experience
             </h2>
 
@@ -377,7 +377,7 @@ export default function BookingPage() {
 
           {/* Add-ons Selection */}
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold text-teal mb-6">
+            <h2 className="text-2xl font-playfair font-bold text-teal mb-6">
               Customize Your Experience
             </h2>
             <div className="space-y-3">
@@ -419,7 +419,7 @@ export default function BookingPage() {
 
         {/* Price Summary */}
         <div className="bg-white p-6 rounded-lg shadow-md mt-8">
-          <h2 className="text-2xl font-bold text-teal mb-4">Price Summary</h2>
+          <h2 className="text-2xl font-playfair font-bold text-teal mb-4">Price Summary</h2>
           {mainImage && (
             <div className="relative w-full h-64 mb-6 rounded-lg overflow-hidden">
               <Image
@@ -498,7 +498,7 @@ export default function BookingPage() {
           className="bg-white p-6 rounded-lg shadow-md mt-8"
           onSubmit={handleSubmit}
         >
-          <h2 className="text-2xl font-bold text-teal mb-6">Your Details</h2>
+          <h2 className="text-2xl font-playfair font-bold text-teal mb-6">Your Details</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {/* Customer Info */}
             <div>
