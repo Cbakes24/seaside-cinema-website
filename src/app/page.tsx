@@ -4,10 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import GalleryExample from "./components/GalleryExample";
 import Gallery from "./components/Gallery";
-import ImageTest from "./components/ImageTest";
-import SimpleGallery from "./components/SimpleGallery";
 import InstagramSection from "./components/InstagramSection";
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -109,17 +106,35 @@ export default function Home() {
 
   <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
     <div>
-      <img src="/verticalSunset.jpeg" alt="Classic Setup" className="rounded-xl mb-3" />
+      <Image 
+        src="/verticalSunset.jpeg" 
+        alt="Classic Setup" 
+        width={400}
+        height={250}
+        className="rounded-xl mb-3 object-cover" 
+      />
       <h3 className="text-xl font-semibold text-teal">Classic Movie Night</h3>
       <p className="text-teal text-sm">Our signature setup — cozy seating, big screen, and coastal vibes.</p>
     </div>
     <div>
-      <img src="/bayview_behind.jpg" alt="Bali" className="rounded-xl mb-3" />
+      <Image 
+        src="/bayview_behind.jpg" 
+        alt="Bali" 
+        width={400}
+        height={250}
+        className="rounded-xl mb-3 object-cover" 
+      />
       <h3 className="text-xl font-semibold text-teal">Bali by the Bay</h3>
       <p className="text-teal text-sm">Boho-chic meets beach night magic. Macrame, pillows, and mood lighting.</p>
     </div>
     <div>
-      <img src="/poolsBday5.JPG" alt="Birthday" className="rounded-xl mb-3" />
+      <Image 
+        src="/poolsBday5.JPG" 
+        alt="Birthday" 
+        width={400}
+        height={250}
+        className="rounded-xl mb-3 object-cover" 
+      />
       <h3 className="text-xl font-semibold text-teal">Birthday Packages</h3>
       <p className="text-teal text-sm">Celebrate in style with custom themes and fun party add-ons.</p>
     </div>

@@ -15,7 +15,6 @@ import {
 
 export default function BookingPage() {
   const router = useRouter();
-  const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [selectedExperience, setSelectedExperience] = useState("classic");
   const [selectedPackage, setSelectedPackage] = useState("birthday");
@@ -29,14 +28,6 @@ export default function BookingPage() {
   const [time, setTime] = useState("");
   const [guestCount, setGuestCount] = useState("");
   const [occasion, setOccasion] = useState("");
-  const [eventImages, setEventImages] = useState([
-    "/vday3.jpg",
-    "/big_bali.JPG",
-    "/IMG_1255.jpeg",
-    "/poolsBday5.JPG",
-    "/verticalSunset.jpeg",
-  ]);
-  const rotations = [-30, -15, 0, 15, 30];
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isPackageDropdownOpen, setIsPackageDropdownOpen] = useState(false);
 

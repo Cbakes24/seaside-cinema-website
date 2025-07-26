@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import GalleryExample from "../components/GalleryExample";
 import Gallery from "../components/Gallery";
-import ImageTest from "../components/ImageTest";
-import SimpleGallery from "../components/SimpleGallery";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
