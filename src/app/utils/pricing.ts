@@ -84,7 +84,7 @@ export const packages = [
     id: "proposal",
     name: "Proposal",
     price: 300,
-    description: "Custom setup for the perfect 'yes!' moment.",
+    description: "Custom setup for the perfect &apos;yes!&apos; moment.",
     image: "/vday3.jpg",
     includes: [
       "Custom signs",

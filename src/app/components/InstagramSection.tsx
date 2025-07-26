@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 export default function InstagramSection() {
   return (
     <section className="py-12 px-6 text-center bg-offwhite">
@@ -10,16 +10,22 @@ export default function InstagramSection() {
         See our latest setups and behind-the-scenes moments.
       </p>
 
-      <a 
+      <a
         href="https://www.instagram.com/seasidecinema"
-       
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block"
       >
-        <img
+        {/* <img
           src="/igSnap2.PNG" // 👈 Replace this with your actual preview image
           alt="Seaside Cinema Instagram Preview"
+          className="rounded-xl shadow-md w-[300px] mx-auto hover:opacity-80 transition"
+        /> */}
+        <Image
+          src="/igSnap2.PNG"
+          alt="Seaside Cinema Instagram Preview"
+          width={300}
+          height={300}
           className="rounded-xl shadow-md w-[300px] mx-auto hover:opacity-80 transition"
         />
         <p className="mt-2 text-sm text-teal underline">
