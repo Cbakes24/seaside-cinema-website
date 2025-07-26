@@ -43,7 +43,7 @@ export default function Home() {
         >
           <div className="mb-6">
             <Image
-              src="/HeatherLogogpt.png"
+              src="/HeatherLogogpt.PNG"
               alt="Seaside Cinema Logo"
               width={120}
               height={120}
