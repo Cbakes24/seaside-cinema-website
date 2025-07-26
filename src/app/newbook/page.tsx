@@ -90,39 +90,6 @@ export default function BookingPage() {
         <h1 className="text-3xl font-bold text-teal mb-8 text-center">
           Book Your Experience
         </h1>
-
-        Fan w-whatever num you want the width
-        <div className="relative w-40 max-w-[320px] aspect-square mx-auto flex justify-center items-center mb-25 sm:mb-14 sm:w-80 lg:mb-20">
-          {rotations.map((deg: number, idx: number) => {
-            const isActive = activeIdx === idx;
-            let offset = 50, imageWidth = 60;
-            if (typeof window !== 'undefined') {
-              if (window.innerWidth >= 1024) { offset = 100; imageWidth = 240; }
-              else if (window.innerWidth >= 640) { offset = 40; imageWidth = 60; }
-            }
-            const fanWidth = (rotations.length -2) * offset + imageWidth;
-            const leftPx = idx * offset - (fanWidth - imageWidth) / 1.5;
-            return (
-              <Image
-                key={idx}
-                src={eventImages[idx]}
-                alt="Sunset"
-                fill
-                className="object-cover rounded-lg shadow-md p-5 bg-offwhite absolute top-0 left-0 transition-transform duration-300 cursor-pointer"
-                style={{
-                  zIndex: isActive ? 300 : idx,
-                  left: `${leftPx}px`,
-                  top: `${Math.abs(idx - 2) * 32}px`, //fan shape***
-                  transform: `rotate(${isActive ? 0 : deg}deg)  translateY(${isActive ? "-55px" : "0"})`,
-                  pointerEvents: isActive ? 'none' : 'auto',
-                }}
-                onMouseEnter={() => setActiveIdx(idx)}
-                onMouseLeave={() => setActiveIdx(null)}
-                onClick={() => setActiveIdx(idx)}
-              />
-            );
-          })}
-        </div>
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Package Selection */}
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -176,18 +143,17 @@ export default function BookingPage() {
                           setSelectedPackage(pkg.id);
                           setIsDropdownOpen(false);
                         }}
-                        className={`w-full p-4 text-left hover:bg-teal/5 transition-colors duration-150 border-b border-gray-100 last:border-b-0 ${
+                        className={`w-full p-3 text-left hover:bg-teal/5 transition-colors duration-150 border-b border-gray-100 last:border-b-0 ${
                           selectedPackage === pkg.id ? 'bg-teal/10 text-teal' : 'text-gray-800'
                         }`}
                       >
                         <div className="flex justify-between items-center">
                           <div>
-                            <div className="font-semibold text-lg">{pkg.name}</div>
+                            <div className="font-semibold text-md">{pkg.name}</div>
                             <div className="text-sm text-gray-600 mt-1">{pkg.description}</div>
                           </div>
                           <div className="text-right">
-                            <div className="font-bold text-lg text-teal">{formatPrice(pkg.price)}</div>
-                            <div className="text-xs text-gray-500 mt-1">{pkg.includes.length} items included</div>
+                            <div className="text-md font-bold text-teal">{formatPrice(pkg.price)}</div>
                           </div>
                         </div>
                       </button>
@@ -199,31 +165,22 @@ export default function BookingPage() {
 
             {/* Package Preview */}
             {currentPackage && (
-              <div className="bg-gradient-to-br from-teal/5 to-blue-50 rounded-xl p-6 border border-teal/20 shadow-sm">
-                <div className="flex justify-between items-start mb-4">
+              <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <div className="flex justify-between items-start mb-3">
                   <div>
-                    <h3 className="text-xl font-semibold text-teal mb-2">{currentPackage.name}</h3>
-                    <p className="text-gray-600 leading-relaxed">{currentPackage.description}</p>
+                    <h3 className="text-lg font-semibold text-teal">{currentPackage.name}</h3>
+                    <p className="text-sm text-gray-600">{currentPackage.description}</p>
                   </div>
-                  <span className="text-2xl font-bold text-teal bg-white px-4 py-2 rounded-lg shadow-sm">
-                    {formatPrice(currentPackage.price)}
-                  </span>
+                  <span className="text-lg font-bold text-teal">{formatPrice(currentPackage.price)}</span>
                 </div>
-                <div className="border-t border-teal/20 pt-4">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">What&apos;s Included</h4>
-                  <div className="grid gap-2">
-                    {currentPackage.includes.map((item, index) => (
-                      <div key={index} className="flex items-center text-sm text-gray-700">
-                        <div className="w-5 h-5 bg-teal/20 rounded-full flex items-center justify-center mr-3">
-                          <svg className="w-3 h-3 text-teal" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <ul className="text-xs text-gray-500 space-y-1">
+                  {currentPackage.includes.map((item, index) => (
+                    <li key={index} className="flex items-center">
+                      <span className="text-teal mr-2">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
           </div>

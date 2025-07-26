@@ -1,11 +1,12 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { packages, addons, calculateTotal, formatPrice, getPackageById, getAddonById } from "../utils/pricing";
 
 export default function BookingPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [selectedPackage, setSelectedPackage] = useState('classic');
@@ -30,6 +31,14 @@ export default function BookingPage() {
 
   const currentPackage = getPackageById(selectedPackage);
   const totalPrice = calculateTotal(selectedPackage, selectedAddons);
+
+  // Check for package parameter in URL and auto-select
+  useEffect(() => {
+    const packageParam = searchParams.get('package');
+    if (packageParam && packages.find(pkg => pkg.id === packageParam)) {
+      setSelectedPackage(packageParam);
+    }
+  }, [searchParams]);
 
   // Update main image when package changes
   useEffect(() => {
@@ -72,38 +81,6 @@ export default function BookingPage() {
           Book Your Experience
         </h1>
 
-        Fan w-whatever num you want the width
-        <div className="relative w-40 max-w-[320px] aspect-square mx-auto flex justify-center items-center mb-25 sm:mb-14 sm:w-80 lg:mb-20">
-          {rotations.map((deg: number, idx: number) => {
-            const isActive = activeIdx === idx;
-            let offset = 50, imageWidth = 60;
-            if (typeof window !== 'undefined') {
-              if (window.innerWidth >= 1024) { offset = 100; imageWidth = 240; }
-              else if (window.innerWidth >= 640) { offset = 40; imageWidth = 60; }
-            }
-            const fanWidth = (rotations.length -2) * offset + imageWidth;
-            const leftPx = idx * offset - (fanWidth - imageWidth) / 1.5;
-            return (
-              <Image
-                key={idx}
-                src={eventImages[idx]}
-                alt="Sunset"
-                fill
-                className="object-cover rounded-lg shadow-md p-5 bg-offwhite absolute top-0 left-0 transition-transform duration-300 cursor-pointer"
-                style={{
-                  zIndex: isActive ? 300 : idx,
-                  left: `${leftPx}px`,
-                  top: `${Math.abs(idx - 2) * 32}px`, //fan shape***
-                  transform: `rotate(${isActive ? 0 : deg}deg)  translateY(${isActive ? "-55px" : "0"})`,
-                  pointerEvents: isActive ? 'none' : 'auto',
-                }}
-                onMouseEnter={() => setActiveIdx(idx)}
-                onMouseLeave={() => setActiveIdx(null)}
-                onClick={() => setActiveIdx(idx)}
-              />
-            );
-          })}
-        </div>
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Package Selection */}
           <div className="bg-white p-6 rounded-lg shadow-md">

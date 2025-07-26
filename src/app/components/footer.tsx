@@ -29,13 +29,9 @@ function Footer() {
         <div>
           <h4 className="font-semibold mb-4">Follow Us</h4>
           <div className="flex space-x-4">
-            <a href="#" className="text-gray-300 hover:text-white">📷 Instagram</a>
-            <a href="#" className="text-gray-300 hover:text-white">📘 Facebook</a>
+            <a href="https://www.instagram.com/seasidecinema" className="text-gray-300 hover:text-white">📷 Instagram</a>
           </div>
         </div>
-      </div>
-      <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-        <p>&copy; 2024 Seaside Cinema. All rights reserved.</p>
       </div>
     </div>
   </footer>

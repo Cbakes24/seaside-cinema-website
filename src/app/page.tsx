@@ -60,8 +60,7 @@ export default function Home() {
               transition: 'transform .01s ease-in'
             }}
           >
-            Curated sunset experiences on the San Diego bay. Movie magic, cozy
-            vibes, unforgettable memories.
+           Seaside picnics. Sunset backdrops. Movies under the stars.
           </p>
           <Link
             href="/book"
@@ -93,6 +92,32 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <section className="py-20 px-6 bg-offwhite text-center">
+  <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">What We Offer</h2>
+  <p className="text-teal mb-12 max-w-xl mx-auto">Whether you're planning a romantic date, surprise proposal, or group gathering, our curated setups deliver unforgettable moments with effortless style.</p>
+
+  <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+    <div>
+      <img src="/verticalSunset.jpeg" alt="Classic Setup" className="rounded-xl mb-3" />
+      <h3 className="text-xl font-semibold text-teal">Classic Movie Night</h3>
+      <p className="text-teal text-sm">Our signature setup — cozy seating, big screen, and coastal vibes.</p>
+    </div>
+    <div>
+      <img src="/bayview_behind.jpg" alt="Bali" className="rounded-xl mb-3" />
+      <h3 className="text-xl font-semibold text-teal">Bali by the Bay</h3>
+      <p className="text-teal text-sm">Boho-chic meets beach night magic. Macrame, pillows, and mood lighting.</p>
+    </div>
+    <div>
+      <img src="/poolsBday5.JPG" alt="Birthday" className="rounded-xl mb-3" />
+      <h3 className="text-xl font-semibold text-teal">Birthday Packages</h3>
+      <p className="text-teal text-sm">Celebrate in style with custom themes and fun party add-ons.</p>
+    </div>
+  </div>
+
+  <a href="/experiences" className="mt-10 inline-block text-teal underline font-semibold hover:text-teal-dark">See All Experiences →</a>
+</section>
+
 {/* Movie Nights */}
 <div>
   <Image
@@ -479,9 +504,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-            <p>&copy; 2024 Seaside Cinema. All rights reserved.</p>
-          </div>
+          {/* <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+            <p>&copy; 2024 Sdfqfwfwqeaside Cinema. All rights reserved.</p>
+          </div> */}
         </div>
       </footer>
     </main>

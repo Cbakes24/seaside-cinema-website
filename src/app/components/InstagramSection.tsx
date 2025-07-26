@@ -12,6 +12,7 @@ export default function InstagramSection() {
 
       <a 
         href="https://www.instagram.com/seasidecinema"
+       
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block"
