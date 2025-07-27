@@ -21,8 +21,8 @@ function Footer() {
         <div>
           <h4 className="font-semibold mb-4">Contact</h4>
           <ul className="space-y-2 text-gray-300">
-            <li>📧 hello@seasidecinema.com</li>
-            <li>📱 (619) 555-0123</li>
+            <li>📧 seasidecinemasd@gmail.com</li>
+            <li>📱 (781) 492-0313</li>
             <li>📍 San Diego, CA</li>
           </ul>
         </div>
