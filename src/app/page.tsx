@@ -50,7 +50,7 @@ export default function Home() {
         </video>
         <div className="absolute inset-0 bg-black/40" />
         <div 
-          className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white"
+          className="relative z-10 h-full flex flex-col items-center justify-start mt-30 text-center px-6 text-white"
           style={{
             transform: `translateY(${scrollY * 0.3}px)`,
             transition: 'transform 1s ease-out'
@@ -60,15 +60,15 @@ export default function Home() {
             <Image
               src="/HeatherLogogpt.PNG"
               alt="Seaside Cinema Logo"
-              width={120}
-              height={120}
+              width={160}
+              height={160}
               className="object-contain mx-auto rounded-2xl"
             />
           </div>
           <h1 
             className="text-3xl text-peach sm:text-5xl font-playfair font-semibold leading-tight drop-shadow-md"
             style={{
-              transform: `translateY(${scrollY * 0.1}px)`,
+              transform: `translateY(${scrollY * .001}px)`,
               transition: 'transform 0.01s ease-in'
             }}
           >
@@ -86,13 +86,13 @@ export default function Home() {
           </p>
           <Link
             href="/book"
-            className="mt-6 bg-offwhite inline-block text-teal px-6 py-3 rounded-lg font-medium hover:bg-sand transition"
+            className="mt-6 bg-offwhite inline-block text-teal px-6 py-3 rounded-lg font-medium hover:bg-sand transition text-semibold"
             style={{
               transform: `translateY(${scrollY * 0.1}px)`,
               transition: 'transform 0.001s ease-in'
             }}
           >
-            📅 Book Your Experience
+            Book Now!
           </Link>
         </div>
       </section>

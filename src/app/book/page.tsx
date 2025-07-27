@@ -89,7 +89,6 @@ export default function BookingPage() {
       guestCount,
       selectedExperience,
       selectedPackage,
-      occasion,
       addons: selectedAddons,
       totalPrice,
     };

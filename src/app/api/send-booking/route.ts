@@ -14,8 +14,9 @@ export async function POST(req: Request) {
       date,
       time,
       guestCount,
-      style,
-      occasion,
+      selectedExperience,
+      selectedPackage,
+      phoneType,
       addons,
     } = formData;
 
@@ -28,8 +29,9 @@ Phone: ${phone}
 Date: ${date}
 Time: ${time}
 Guest Count: ${guestCount}
-Style: ${style}
-Occasion: ${occasion}
+Experience: ${selectedExperience}
+Package: ${selectedPackage}
+Phone Type: ${phoneType}
 Add-ons: ${addons?.join(', ') || 'None'}
     `;
 

@@ -16,7 +16,7 @@ export const experiences = [
   },
   {
     id: "bali",
-    name: "The Bali",
+    name: "Bali",
     price: 399,
     description: "Boho-chic macrame pillows, tropical tones, and dreamy lighting.",
     image: "/bayview_behind.jpg",
