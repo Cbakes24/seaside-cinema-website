@@ -78,6 +78,19 @@ export default function BookingPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate that all required fields are filled
+    if (!fullName || !email || !date || !time || !guestCount || !selectedExperience) {
+      alert("Please fill out all required fields and select an experience.");
+      return;
+    }
+
+    // Validate guest count is at least 2
+    if (parseInt(guestCount) < 2) {
+      alert("Guest count must be at least 2.");
+      return;
+    }
+
     const formData = {
       fullName,
       howHeard,
@@ -450,6 +463,7 @@ export default function BookingPage() {
                     <input
                       type="number"
                       min="2"
+                      required
                       className="w-16 p-1 border border-gray-300 rounded text-sm text-center"
                       value={guestCount}
                       onChange={(e) => setGuestCount(e.target.value)}
@@ -458,7 +472,7 @@ export default function BookingPage() {
                   </div>
                 </div>
                 <span className="font-semibold text-teal">
-                  {formatPrice(currentExperience.price + (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50))}
+                  {formatPrice(currentExperience.price + (Math.max(0, (parseInt(guestCount) || 2) - 2) * 25))}
                 </span>
               </div>
             )}
@@ -498,53 +512,77 @@ export default function BookingPage() {
           onSubmit={handleSubmit}
         >
           <h2 className="text-2xl font-playfair font-bold text-teal mb-6">Your Details</h2>
+          
+          {/* Requirements Note */}
+          <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm text-blue-800">
+              <strong>Important:</strong> All fields marked with <span className="text-red-500">*</span> are required. 
+              You must also select an experience above before submitting.
+            </p>
+          </div>
+          
           <div className="grid gap-6 md:grid-cols-2">
             {/* Customer Info */}
             <div>
-              <label className="block font-medium mb-1">Full Name</label>
+              <label className="block font-medium mb-1">
+                Full Name <span className="text-red-500">*</span>
+              </label>
               <input
                 type="text"
                 className="w-full p-2 border-b-2 rounded"
                 required
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
+                placeholder="Enter your full name"
               />
             </div>
             <div>
               <label className="block font-medium mb-1">
-                How did you hear about us?
+                How did you hear about us? <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 className="w-full p-2 border-b-2 rounded"
+                required
                 value={howHeard}
                 onChange={(e) => setHowHeard(e.target.value)}
+                placeholder="Social media, friend, etc."
               />
             </div>
             <div>
-              <label className="block font-medium mb-1">Email</label>
+              <label className="block font-medium mb-1">
+                Email <span className="text-red-500">*</span>
+              </label>
               <input
                 type="email"
                 className="w-full p-2 border-b-2 rounded"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
               />
             </div>
             <div>
-              <label className="block font-medium mb-1">Phone Number</label>
+              <label className="block font-medium mb-1">
+                Phone Number <span className="text-red-500">*</span>
+              </label>
               <input
                 type="tel"
                 className="w-full p-2 border-b-2 rounded"
+                required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                placeholder="(555) 123-4567"
               />
             </div>
             <div>
-              <label className="block font-medium mb-1">Type Of Phone</label>
+              <label className="block font-medium mb-1">
+                Type Of Phone <span className="text-red-500">*</span>
+              </label>
               <select
                 name="type"
                 className="w-full p-2 border-b-2 rounded"
+                required
                 value={phoneType}
                 onChange={(e) => setPhoneType(e.target.value)}
               >
@@ -554,29 +592,38 @@ export default function BookingPage() {
               </select>
             </div>
             <div>
-              <label className="block font-medium mb-1">Occasion Type</label>
+              <label className="block font-medium mb-1">
+                Occasion Type <span className="text-red-500">*</span>
+              </label>
               <input
                 type="text"
                 placeholder="Date Night, Birthday, Proposal..."
                 className="w-full p-2 border-b-2 rounded"
+                required
                 value={occasion}
                 onChange={(e) => setOccasion(e.target.value)}
               />
             </div>
             <div>
-              <label className="block font-medium mb-1">Preferred Date</label>
+              <label className="block font-medium mb-1">
+                Preferred Date <span className="text-red-500">*</span>
+              </label>
               <input
                 type="date"
                 className="w-full p-2 border-b-2 rounded"
+                required
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
               />
             </div>
             <div>
-              <label className="block font-medium mb-1">Start Time</label>
+              <label className="block font-medium mb-1">
+                Start Time <span className="text-red-500">*</span>
+              </label>
               <input
                 type="time"
                 className="w-full p-2 border-b-2 rounded"
+                required
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
               />
@@ -586,7 +633,8 @@ export default function BookingPage() {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-teal text-white font-semibold py-3 rounded hover:bg-orange transition mt-6"
+            disabled={!fullName || !email || !date || !time || !guestCount || !selectedExperience || !howHeard || !phone || !phoneType || !occasion}
+            className="w-full bg-teal text-white font-semibold py-3 rounded hover:bg-orange transition mt-6 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             Submit Booking - {formatPrice(totalPrice)}
           </button>
