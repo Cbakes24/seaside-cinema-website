@@ -464,7 +464,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <Gallery className="p-5" maxImages={24}/>
+      <Gallery className="p-5" maxImages={9}/>
 
 
       {/* Footer */}
