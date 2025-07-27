@@ -6,6 +6,21 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
+import {
+  packages,
+  addons,
+  calculateTotal,
+  formatPrice,
+  getPackageById,
+  getAddonById,
+  experiences,
+  getExperienceById,
+} from "./utils/pricing";
+
+
+
+
+
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
 
@@ -141,186 +156,57 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-6 bg-offwhite grid gap-12 md:grid-cols-3 text-center">
-      {/* Value Proposition / Quick Intro */}
-      {/* <section className="py-16 px-6 bg-offwhite text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-teal mb-6">
-            Luxury popup picnics &amp; outdoor movie nights on the beaches of San Diego
-          </h2>
-          <p className="text-lg text-teal mb-8">
-            Book an unforgettable sunset experience in seconds. We handle everything - you just show up and enjoy.
-          </p>
-          <Link
-            href="/book"
-            className="bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
-          >
-             Check Availability
-          </Link>
-        </div>
-      </section> */}
-{/* 
-      <section className="py-20 px-6 bg-sand rounded-2xl">
+      {/* Main Experiences Section with Dynamic Pricing */}
+      <section className="py-20 px-6 bg-sand">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-teal text-center mb-12">
-            What We Offer
+            Our Signature Experiences
           </h2>
+          <p className="text-lg text-teal text-center mb-12 max-w-3xl mx-auto">
+            Choose from our curated selection of beach movie night experiences, each designed to create unforgettable memories.
+          </p>
+          
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="text-center">
-              <div className="text-4xl mb-4">🎬&nbsp;&nbsp;🍿&nbsp;&nbsp;🌟</div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Outdoor Movie Nights</h3>
-              <p className="text-teal">Classic films under the stars with cozy blankets and popcorn</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🧺&nbsp;&nbsp;🥪&nbsp;&nbsp;🌳</div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Curated Picnic Setups</h3>
-              <p className="text-teal">Beautifully arranged picnics with premium blankets and decor</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🍫&nbsp;&nbsp;🧀&nbsp;&nbsp;🕯️</div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Custom Add-Ons</h3>
-              <p className="text-teal">Charcuterie boards, extra blankets, tiki torches, and more</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🎄&nbsp;&nbsp;🎃&nbsp;&nbsp;❤️</div>
-              <h3 className="text-xl font-semibold text-teal mb-2">Seasonal Themes</h3>
-              <p className="text-teal">Special packages for holidays and seasonal celebrations</p>
-            </div>
+            {experiences.slice(0, 4).map((experience) => (
+              <div key={experience.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div className="relative h-48">
+                  <Image
+                    src={experience.image}
+                    alt={experience.name}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20"></div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-teal mb-2">{experience.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">{experience.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xl font-bold text-teal">
+                      {formatPrice(experience.price)}
+                    </span>
+                    <Link
+                      href={`/book?experience=${experience.id}`}
+                      className="bg-teal text-white px-3 py-1 rounded text-sm hover:bg-orange transition"
+                    >
+                      Book Now
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/experiences"
+              className="bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
+            >
+              View All Experiences
+            </Link>
           </div>
         </div>
       </section>
-
-      <section className="py-20 px-6 bg-sand/70 rounded-3xl ring-1 ring-teal/10 shadow-inner">
-  <div className="max-w-6xl mx-auto">
-    <h2 className="text-4xl font-bold text-teal text-center mb-16 tracking-tight">
-      What We Offer
-    </h2>
-
-    <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-      {[
-        {
-          icon: "🎬 🍿 🌟",
-          title: "Outdoor Movie Nights",
-          text: "Classic films under the stars with cozy blankets and popcorn",
-        },
-        {
-          icon: "🧺 🥪 🌳",
-          title: "Curated Picnic Setups",
-          text: "Beautifully arranged picnics with premium blankets and decor",
-        },
-        {
-          icon: "🎄 🎃 ❤️",
-          title: "Custom Add-Ons",
-          text: "Charcuterie boards, extra blankets, tiki torches, and more",
-        },
-        {
-          icon: "🍫 🧀 🕯️",
-          title: "Seasonal Themes",
-          text: "Special packages for holidays and seasonal celebrations",
-        },
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="text-center bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
-        >
-          <div className="text-4xl mb-4">{item.icon}</div>
-          <h3 className="text-xl font-semibold text-teal mb-2">{item.title}</h3>
-          <p className="text-teal text-sm leading-relaxed">{item.text}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-      <section className="py-20 px-6 bg-offwhite text-center">
-  <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">What We Offer</h2>
-  <p className="text-teal mb-12 max-w-xl mx-auto">Whether you&apos;re planning a romantic date, surprise proposal, or group gathering, our curated setups deliver unforgettable moments with effortless style.</p>
-
-  <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-    <div>
-      <Image 
-        src="/verticalSunset.jpeg" 
-        alt="Classic Setup" 
-        width={400}
-        height={250}
-        className="rounded-xl mb-3 object-cover" 
-      />
-      <h3 className="text-xl font-semibold text-teal">Classic Movie Night</h3>
-      <p className="text-teal text-sm">Our signature setup — cozy seating, big screen, and coastal vibes.</p>
-    </div>
-    <div>
-      <Image 
-        src="/bayview_behind.jpg" 
-        alt="Bali" 
-        width={400}
-        height={250}
-        className="rounded-xl mb-3 object-cover" 
-      />
-      <h3 className="text-xl font-semibold text-teal">Bali by the Bay</h3>
-      <p className="text-teal text-sm">Boho-chic meets beach night magic. Macrame, pillows, and mood lighting.</p>
-    </div>
-    <div>
-      <Image 
-        src="/poolsBday5.JPG" 
-        alt="Birthday" 
-        width={400}
-        height={250}
-        className="rounded-xl mb-3 object-cover" 
-      />
-      <h3 className="text-xl font-semibold text-teal">Birthday Packages</h3>
-      <p className="text-teal text-sm">Celebrate in style with custom themes and fun party add-ons.</p>
-    </div>
-  </div>
-
-  <a href="/experiences" className="mt-10 inline-block text-teal underline font-semibold hover:text-teal-dark">See All Experiences →</a>
-</section> */}
-
-{/* Movie Nights */}
-<div>
-  <Image
-    src="/fall_night_back.jpeg"
-    alt="Outdoor Movie Night"
-    width={400}
-    height={250}
-    className="rounded-xl mx-auto mb-4 object-cover"
-  />
-  <h3 className="text-xl font-semibold text-teal mb-2">Movie Nights</h3>
-  <p className="text-teal">
-    Enjoy classic films under the stars with cozy blankets, popcorn, and the sound of waves nearby.
-  </p>
-</div>
-{/* Parties */}
-<div>
-  <Image
-    src="/poolsBday5.JPG"
-    alt="Beach Party"
-    width={400}
-    height={250}
-    className="rounded-xl mx-auto mb-4 object-cover"
-  />
-  <h3 className="text-xl font-semibold text-teal mb-2">Parties &amp; Celebrations</h3>
-  <p className="text-teal">
-    Celebrate birthdays, engagements, or any special occasion with a unique beachside cinema experience.
-  </p>
-</div>
-{/* San Diego Local */}
-<div>
-  <Image
-    src="/fall_decor3.jpeg"
-    alt="San Diego Local"
-    width={400}
-    height={250}
-    className="rounded-xl mx-auto mb-4 object-cover"
-  />
-  <h3 className="text-xl font-semibold text-teal mb-2">San Diego Local</h3>
-  <p className="text-teal">
-    Proudly serving the San Diego community with curated events that highlight our beautiful coastline.
-  </p>
-</div>
-</section>
-
-
-
 
       {/* Seasonal Packages Section */}
       <section className="py-20 px-6 bg-offwhite">
@@ -337,7 +223,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-64">
                 <Image
-                  src="/IMG_1255.jpeg"
+                  src={getExperienceById("halloween")?.image || "/IMG_1255.jpeg"}
                   alt="Halloween Movie Night"
                   fill
                   className="object-cover"
@@ -350,13 +236,18 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-teal mb-3">Pumpkin Spice and Everything Nice</h3>
+                <h3 className="text-xl font-semibold text-teal mb-3">
+                  {getExperienceById("halloween")?.name || "Pumpkin Spice and Everything Nice"}
+                </h3>
                 <p className="text-gray-600 mb-4">
-                  Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. Picture yourself under the stars, surrounded by pumpkins, rustic lanterns, and warm, earthy tones of autumn decor... Possibly watching a Skelington obessed with xmas!                </p>
+                  {getExperienceById("halloween")?.description || "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. Picture yourself under the stars, surrounded by pumpkins, rustic lanterns, and warm, earthy tones of autumn decor... Possibly watching a Skelington obessed with xmas!"}
+                </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-teal">$349</span>
+                  <span className="text-2xl font-bold text-teal">
+                    {formatPrice(getExperienceById("halloween")?.price || 349)}
+                  </span>
                   <Link
-                    href="/book"
+                    href="/book?experience=halloween"
                     className="bg-teal text-white px-4 py-2 rounded-lg hover:bg-orange transition"
                   >
                     Book Now
@@ -369,7 +260,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-64">
                 <Image
-                  src="/vday3.jpg"
+                  src={getExperienceById("valentines")?.image || "/vday3.jpg"}
                   alt="Valentine's Day Movie Night"
                   fill
                   className="object-cover"
@@ -382,14 +273,18 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-teal mb-3">Love Under the Stars</h3>
+                <h3 className="text-xl font-semibold text-teal mb-3">
+                  {getExperienceById("valentines")?.name || "Love Under the Stars"}
+                </h3>
                 <p className="text-gray-600 mb-4">
-                  Our Valentine&apos;s Day Movie Night offers the perfect ambiance — surrounded by the glow of candles, roses, and chocolates. Whether you&apos;re watching a romance classic or a film that means something to you, it&apos;s a truly unforgettable experience.
+                  {getExperienceById("valentines")?.description || "Our Valentine's Day Movie Night offers the perfect ambiance — surrounded by the glow of candles, roses, and chocolates. Whether you're watching a romance classic or a film that means something to you, it's a truly unforgettable experience."}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-teal">$599</span>
+                  <span className="text-2xl font-bold text-teal">
+                    {formatPrice(getExperienceById("valentines")?.price || 599)}
+                  </span>
                   <Link
-                    href="/book"
+                    href="/book?experience=valentines"
                     className="bg-teal text-white px-4 py-2 rounded-lg hover:bg-orange transition"
                   >
                     Book Now
@@ -402,7 +297,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-64">
                 <Image
-                  src="/holiday1.JPG"
+                  src={getExperienceById("christmas")?.image || "/holiday1.JPG"}
                   alt="Christmas Movie Night"
                   fill
                   className="object-cover"
@@ -415,14 +310,18 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-teal mb-3">Holiday Magic</h3>
+                <h3 className="text-xl font-semibold text-teal mb-3">
+                  {getExperienceById("christmas")?.name || "Holiday Magic"}
+                </h3>
                 <p className="text-gray-600 mb-4">
-                  Celebrate the magic of the season with our Christmas Movie Night experience — twinkling lights, trees, cozy blankets, and the bay as your backdrop. Perfect for creating memories with loved ones in a whimsical holiday setting.
+                  {getExperienceById("christmas")?.description || "Celebrate the magic of the season with our Christmas Movie Night experience — twinkling lights, trees, cozy blankets, and the bay as your backdrop. Perfect for creating memories with loved ones in a whimsical holiday setting."}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-teal">$449</span>
+                  <span className="text-2xl font-bold text-teal">
+                    {formatPrice(getExperienceById("christmas")?.price || 449)}
+                  </span>
                   <Link
-                    href="/book"
+                    href="/book?experience=christmas"
                     className="bg-teal text-white px-4 py-2 rounded-lg hover:bg-orange transition"
                   >
                     Book Now
@@ -446,8 +345,53 @@ export default function Home() {
 
 
      
-            {/* Content Section 1 */}
-            <section className="py-20 px-6 bg-offwhite h-100 text-center">
+           
+
+      {/* Testimonials / Reviews */}
+      {/* <section className="py-20 px-6 bg-sand">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-teal mb-12">What Our Guests Say</h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="text-yellow-400 text-2xl mb-2">⭐⭐⭐⭐⭐</div>
+              <p className="text-teal mb-4">&ldquo;Absolutely magical! The sunset movie night was perfect for our anniversary. Everything was set up beautifully.&rdquo;</p>
+              <p className="text-sm text-gray-600">- Sarah &amp; Mike</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="text-yellow-400 text-2xl mb-2">⭐⭐⭐⭐⭐</div>
+              <p className="text-teal mb-4">&ldquo;Best birthday party ever! The picnic setup was gorgeous and the service was incredible. Highly recommend!&rdquo;</p>
+              <p className="text-sm text-gray-600">- Jessica</p>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* Second Parallax Section */}
+      <section
+        className="relative h-[60vh] w-full bg-fixed bg-cover bg-center"
+        style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
+      >
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="relative z-10 h-full flex items-center justify-center text-center text-offwhite px-6">
+          <h2 className="text-3xl text-sand sm:text-5xl font-semibold drop-shadow-md">
+            Custom Packages For Any Occasion
+          </h2>
+        </div>
+      </section>
+
+      {/* Content Section 2 */}
+      <section className="py-20 px-6 bg-offwhite text-center">
+        <h2 className="text-2xl sm:text-4xl font-bold text-orange">
+          Relax. We&apos;ll Handle the Details.
+        </h2>
+        <p className="mt-4 max-w-2xl mx-auto text-teal">
+          We bring the picnic, the movie setup, and the magic. You just show up
+          and enjoy.
+        </p>
+        
+      </section>
+ {/* Content Section 1 */}
+ {/* <section className="py-20 px-6 bg-peach h-100 text-center">
         <h2 className="text-2xl sm:text-4xl text-teal font-bold text-orange">
           An Unforgettable Experience
         </h2>
@@ -455,9 +399,9 @@ export default function Home() {
           Whether its a romantic date, girls night, or special celebration, we
           create cozy, curated memories that last.
         </p>
-      </section>
+      </section> */}
       {/* How It Works / Booking Steps */}
-      {/* <section className="py-20 px-6 bg-offwhite">
+      <section className="pb-20 px-6 bg-offwhite">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-teal mb-12">How It Works</h2>
           <div className="grid gap-8 md:grid-cols-3">
@@ -484,51 +428,7 @@ export default function Home() {
             📅 Book Now
           </Link>
         </div>
-      </section> */}
-
-      {/* Testimonials / Reviews */}
-      <section className="py-20 px-6 bg-sand">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-teal mb-12">What Our Guests Say</h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-yellow-400 text-2xl mb-2">⭐⭐⭐⭐⭐</div>
-              <p className="text-teal mb-4">&ldquo;Absolutely magical! The sunset movie night was perfect for our anniversary. Everything was set up beautifully.&rdquo;</p>
-              <p className="text-sm text-gray-600">- Sarah &amp; Mike</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-yellow-400 text-2xl mb-2">⭐⭐⭐⭐⭐</div>
-              <p className="text-teal mb-4">&ldquo;Best birthday party ever! The picnic setup was gorgeous and the service was incredible. Highly recommend!&rdquo;</p>
-              <p className="text-sm text-gray-600">- Jessica</p>
-            </div>
-          </div>
-        </div>
       </section>
-
-      {/* Second Parallax Section */}
-      <section
-        className="relative h-[60vh] w-full bg-fixed bg-cover bg-center"
-        style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
-      >
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="relative z-10 h-full flex items-center justify-center text-center text-offwhite px-6">
-          <h2 className="text-3xl text-peach sm:text-5xl font-semibold drop-shadow-md">
-            Custom Packages For Any Occasion
-          </h2>
-        </div>
-      </section>
-
-      {/* Content Section 2 */}
-      <section className="py-20 px-6 bg-sand text-center">
-        <h2 className="text-2xl sm:text-4xl font-bold text-orange">
-          Relax. We&apos;ll Handle the Details.
-        </h2>
-        <p className="mt-4 max-w-2xl mx-auto text-teal">
-          We bring the picnic, the movie setup, and the magic. You just show up
-          and enjoy.
-        </p>
-      </section>
-
       {/* FAQ Section */}
       <section className="py-20 px-6 bg-sand">
         <div className="max-w-4xl mx-auto">

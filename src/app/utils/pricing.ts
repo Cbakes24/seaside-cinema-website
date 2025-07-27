@@ -65,6 +65,54 @@ export const experiences = [
       "Themed HolidaySnacks"
     ]
   },
+  {
+    id: "halloween",
+    name: "Pumpkin Spice and Everything Nice",
+    price: 449,
+    description: "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay.",
+    image: "/IMG_1255.jpeg",
+    includes: [
+      "Pumpkin decor",
+      "Rustic lanterns",
+      "Warm autumn tones",
+      "2 hour booking",
+      "100 inch Projector setup with speaker",
+      "Seasonal blankets",
+      "Autumn-themed lighting"
+    ]
+  },
+  {
+    id: "valentines",
+    name: "Love Under the Stars",
+    price: 599,
+    description: "Our Valentine's Day Movie Night offers the perfect romantic ambiance.",
+    image: "/vday3.jpg",
+    includes: [
+      "Candles and roses",
+      "Romantic lighting",
+      "Chocolates",
+      "2 hour booking",
+      "100 inch Projector setup with speaker",
+      "Cozy blankets",
+      "Mood lighting"
+    ]
+  },
+  {
+    id: "christmas",
+    name: "Holiday Magic",
+    price: 449,
+    description: "Celebrate the magic of the season with our Christmas Movie Night experience.",
+    image: "/holiday1.JPG",
+    includes: [
+      "Twinkling lights",
+      "Christmas trees",
+      "Cozy blankets",
+      "2 hour booking",
+      "100 inch Projector setup with speaker",
+      "Holiday decor",
+      "Seasonal lighting"
+    ]
+  },
 ];
 
 // Packages
@@ -184,7 +232,7 @@ export const addons = [
     id: "photographer",
     name: "Photographer",
     description: "Price varies based on photographer's current rates.",
-    price: 0 // or null if you're handling pricing elsewhere
+    price: 0 // Set to 0 since it's handled separately
   }
 ];
 
@@ -199,7 +247,10 @@ export function calculateTotal(
   const experiencePrice = experiences.find((e) => e.id === selectedExperience)?.price || 0;
   const packagePrice = packages.find((p) => p.id === selectedPackage)?.price || 0;
   const addonsPrice = selectedAddons
-    .map((id) => addons.find((a) => a.id === id)?.price || 0)
+    .map((id) => {
+      const addon = addons.find((a) => a.id === id);
+      return addon?.price || 0;
+    })
     .reduce((sum, val) => sum + val, 0);
 
   // Calculate guest pricing: base price includes 2 guests, each additional guest is $25

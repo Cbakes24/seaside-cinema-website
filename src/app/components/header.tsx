@@ -11,7 +11,7 @@ export default function Header() {
     { href: '/', label: 'Home' },
     { href: '/book', label: 'Book' },
     { href: '/experiences', label: 'Experiences' },
-    { href: '/occasions', label: 'Occasions' },
+    { href: '/packages', label: 'Packages' },
     { href: '/gallery', label: 'Gallery' },
     { href: '/about', label: 'About' },
     { href: '/faq', label: 'FAQ' },
