@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   packages,
   addons,
@@ -15,9 +15,10 @@ import {
 
 export default function BookingPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [selectedExperience, setSelectedExperience] = useState("classic");
-  const [selectedPackage, setSelectedPackage] = useState("birthday");
+  const [selectedPackage, setSelectedPackage] = useState("none");
   const [mainImage, setMainImage] = useState("/verticalSunset.jpeg");
   const [fullName, setFullName] = useState("");
   const [howHeard, setHowHeard] = useState("");
@@ -39,6 +40,20 @@ export default function BookingPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isPackageDropdownOpen, setIsPackageDropdownOpen] = useState(false);
 
+  // Handle URL parameters for auto-selection
+  useEffect(() => {
+    const experienceParam = searchParams.get('experience');
+    const packageParam = searchParams.get('package');
+    
+    if (experienceParam) {
+      setSelectedExperience(experienceParam);
+    }
+    
+    if (packageParam) {
+      setSelectedPackage(packageParam);
+    }
+  }, [searchParams]);
+
   const currentPackage = getPackageById(selectedPackage);
   const currentExperience = getExperienceById(selectedExperience);
   const totalPrice = calculateTotal(
@@ -48,12 +63,12 @@ export default function BookingPage() {
     parseInt(guestCount) || 2
   );
 
-  // Update main image when package changes
+  // Update main image when experience changes
   useEffect(() => {
     if (currentExperience) {
       setMainImage(currentExperience.image);
     }
-  }, [selectedPackage, currentExperience]);
+  }, [selectedExperience, currentExperience]);
 
   // Close dropdown when clicking outside
   useEffect(() => {

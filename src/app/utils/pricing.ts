@@ -11,14 +11,15 @@ export const experiences = [
       "2 hour booking",
       "100 inch Projector setup with speaker",
       "Mexican Blankets",
-      "Beach-friendly decor"
-    ]
+      "Beach-friendly decor",
+    ],
   },
   {
     id: "bali",
     name: "Bali",
     price: 399,
-    description: "Boho-chic macrame pillows, tropical tones, and dreamy lighting.",
+    description:
+      "Boho-chic macrame pillows, tropical tones, and dreamy lighting.",
     image: "/bayview_behind.jpg",
     includes: [
       "Upgraded Bali Decor",
@@ -28,8 +29,8 @@ export const experiences = [
       "Boho pillows",
       "2 hour booking",
       "Hanging lights",
-      "Sunset-ready scene"
-    ]
+      "Sunset-ready scene",
+    ],
   },
   {
     id: "picnic",
@@ -45,8 +46,8 @@ export const experiences = [
       "Blankets, throws or rugs",
       "Low laying tables with place setting for each guest",
       "Portable Bluetooth speaker",
-      "String Lights"
-    ]
+      "String Lights",
+    ],
   },
   {
     id: "seasonal",
@@ -62,14 +63,15 @@ export const experiences = [
       "Matching tableware",
       "Pillows and Blankets",
       "Themed Lighting",
-      "Themed HolidaySnacks"
-    ]
+      "Themed HolidaySnacks",
+    ],
   },
   {
     id: "halloween",
     name: "Pumpkin Spice and Everything Nice",
     price: 449,
-    description: "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay.",
+    description:
+      "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay.",
     image: "/IMG_1255.jpeg",
     includes: [
       "Pumpkin decor",
@@ -78,14 +80,15 @@ export const experiences = [
       "2 hour booking",
       "100 inch Projector setup with speaker",
       "Seasonal blankets",
-      "Autumn-themed lighting"
-    ]
+      "Autumn-themed lighting",
+    ],
   },
   {
     id: "valentines",
     name: "Love Under the Stars",
     price: 599,
-    description: "Our Valentine's Day Movie Night offers the perfect romantic ambiance.",
+    description:
+      "Our Valentine's Day Movie Night offers the perfect romantic ambiance.",
     image: "/vday3.jpg",
     includes: [
       "Candles and roses",
@@ -94,14 +97,15 @@ export const experiences = [
       "2 hour booking",
       "100 inch Projector setup with speaker",
       "Cozy blankets",
-      "Mood lighting"
-    ]
+      "Mood lighting",
+    ],
   },
   {
     id: "christmas",
     name: "Holiday Magic",
     price: 449,
-    description: "Celebrate the magic of the season with our Christmas Movie Night experience.",
+    description:
+      "Celebrate the magic of the season with our Christmas Movie Night experience.",
     image: "/holiday1.JPG",
     includes: [
       "Twinkling lights",
@@ -110,8 +114,8 @@ export const experiences = [
       "2 hour booking",
       "100 inch Projector setup with speaker",
       "Holiday decor",
-      "Seasonal lighting"
-    ]
+      "Seasonal lighting",
+    ],
   },
 ];
 
@@ -127,8 +131,8 @@ export const packages = [
       "8 inch round birthday cake",
       "Birthday signage",
       "Table and Untensils",
-      "Custom Birthday Signage"
-    ]
+      "Custom Birthday Signage",
+    ],
   },
   {
     id: "romance",
@@ -143,8 +147,8 @@ export const packages = [
       "Blankets",
       "Bubbly on Ice",
       "Tiki Torches x2",
-      "Upgraded lighting"
-    ]
+      "Upgraded lighting",
+    ],
   },
   {
     id: "proposal",
@@ -160,8 +164,8 @@ export const packages = [
       "Upgraded lighting",
       "Bubbly on Ice",
       "Tiki Torches x2",
-      "Upgraded lighting"
-    ]
+      "Upgraded lighting",
+    ],
   },
   {
     id: "drive-thru",
@@ -173,8 +177,16 @@ export const packages = [
       "Popcorn",
       "Candy and Snack Tray",
       "Movie signs",
-      "Clapboard decor"
-    ]
+      "Clapboard decor",
+    ],
+  },
+  {
+    id: "none",
+    name: "No Package Selected",
+    price: 0,
+    description: "Just the base setup",
+    image: "",
+    includes: [],
   },
 ];
 
@@ -184,58 +196,57 @@ export const addons = [
     id: "addl-30min",
     name: "Addl. 30 Minutes",
     description: "Extend your event by 30 minutes.",
-    price: 50
+    price: 50,
   },
   {
     id: "addl-1hour",
     name: "Addl. 1 Hour",
     description: "Extend your event by 1 full hour.",
-    price: 90
+    price: 90,
   },
   {
     id: "tiki-2",
     name: "Tiki Torches (2)",
     description: "Two tiki torches for added ambiance.",
-    price: 40
+    price: 40,
   },
   {
     id: "tiki-4",
     name: "Tiki Torches (4)",
     description: "Four tiki torches to light up your space.",
-    price: 75
+    price: 75,
   },
   {
     id: "tiki-8",
     name: "Tiki Torches (8)",
     description: "Eight tiki torches for a dramatic beach glow.",
-    price: 100
+    price: 100,
   },
   {
     id: "charcuterie-sm",
     name: "Charcuterie Board Sm (2–4 people)",
     description: "Gluten-free and veggie options available.",
-    price: 50
+    price: 50,
   },
   {
     id: "charcuterie-med",
     name: "Charcuterie Board Med (5–10 people)",
     description: "A larger gourmet board for medium-sized groups.",
-    price: 100
+    price: 100,
   },
   {
     id: "charcuterie-lg",
     name: "Charcuterie Board Lg (10–20 people)",
     description: "Perfect for larger gatherings or celebrations.",
-    price: 200
+    price: 200,
   },
   {
     id: "photographer",
     name: "Photographer",
     description: "Price varies based on photographer's current rates.",
-    price: 0 // Set to 0 since it's handled separately
-  }
+    price: 0, // Set to 0 since it's handled separately
+  },
 ];
-
 
 // Utility Functions
 export function calculateTotal(
@@ -244,8 +255,10 @@ export function calculateTotal(
   selectedAddons: string[],
   guestCount: number = 2
 ): number {
-  const experiencePrice = experiences.find((e) => e.id === selectedExperience)?.price || 0;
-  const packagePrice = packages.find((p) => p.id === selectedPackage)?.price || 0;
+  const experiencePrice =
+    experiences.find((e) => e.id === selectedExperience)?.price || 0;
+  const packagePrice =
+    packages.find((p) => p.id === selectedPackage)?.price || 0;
   const addonsPrice = selectedAddons
     .map((id) => {
       const addon = addons.find((a) => a.id === id);
