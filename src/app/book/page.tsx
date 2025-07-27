@@ -80,7 +80,7 @@ export default function BookingPage() {
     e.preventDefault();
     
     // Validate that all required fields are filled
-    if (!fullName || !email || !date || !time || !guestCount || !selectedExperience) {
+    if (!fullName || !email || !date || !time || !selectedExperience) {
       alert("Please fill out all required fields and select an experience.");
       return;
     }
@@ -633,7 +633,7 @@ export default function BookingPage() {
           {/* Submit */}
           <button
             type="submit"
-            disabled={!fullName || !email || !date || !time || !guestCount || !selectedExperience || !howHeard || !phone || !phoneType || !occasion}
+            disabled={!fullName || !email || !date || !time || !selectedExperience || !phone || !phoneType || !occasion}
             className="w-full bg-teal text-white font-semibold py-3 rounded hover:bg-orange transition mt-6 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             Submit Booking - {formatPrice(totalPrice)}
