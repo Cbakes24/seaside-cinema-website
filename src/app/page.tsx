@@ -344,7 +344,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="absolute top-4 left-4">
-                  <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-medium rotate-45">
+                  <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-medium">
                     🎃 Halloween
                   </span>
                 </div>
@@ -352,8 +352,7 @@ export default function Home() {
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-teal mb-3">Pumpkin Spice and Everything Nice</h3>
                 <p className="text-gray-600 mb-4">
-                  Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. Picture yourself under the stars, surrounded by pumpkins, rustic lanterns, and warm, earthy tones of autumn decor.
-                </p>
+                  Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. Picture yourself under the stars, surrounded by pumpkins, rustic lanterns, and warm, earthy tones of autumn decor... Possibly watching a Skelington obessed with xmas!                </p>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-teal">$349</span>
                   <Link
@@ -444,46 +443,9 @@ export default function Home() {
         </div>
       </section>
       <InstagramSection />
-      {/* What We Offer / Features Section */}
-      
-
-      {/* Nostalgic Movie Magic Section */}
-      {/* <section
-        className="relative h-[60vh] w-full bg-fixed bg-cover bg-center text-center"
-        style={{ backgroundImage: "url('/drivein_night.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-offwhite">
-          <h2 className="text-2xl sm:text-4xl font-bold text-peach mb-4 drop-shadow-md">
-            Bringing Back That Classic Movie Feeling
-          </h2>
-          <p className="max-w-2xl text-offwhite text-center text-base sm:text-lg">
-            Drive-ins are a thing of the past, and most people watch movies on a screen at home. But something magical is missing — that feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. 
-         <p>   Seaside Cinema brings that back. We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
-         </p>
-          </p>
-        </div>
-      </section> */}
-
-      <section
-        className="relative h-[60vh] w-full bg-fixed bg-cover bg-center"
-        style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
-      >
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-offwhite px-6">
-
-        <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
-  Drive-ins are a thing of the past, and most people watch movies on a screen at home. But something magical — something classical — that we long for: that
-  feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. Seaside Cinema brings that back.
-</p>
-
-          <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
-          We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
-          </p>
 
 
-        </div>
-      </section>
+     
             {/* Content Section 1 */}
             <section className="py-20 px-6 bg-offwhite h-100 text-center">
         <h2 className="text-2xl sm:text-4xl text-teal font-bold text-orange">
@@ -574,7 +536,7 @@ export default function Home() {
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-teal mb-2">What&apos;s included in each package?</h3>
-              <p className="text-teal">Each package includes setup, blankets, pillows, decor, and basic refreshments. Custom add-ons available.</p>
+              <p className="text-teal">Each package includes setup, seating for 2, decor, along with any Custom add-ons selected by you.</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-teal mb-2">Can I bring my own food?</h3>
@@ -582,7 +544,7 @@ export default function Home() {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-teal mb-2">What if the weather is bad?</h3>
-              <p className="text-teal">We monitor weather closely and will reschedule if needed. Your safety and comfort are our priority.</p>
+              <p className="text-teal">We monitor weather closely and will reschedule if possible. Your safety and comfort are our priority.</p>
             </div>
           </div>
         </div>

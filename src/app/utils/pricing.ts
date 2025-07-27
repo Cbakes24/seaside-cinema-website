@@ -3,7 +3,7 @@ export const experiences = [
   {
     id: "classic",
     name: "Classic",
-    price: 300,
+    price: 299,
     description: "Cozy blankets, rugs, and our signature sunset setup.",
     image: "/verticalSunset.jpeg",
     includes: [
@@ -17,7 +17,7 @@ export const experiences = [
   {
     id: "bali",
     name: "The Bali",
-    price: 350,
+    price: 399,
     description: "Boho-chic macrame pillows, tropical tones, and dreamy lighting.",
     image: "/bayview_behind.jpg",
     includes: [
@@ -34,7 +34,7 @@ export const experiences = [
   {
     id: "picnic",
     name: "Picnic",
-    price: 275,
+    price: 399,
     description: "An intimate picnic setup without the movie screen.",
     image: "/verticalPicnic.jpeg",
     includes: [
@@ -51,7 +51,7 @@ export const experiences = [
   {
     id: "seasonal",
     name: "Seasonal",
-    price: 325,
+    price: 499,
     description: "Fall, Holiday, or Spring themes for a magical movie night.",
     image: "/IMG_1255.jpeg",
     includes: [
@@ -61,7 +61,8 @@ export const experiences = [
       "Themed props",
       "Matching tableware",
       "Pillows and Blankets",
-      "Themed Lighting"
+      "Themed Lighting",
+      "Themed HolidaySnacks"
     ]
   },
 ];
@@ -75,23 +76,26 @@ export const packages = [
     description: "Decor and flair to celebrate any age.",
     image: "/poolsBday5.JPG",
     includes: [
-      "Balloons",
+      "8 inch round birthday cake",
       "Birthday signage",
-      "Treat table",
-      "Party-themed props"
+      "Table and Untensils",
+      "Custom Birthday Signage"
     ]
   },
   {
     id: "romance",
     name: "Romance",
-    price: 200,
+    price: 150,
     description: "Candles, rose petals, cozy blankets, and love vibes.",
     image: "/vday3.jpg",
     includes: [
-      "Rose petals",
+      "Faux Roses",
       "Candles",
       "Mood lighting",
-      "Blankets"
+      "Blankets",
+      "Bubbly on Ice",
+      "Tiki Torches x2",
+      "Upgraded lighting"
     ]
   },
   {
@@ -101,21 +105,25 @@ export const packages = [
     description: "Custom setup for the perfect &apos;yes!&apos; moment.",
     image: "/vday3.jpg",
     includes: [
-      "Custom signs",
+      "Custom sign",
       "Proposal decor",
-      "Candle aisle",
-      "Petals"
+      "Professional Photographer",
+      "A dozen Roses to keep",
+      "Upgraded lighting",
+      "Bubbly on Ice",
+      "Tiki Torches x2",
+      "Upgraded lighting"
     ]
   },
   {
     id: "drive-thru",
     name: "Drive-Thru",
-    price: 125,
+    price: 199,
     description: "Popcorn, candy trays, retro film signs for a nostalgic feel.",
     image: "/verticalSunset.jpeg",
     includes: [
-      "Popcorn station",
-      "Candy trays",
+      "Popcorn",
+      "Candy and Snack Tray",
       "Movie signs",
       "Clapboard decor"
     ]
@@ -125,22 +133,58 @@ export const packages = [
 // Add-ons
 export const addons = [
   {
-    id: "charcuterie",
-    name: "Charcuterie Board",
-    description: "A gourmet meat and cheese board for 2–4 guests.",
-    price: 60
+    id: "addl-30min",
+    name: "Addl. 30 Minutes",
+    description: "Extend your event by 30 minutes.",
+    price: 50
   },
   {
-    id: "firepit",
-    name: "Fire Pit Rental",
-    description: "Cozy up with a smokeless fire pit for warmth and s'mores.",
+    id: "addl-1hour",
+    name: "Addl. 1 Hour",
+    description: "Extend your event by 1 full hour.",
+    price: 90
+  },
+  {
+    id: "tiki-2",
+    name: "Tiki Torches (2)",
+    description: "Two tiki torches for added ambiance.",
     price: 40
   },
   {
-    id: "polaroid",
-    name: "Polaroid Camera",
-    description: "Instant camera rental with 10 photos included.",
-    price: 25
+    id: "tiki-4",
+    name: "Tiki Torches (4)",
+    description: "Four tiki torches to light up your space.",
+    price: 75
+  },
+  {
+    id: "tiki-8",
+    name: "Tiki Torches (8)",
+    description: "Eight tiki torches for a dramatic beach glow.",
+    price: 100
+  },
+  {
+    id: "charcuterie-sm",
+    name: "Charcuterie Board Sm (2–4 people)",
+    description: "Gluten-free and veggie options available.",
+    price: 50
+  },
+  {
+    id: "charcuterie-med",
+    name: "Charcuterie Board Med (5–10 people)",
+    description: "A larger gourmet board for medium-sized groups.",
+    price: 100
+  },
+  {
+    id: "charcuterie-lg",
+    name: "Charcuterie Board Lg (10–20 people)",
+    description: "Perfect for larger gatherings or celebrations.",
+    price: 200
+  },
+  {
+    id: "photographer",
+    name: "Photographer",
+    description: "Price varies based on photographer's current rates.",
+    price: 0 // or null if you're handling pricing elsewhere
   }
 ];
 
