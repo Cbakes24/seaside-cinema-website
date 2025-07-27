@@ -1,4 +1,5 @@
 "use client"
+export const dynamic = "force-dynamic";
 
 import Image from "next/image";
 import React from "react";
@@ -60,6 +61,7 @@ export default function Home() {
             <Image
               src="/HeatherLogogpt.PNG"
               alt="Seaside Cinema Logo"
+              priority={true}
               width={160}
               height={160}
               className="object-contain mx-auto rounded-2xl"
@@ -173,6 +175,7 @@ export default function Home() {
                   <Image
                     src={experience.image}
                     alt={experience.name}
+                    priority
                     fill
                     className="object-cover"
                   />
@@ -226,6 +229,7 @@ export default function Home() {
                   src={getExperienceById("halloween")?.image || "/IMG_1255.jpeg"}
                   alt="Halloween Movie Night"
                   fill
+                  priority
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/20"></div>
@@ -263,6 +267,7 @@ export default function Home() {
                   src={getExperienceById("valentines")?.image || "/vday3.jpg"}
                   alt="Valentine's Day Movie Night"
                   fill
+                  priority
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/20"></div>
@@ -300,6 +305,7 @@ export default function Home() {
                   src={getExperienceById("christmas")?.image || "/holiday1.JPG"}
                   alt="Christmas Movie Night"
                   fill
+                  priority
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/20"></div>
