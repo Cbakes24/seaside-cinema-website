@@ -12,7 +12,7 @@ export default function Header() {
     { href: '/book', label: 'Book' },
     { href: '/experiences', label: 'Experiences' },
     { href: '/packages', label: 'Packages' },
-    { href: '/gallery', label: 'Gallery' },
+    // { href: '/gallery', label: 'Gallery' },
     { href: '/about', label: 'About' },
     { href: '/faq', label: 'FAQ' },
   ]

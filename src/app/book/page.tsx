@@ -424,7 +424,7 @@ function BookingPageContent() {
                             : prev.filter((id) => id !== addon.id)
                         );
                       }}
-                      className="w-4 h-4 text-teal"
+                      className="w-4 h-4 text-teal bg-white border-gray-300 rounded focus:ring-teal focus:ring-2"
                     />
                     <div>
                       <span className="font-medium text-teal">
