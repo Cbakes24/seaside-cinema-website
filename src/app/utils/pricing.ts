@@ -4,7 +4,7 @@ export const experiences = [
     id: "classic",
     name: "Classic",
     price: 299,
-    description: "Cozy blankets, rugs, and our signature sunset setup.",
+    description: "Experience the feel of the classic movie theater set up and pair it with a beautiful sunset",
     image: "/verticalSunset.jpeg",
     includes: [
       "Theater Style Seating",
@@ -19,7 +19,7 @@ export const experiences = [
     name: "Bali",
     price: 399,
     description:
-      "Boho-chic macrame pillows, tropical tones, and dreamy lighting.",
+      "Transport to a tropical island with boho tones, and dreamy lighting.",
     image: "/bayview_behind.jpg",
     includes: [
       "Upgraded Bali Decor",
@@ -36,7 +36,7 @@ export const experiences = [
     id: "picnic",
     name: "Picnic",
     price: 399,
-    description: "An intimate picnic setup without the movie screen.",
+    description: "An intimate elegant style picnic setup without the movie screen.",
     image: "/verticalPicnic.jpeg",
     includes: [
       "2 hour booking",
@@ -71,7 +71,7 @@ export const experiences = [
     name: "Pumpkin Spice and Everything Nice",
     price: 449,
     description:
-      "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay.",
+      "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. The perfect way to enjoy the season with a movie under the stars.",
     image: "/IMG_1255.jpeg",
     includes: [
       "Pumpkin decor",
@@ -88,7 +88,7 @@ export const experiences = [
     name: "Love Under the Stars",
     price: 599,
     description:
-      "Our Valentine's Day Movie Night offers the perfect romantic ambiance.",
+      "Celebrate love with a magical Seaside Cinema experience! ✨ Cozy blankets, glowing lanterns, 🍫 chocolate, and a picture-perfect movie night.",
     image: "/vday3.jpg",
     includes: [
       "Candles and roses",
