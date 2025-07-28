@@ -3,16 +3,34 @@ import Image from "next/image";
 
 export default function InstagramSection() {
   return (
-    <section 
-      className="relative py-20 px-6 text-center overflow-hidden"
-      style={{
-        backgroundImage: "url('/verticalSunset.jpeg')",
-        backgroundAttachment: "fixed",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover"
-      }}
-    >
+    <section className="relative py-20 px-6 text-center overflow-hidden">
+      {/* Background Image Container */}
+      <div 
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: "url('/verticalSunset.jpeg')",
+          // backgroundAttachment: "local",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          // Use transform for better mobile performance
+          transform: "translateZ(0)",
+          willChange: "transform"
+        }}
+      >
+        {/* Mobile-specific background handling */}
+        <div 
+          className="hidden md:block absolute inset-0"
+          style={{
+            backgroundImage: "url('/verticalSunset.jpeg')",
+            backgroundAttachment: "scroll",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
+          }}
+        />
+      </div>
+      
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
       
