@@ -181,7 +181,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-gradient-to-br from-sand to-offwhite">
+      <section className="py-24 px-6 bg-peach from-sand to-offwhite">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-teal mb-6">
@@ -403,17 +403,7 @@ export default function Home() {
       </section> */}
 
       {/* Second Parallax Section */}
-      <section
-        className="relative h-[60vh] w-full bg-fixed bg-cover bg-center"
-        style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
-      >
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="relative z-10 h-full flex items-center justify-center text-center text-offwhite px-6">
-          <h2 className="text-3xl text-sand sm:text-5xl font-semibold drop-shadow-md">
-            Custom Packages For Any Occasion
-          </h2>
-        </div>
-      </section>
+
 
       {/* Content Section 2 */}
       <section className="py-20 px-6 bg-offwhite text-center">
@@ -459,6 +449,17 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        className="relative h-[30vh] w-full bg-fixed bg-cover bg-center"
+        style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
+      >
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="relative z-10 h-full flex items-center justify-center text-center text-offwhite px-6">
+          {/* <h2 className="text-3xl text-sand sm:text-5xl font-semibold drop-shadow-md">
+            Custom Packages For Any Occasion
+          </h2> */}
+        </div>
+      </section>
       {/* Final CTA */}
       <section className="py-20 px-6 bg-teal text-center">
         <h2 className="text-3xl font-bold text-white mb-6">Ready to Create Magic?</h2>
