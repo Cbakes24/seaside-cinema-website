@@ -12,6 +12,7 @@ import {
   getAddonById,
   experiences,
   getExperienceById,
+  seasonalOptions,
 } from "../utils/pricing";
 
 function BookingPageContent() {
@@ -20,6 +21,7 @@ function BookingPageContent() {
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [selectedExperience, setSelectedExperience] = useState("classic");
   const [selectedPackage, setSelectedPackage] = useState("none");
+  const [selectedSeasonalHoliday, setSelectedSeasonalHoliday] = useState("");
   const [mainImage, setMainImage] = useState("/verticalSunset.jpeg");
   const [fullName, setFullName] = useState("");
   const [howHeard, setHowHeard] = useState("");
@@ -40,6 +42,7 @@ function BookingPageContent() {
   const rotations = [-30, -15, 0, 15, 30];
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isPackageDropdownOpen, setIsPackageDropdownOpen] = useState(false);
+  const [isSeasonalDropdownOpen, setIsSeasonalDropdownOpen] = useState(false);
 
   // Handle URL parameters for auto-selection
   useEffect(() => {
@@ -57,19 +60,24 @@ function BookingPageContent() {
 
   const currentPackage = getPackageById(selectedPackage);
   const currentExperience = getExperienceById(selectedExperience);
+  const currentSeasonalHoliday = seasonalOptions.find(h => h.id === selectedSeasonalHoliday);
+  
+  // Calculate total price including seasonal holiday
   const totalPrice = calculateTotal(
     selectedExperience,
     selectedPackage,
     selectedAddons,
     parseInt(guestCount) || 2
-  );
+  ) + (Number(currentSeasonalHoliday?.price) || 0);
 
-  // Update main image when experience changes
+  // Update main image when experience or seasonal holiday changes
   useEffect(() => {
-    if (currentExperience) {
+    if (selectedExperience === "seasonal" && currentSeasonalHoliday) {
+      setMainImage(currentSeasonalHoliday.image);
+    } else if (currentExperience) {
       setMainImage(currentExperience.image);
     }
-  }, [selectedExperience, currentExperience]);
+  }, [selectedExperience, selectedSeasonalHoliday, currentExperience, currentSeasonalHoliday]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -81,16 +89,19 @@ function BookingPageContent() {
       if (!target.closest(".package-dropdown-container")) {
         setIsPackageDropdownOpen(false);
       }
+      if (!target.closest(".seasonal-dropdown-container")) {
+        setIsSeasonalDropdownOpen(false);
+      }
     };
 
-    if (isDropdownOpen || isPackageDropdownOpen) {
+    if (isDropdownOpen || isPackageDropdownOpen || isSeasonalDropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isDropdownOpen, isPackageDropdownOpen]);
+  }, [isDropdownOpen, isPackageDropdownOpen, isSeasonalDropdownOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,6 +118,12 @@ function BookingPageContent() {
       return;
     }
 
+    // Validate seasonal holiday selection if seasonal experience is selected
+    if (selectedExperience === "seasonal" && !selectedSeasonalHoliday) {
+      alert("Please select a holiday theme for your seasonal experience.");
+      return;
+    }
+
     const formData = {
       fullName,
       howHeard,
@@ -118,6 +135,7 @@ function BookingPageContent() {
       guestCount,
       selectedExperience,
       selectedPackage,
+      selectedSeasonalHoliday,
       addons: selectedAddons,
       totalPrice,
     };
@@ -165,6 +183,7 @@ function BookingPageContent() {
     "***  SELECTED PACKAGE price ***",
     packages.find((p) => p.id === selectedPackage)?.price
   );
+  console.log("***  SELECTED SEASONAL HOLIDAY  ***", selectedSeasonalHoliday);
   console.log("***  SELECTED ADDONS  ***", selectedAddons);
   console.log("***  TOTAL PRICE  ***", totalPrice);
   console.log("***  CURRENT PACKAGE  ***", currentPackage);
@@ -177,7 +196,7 @@ function BookingPageContent() {
           Book Your Experience
         </h1>
         <div className="grid gap-8 lg:grid-cols-2">
-          {/* Package Selection */}
+          {/* Experience Selection */}
           <div className="bg-white p-6 rounded-lg shadow-md">
             {mainImage && (
               <div className="relative w-full h-64 mb-6 rounded-lg overflow-hidden">
@@ -190,10 +209,14 @@ function BookingPageContent() {
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="absolute bottom-4 left-4 text-white">
                   <h3 className="text-xl font-semibold">
-                    {currentExperience?.name}
+                    {selectedExperience === "seasonal" && currentSeasonalHoliday 
+                      ? currentSeasonalHoliday.name 
+                      : currentExperience?.name}
                   </h3>
                   <p className="text-sm opacity-90">
-                    {currentExperience?.description}
+                    {selectedExperience === "seasonal" && currentSeasonalHoliday 
+                      ? currentSeasonalHoliday.description 
+                      : currentExperience?.description}
                   </p>
                 </div>
               </div>
@@ -202,7 +225,7 @@ function BookingPageContent() {
               Create Your Movie Experience
             </h2>
 
-            {/* Elegant Package Dropdown */}
+            {/* Elegant Experience Dropdown */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-3">
                 Select Your Experience (Base Setup)
@@ -241,6 +264,10 @@ function BookingPageContent() {
                         onClick={() => {
                           setSelectedExperience(exp.id);
                           setIsDropdownOpen(false);
+                          // Reset seasonal holiday when changing experience
+                          if (exp.id !== "seasonal") {
+                            setSelectedSeasonalHoliday("");
+                          }
                         }}
                         className={`w-full p-3 text-left hover:bg-teal/5 transition-colors duration-150 border-b border-gray-100 last:border-b-0 ${
                           selectedExperience === exp.id
@@ -270,24 +297,105 @@ function BookingPageContent() {
               </div>
             </div>
 
+            {/* Seasonal Holiday Selection - Only show when "seasonal" is selected */}
+            {selectedExperience === "seasonal" && (
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  Select Your Holiday Theme *
+                </label>
+                <div className="relative seasonal-dropdown-container">
+                  <button
+                    type="button"
+                    onClick={() => setIsSeasonalDropdownOpen(!isSeasonalDropdownOpen)}
+                    className="w-full p-4 pr-12 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-teal focus:border-teal bg-white appearance-none cursor-pointer text-lg font-medium text-gray-800 shadow-sm hover:border-teal/50 transition-all duration-200 flex justify-between items-center"
+                  >
+                    <span>
+                      {currentSeasonalHoliday?.name || "Select a holiday theme"}
+                    </span>
+                    <svg
+                      className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isSeasonalDropdownOpen ? "rotate-180" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Custom Seasonal Dropdown List */}
+                  {isSeasonalDropdownOpen && (
+                    <div className="absolute z-50 w-full mt-2 bg-white border-2 border-teal/20 rounded-xl shadow-lg overflow-hidden">
+                      {seasonalOptions.map((holiday) => (
+                        <button
+                          key={holiday.id}
+                          type="button"
+                          onClick={() => {
+                            setSelectedSeasonalHoliday(holiday.id);
+                            setIsSeasonalDropdownOpen(false);
+                          }}
+                          className={`w-full p-3 text-left hover:bg-teal/5 transition-colors duration-150 border-b border-gray-100 last:border-b-0 ${
+                            selectedSeasonalHoliday === holiday.id
+                              ? "bg-teal/10 text-teal"
+                              : "text-gray-800"
+                          }`}
+                        >
+                          <div className="flex justify-between items-center">
+                            <div>
+                              <div className="font-semibold text-md">
+                                {holiday.name}
+                              </div>
+                              <div className="text-sm text-gray-600 mt-1">
+                                {holiday.description}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-md font-bold text-teal">
+                                {formatPrice(Number(holiday.price))}
+                              </div>
+                            </div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Experience Preview */}
-            {currentExperience && (
+            {(currentExperience || (selectedExperience === "seasonal" && currentSeasonalHoliday)) && (
               <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
                 <div className="flex justify-between items-start mb-3">
                   <div>
                     <h3 className="text-lg font-semibold text-teal">
-                      {currentExperience.name}
+                      {selectedExperience === "seasonal" && currentSeasonalHoliday 
+                        ? currentSeasonalHoliday.name 
+                        : currentExperience?.name}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {currentExperience.description}
+                      {selectedExperience === "seasonal" && currentSeasonalHoliday 
+                        ? currentSeasonalHoliday.description 
+                        : currentExperience?.description}
                     </p>
                   </div>
                   <span className="text-lg font-bold text-teal">
-                    {formatPrice(currentExperience.price)}
+                    {formatPrice(
+                      selectedExperience === "seasonal" && currentSeasonalHoliday
+                        ? Number(currentSeasonalHoliday.price)
+                        : currentExperience?.price || 0
+                    )}
                   </span>
                 </div>
                 <ul className="text-xs text-gray-500 space-y-1">
-                  {currentExperience.includes.map((item, index) => (
+                  {(selectedExperience === "seasonal" && currentSeasonalHoliday 
+                    ? currentSeasonalHoliday.includes 
+                    : currentExperience?.includes || []
+                  ).map((item, index) => (
                     <li key={index} className="flex items-center">
                       <span className="text-teal mr-2">✓</span>
                       {item}
@@ -460,20 +568,26 @@ function BookingPageContent() {
               <div className="absolute inset-0 bg-black/20"></div>
               <div className="absolute bottom-4 left-4 text-white">
                 <h3 className="text-xl font-semibold">
-                  {currentExperience?.name}
+                  {selectedExperience === "seasonal" && currentSeasonalHoliday 
+                    ? currentSeasonalHoliday.name 
+                    : currentExperience?.name}
                 </h3>
                 <p className="text-sm opacity-90">
-                  {currentExperience?.description}
+                  {selectedExperience === "seasonal" && currentSeasonalHoliday 
+                    ? currentSeasonalHoliday.description 
+                    : currentExperience?.description}
                 </p>
               </div>
             </div>
           )}
           <div className="space-y-2">
-            {currentExperience && (
+            {(currentExperience || (selectedExperience === "seasonal" && currentSeasonalHoliday)) && (
               <div className="flex justify-between items-center py-2 border-b border-gray-200">
                 <div className="flex items-center space-x-3">
                   <span className="text-teal">
-                    {currentExperience.name}
+                    {selectedExperience === "seasonal" && currentSeasonalHoliday 
+                      ? currentSeasonalHoliday.name 
+                      : currentExperience?.name}
                   </span>
                   <div className="flex items-center space-x-2">
                     <span className="text-sm text-gray-600">- Guests: </span>
@@ -489,7 +603,12 @@ function BookingPageContent() {
                   </div>
                 </div>
                 <span className="font-semibold text-teal">
-                  {formatPrice(currentExperience.price + (Math.max(0, (parseInt(guestCount) || 2) - 2) * 25))}
+                  {formatPrice(
+                    (selectedExperience === "seasonal" && currentSeasonalHoliday
+                      ? Number(currentSeasonalHoliday.price)
+                      : currentExperience?.price || 0) + 
+                    (Math.max(0, (parseInt(guestCount) || 2) - 2) * 25)
+                  )}
                 </span>
               </div>
             )}
@@ -535,6 +654,11 @@ function BookingPageContent() {
             <p className="text-sm text-blue-800">
               <strong>Important:</strong> All fields marked with <span className="text-red-500">*</span> are required. 
               You must also select an experience above before submitting.
+              {selectedExperience === "seasonal" && (
+                <span className="block mt-1">
+                  <span className="text-red-500">*</span> Holiday theme selection is required for seasonal experiences.
+                </span>
+              )}
             </p>
           </div>
           

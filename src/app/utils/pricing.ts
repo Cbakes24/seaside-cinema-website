@@ -52,7 +52,7 @@ export const experiences = [
   {
     id: "seasonal",
     name: "Seasonal",
-    price: 499,
+    price: 0,
     description: "Fall, Holiday, or Spring themes for a magical movie night.",
     image: "/IMG_1255.jpeg",
     includes: [
@@ -66,57 +66,62 @@ export const experiences = [
       "Themed HolidaySnacks",
     ],
   },
-  {
-    id: "halloween",
-    name: "Pumpkin Spice and Everything Nice",
-    price: 449,
-    description:
-      "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. The perfect way to enjoy the season with a movie under the stars.",
-    image: "/IMG_1255.jpeg",
-    includes: [
-      "Pumpkin decor",
-      "Rustic lanterns",
-      "Warm autumn tones",
-      "2 hour booking",
-      "100 inch Projector setup with speaker",
-      "Seasonal blankets",
-      "Autumn-themed lighting",
-    ],
-  },
-  {
-    id: "valentines",
-    name: "Love Under the Stars",
-    price: 599,
-    description:
-      "Celebrate love with a magical Seaside Cinema experience! ✨ Cozy blankets, glowing lanterns, 🍫 chocolate, and a picture-perfect movie night.",
-    image: "/vday3.jpg",
-    includes: [
-      "Candles and roses",
-      "Romantic lighting",
-      "Chocolates",
-      "2 hour booking",
-      "100 inch Projector setup with speaker",
-      "Cozy blankets",
-      "Mood lighting",
-    ],
-  },
-  {
-    id: "christmas",
-    name: "Holiday Magic",
-    price: 449,
-    description:
-    "Imagine this: your favorite holiday movie 🎥, the gentle sound of the bay 🌊, a blanket of stars overhead, and steaming cups of hot chocolate in hand 🍫☕. Gather your loved ones for a cozy, unforgettable evening of laughter, warmth, and holiday cheer! 🎁💫",
-    image: "/holiday1.JPG",
-    includes: [
-      "Twinkling lights",
-      "Christmas trees",
-      "Cozy blankets",
-      "2 hour booking",
-      "100 inch Projector setup with speaker",
-      "Holiday decor",
-      "Seasonal lighting",
-    ],
-  },
+  
+];
+
+// Seasonal Options
+export const seasonalOptions = [
+{
+  id: "halloween",
+  name: "Pumpkin Spice and Everything Nice",
+  price: 449,
+  description:
+    "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. The perfect way to enjoy the season with a movie under the stars.",
+  image: "/IMG_1255.jpeg",
+  includes: [
+    "Pumpkin decor",
+    "Rustic lanterns",
+    "Warm autumn tones",
+    "2 hour booking",
+    "100 inch Projector setup with speaker",
+    "Seasonal blankets",
+    "Autumn-themed lighting",
+  ],
+},
+{
+  id: "valentines",
+  name: "Love Under the Stars",
+  price: 599,
+  description:
+    "Celebrate love with a magical Seaside Cinema experience! ✨ Cozy blankets, glowing lanterns, 🍫 chocolate, and a picture-perfect movie night.",
+  image: "/vday3.jpg",
+  includes: [
+    "Candles and roses",
+    "Romantic lighting",
+    "Chocolates",
+    "2 hour booking",
+    "100 inch Projector setup with speaker",
+    "Cozy blankets",
+    "Mood lighting",
+  ],
+},
+{
+  id: "christmas",
+  name: "Holiday Magic",
+  price: 449,
+  description:
+  "Imagine this: your favorite holiday movie 🎥, the gentle sound of the bay 🌊, a blanket of stars overhead, and steaming cups of hot chocolate in hand 🍫☕. Gather your loved ones for a cozy, unforgettable evening of laughter, warmth, and holiday cheer! 🎁💫",
+  image: "/holiday1.JPG",
+  includes: [
+    "Twinkling lights",
+    "Christmas trees",
+    "Cozy blankets",
+    "2 hour booking",
+    "100 inch Projector setup with speaker",
+    "Holiday decor",
+    "Seasonal lighting",
+  ],
+},
 ];
 
 // Packages
@@ -283,6 +288,10 @@ export function getPackageById(id: string) {
 
 export function getExperienceById(id: string) {
   return experiences.find((exp) => exp.id === id);
+}
+
+export function getSeasonalById(id: string) {
+  return seasonalOptions.find((seasonal) => seasonal.id === id);
 }
 
 export function getAddonById(id: string) {

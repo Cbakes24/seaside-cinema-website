@@ -34,7 +34,7 @@ export default function Home() {
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-offwhite px-6">
 
           <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
-          Drive-ins are a thing of the past, and most people watch movies on a screen at home. But something magical something classical that we long for — that 
+          drive-trus are a thing of the past, and most people watch movies on a screen at home. But something magical something classical that we long for — that 
           feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. Seaside Cinema brings that back.
            We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
           </p>
@@ -340,7 +340,7 @@ export default function Home() {
             Bringing Back That Classic Movie Feeling
           </h2>
           <p className="max-w-2xl text-offwhite text-center text-base sm:text-lg">
-            Drive-ins are a thing of the past, and most people watch movies on a screen at home. But something magical is missing — that feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. 
+            drive-trus are a thing of the past, and most people watch movies on a screen at home. But something magical is missing — that feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. 
          <p>   Seaside Cinema brings that back. We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
          </p>
           </p>
@@ -355,7 +355,7 @@ export default function Home() {
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-offwhite px-6">
 
           <p className="text-xl text-offwhite sm:text-2xl font-semibold drop-shadow-md">
-          Drive-ins are a thing of the past, and most people watch movies on a screen at home. But something magical something classical that we long for — that 
+          drive-trus are a thing of the past, and most people watch movies on a screen at home. But something magical something classical that we long for — that 
           feeling of sitting under the stars, surrounded by loved ones, lost in a favorite story. Seaside Cinema brings that back.
            We make it okay to feel like a kid again. The wonder. The nostalgia. The big screen under the big sky.
           </p>

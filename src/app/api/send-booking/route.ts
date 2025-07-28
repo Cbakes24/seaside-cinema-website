@@ -16,6 +16,7 @@ export async function POST(req: Request) {
       guestCount,
       selectedExperience,
       selectedPackage,
+      selectedSeasonalHoliday,
       phoneType,
       addons,
     } = formData;
@@ -31,6 +32,7 @@ Time: ${time}
 Guest Count: ${guestCount}
 Experience: ${selectedExperience}
 Package: ${selectedPackage}
+Seasonal Holiday: ${selectedSeasonalHoliday || 'None'}
 Phone Type: ${phoneType}
 Add-ons: ${addons?.join(', ') || 'None'}
     `;

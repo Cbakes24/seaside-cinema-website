@@ -36,7 +36,7 @@ export default function AboutPage() {
                   Seaside Cinema was born from a simple idea: what if we could bring back that magical feeling of watching movies under the stars?
                 </p>
                 <p>
-                  Growing up, many of us remember the excitement of drive-in theaters - the anticipation, the community, the wonder of cinema under the open sky. But as drive-ins disappeared, that special experience became a thing of the past.
+                  Growing up, many of us remember the excitement of drive-tru theaters - the anticipation, the community, the wonder of cinema under the open sky. But as drive-trus disappeared, that special experience became a thing of the past.
                 </p>
                 <p>
                   We decided to change that. In 2023, we started Seaside Cinema with a mission to recreate that nostalgic movie magic on the beautiful beaches of San Diego.

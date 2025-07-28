@@ -14,7 +14,7 @@ export default function PackagesPage() {
           Add the Whipped Cream &amp; Sprinkles
         </h1>
         <p className="text-teal max-w-2xl mx-auto text-lg">
-          Once you&apos;ve selected your perfect experience, our curated packages are like the whipped cream and sprinkles on top — specially designed add-ons to make your movie night unforgettable. Whether you&apos;re planning a birthday bash, a romantic date, or a nostalgic drive-in vibe, we&apos;ve got just the thing.
+          Once you&apos;ve selected your perfect experience, our curated packages are like the whipped cream and sprinkles on top — specially designed add-ons to make your movie night unforgettable. Whether you&apos;re planning a birthday bash, a romantic date, or a nostalgic drive-tru vibe, we&apos;ve got just the thing.
         </p>
       </section>
 
