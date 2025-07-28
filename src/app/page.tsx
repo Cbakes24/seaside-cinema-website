@@ -451,7 +451,9 @@ export default function Home() {
 
       <section
         className="relative h-[30vh] w-full bg-fixed bg-cover bg-center"
-        style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
+        style={{ backgroundImage: "url('/verticalPicnic.jpeg')",
+          backgroundAttachment: "fixed"
+         }}
       >
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 h-full flex items-center justify-center text-center text-offwhite px-6">
