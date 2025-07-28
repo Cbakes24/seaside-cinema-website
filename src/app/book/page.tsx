@@ -537,8 +537,8 @@ function BookingPageContent() {
           </div>
           
           <div className="grid gap-6 md:grid-cols-2">
-            {/* Customer Info */}
-            <div>
+          {/* Customer Info */}
+          <div>
               <label className="block font-medium mb-1">
                 Full Name <span className="text-red-500">*</span>
               </label>
@@ -550,8 +550,8 @@ function BookingPageContent() {
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="Enter your full name"
               />
-            </div>
-            <div>
+          </div>
+          <div>
               <label className="block font-medium mb-1">
                 How did you hear about us? <span className="text-red-500">*</span>
               </label>
@@ -563,8 +563,8 @@ function BookingPageContent() {
                 onChange={(e) => setHowHeard(e.target.value)}
                 placeholder="Social media, friend, etc."
               />
-            </div>
-            <div>
+          </div>
+          <div>
               <label className="block font-medium mb-1">
                 Email <span className="text-red-500">*</span>
               </label>
@@ -576,8 +576,8 @@ function BookingPageContent() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
               />
-            </div>
-            <div>
+          </div>
+          <div>
               <label className="block font-medium mb-1">
                 Phone Number <span className="text-red-500">*</span>
               </label>
@@ -589,8 +589,8 @@ function BookingPageContent() {
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="(555) 123-4567"
               />
-            </div>
-            <div>
+          </div>
+          <div>
               <label className="block font-medium mb-1">
                 Type Of Phone <span className="text-red-500">*</span>
               </label>
@@ -601,29 +601,29 @@ function BookingPageContent() {
                 value={phoneType}
                 onChange={(e) => setPhoneType(e.target.value)}
               >
-                <option value="">Select phone type</option>
-                <option value="iphone">iPhone</option>
-                <option value="android">Android</option>
-              </select>
-            </div>
-            <div>
+              <option value="">Select phone type</option>
+              <option value="iphone">iPhone</option>
+              <option value="android">Android</option>
+            </select>
+          </div>
+          <div>
               <label className="block font-medium mb-1">
                 Occasion Type <span className="text-red-500">*</span>
               </label>
-              <input
-                type="text"
-                placeholder="Date Night, Birthday, Proposal..."
-                className="w-full p-2 border-b-2 rounded"
+            <input
+              type="text"
+              placeholder="Date Night, Birthday, Proposal..."
+              className="w-full p-2 border-b-2 rounded"
                 required
-                value={occasion}
+              value={occasion}
                 onChange={(e) => setOccasion(e.target.value)}
-              />
-            </div>
+            />
+          </div>
             <div>
               <label className="block font-medium mb-1">
                 Preferred Date <span className="text-red-500">*</span>
               </label>
-              <input
+                  <input
                 type="date"
                 className="w-full p-2 border-b-2 rounded"
                 required
@@ -634,7 +634,7 @@ function BookingPageContent() {
             <div>
               <label className="block font-medium mb-1">
                 Start Time <span className="text-red-500">*</span>
-              </label>
+                </label>
               <input
                 type="time"
                 className="w-full p-2 border-b-2 rounded"

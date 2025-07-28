@@ -71,7 +71,7 @@ export default function Home() {
             className="text-3xl text-peach sm:text-5xl font-playfair font-semibold leading-tight drop-shadow-md"
             style={{
               transform: `translateY(${scrollY * .01}px)`,
-              transition: 'transform 0.01s ease-in'
+                    transition: 'transform 0.01s ease-in'
             }}
           >
             Luxury Beach Movie Nights
@@ -416,7 +416,7 @@ export default function Home() {
         </p>
         
       </section>
- {/* Content Section 1 */}
+      {/* Content Section 1 */}
  {/* <section className="py-20 px-6 bg-peach h-100 text-center">
         <h2 className="text-2xl sm:text-4xl text-teal font-bold text-orange">
           An Unforgettable Experience
@@ -444,23 +444,17 @@ export default function Home() {
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-teal mb-2">What if the weather is bad?</h3>
               <p className="text-teal">We monitor weather closely and will reschedule if possible. Your safety and comfort are our priority.</p>
-            </div>
-          </div>
+        </div>
+        </div>
         </div>
       </section>
 
       <section
         className="relative h-[30vh] w-full bg-fixed bg-cover bg-center"
-        style={{ backgroundImage: "url('/verticalPicnic.jpeg')",
-          backgroundAttachment: "scroll",
-
-         }}
+        style={{ backgroundImage: "url('/verticalPicnic.jpeg')" }}
       >
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 h-full flex items-center justify-center text-center text-offwhite px-6">
-          <h2 className="text-3xl text-sand sm:text-5xl font-semibold drop-shadow-md">
-            Custom Packages For Any Occasion
-          </h2>
         </div>
       </section>
       {/* Final CTA */}
