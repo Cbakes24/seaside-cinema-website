@@ -112,7 +112,12 @@ function BookingPageContent() {
       return;
     }
 
-    // Validate guest count is at least 2
+    // Validate guest count is entered and is at least 2
+    if (!guestCount || guestCount.trim() === "") {
+      alert("Please enter the number of guests for your booking.");
+      return;
+    }
+
     if (parseInt(guestCount) < 2) {
       alert("Guest count must be at least 2.");
       return;
@@ -589,17 +594,18 @@ function BookingPageContent() {
                       ? currentSeasonalHoliday.name 
                       : currentExperience?.name}
                   </span>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-600">- Guests: </span>
+                  <div className="flex items-center space-x-2 bg-yellow-50 p-2 rounded-lg border border-yellow-200">
+                    <span className="text-sm font-medium text-yellow-800">👥 Guests: </span>
                     <input
                       type="number"
                       min="2"
                       required
-                      className="w-16 p-1 border border-gray-300 rounded text-sm text-center"
+                      className="w-20 p-2 border-2 border-yellow-300 rounded text-center font-semibold text-yellow-800 bg-white focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200"
                       value={guestCount}
                       onChange={(e) => setGuestCount(e.target.value)}
                       placeholder="2"
                     />
+                    <span className="text-xs text-yellow-600">(min 2)</span>
                   </div>
                 </div>
                 <span className="font-semibold text-teal">
@@ -607,7 +613,7 @@ function BookingPageContent() {
                     (selectedExperience === "seasonal" && currentSeasonalHoliday
                       ? Number(currentSeasonalHoliday.price)
                       : currentExperience?.price || 0) + 
-                    (Math.max(0, (parseInt(guestCount) || 2) - 2) * 25)
+                    (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
                   )}
                 </span>
               </div>
@@ -769,12 +775,34 @@ function BookingPageContent() {
                 onChange={(e) => setTime(e.target.value)}
               />
             </div>
+            <div className="md:col-span-2">
+              <label className="block font-medium mb-1">
+                👥 Number of Guests <span className="text-red-500">*</span>
+              </label>
+              <div className="bg-yellow-50 p-4 rounded-lg border-2 border-yellow-200">
+                <div className="flex items-center space-x-4">
+                  <input
+                    type="number"
+                    min="2"
+                    required
+                    className="w-24 p-3 border-2 border-yellow-300 rounded text-center font-bold text-lg text-yellow-800 bg-white focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200"
+                    value={guestCount}
+                    onChange={(e) => setGuestCount(e.target.value)}
+                    placeholder="2"
+                  />
+                  <div className="text-sm text-yellow-700">
+                    <p className="font-medium">Please enter the actual number of guests</p>
+                    <p className="text-xs">Minimum 2 guests • Each additional guest: +$25</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Submit */}
           <button
             type="submit"
-            disabled={!fullName || !email || !date || !time || !selectedExperience || !phone || !phoneType || !occasion}
+            disabled={!fullName || !email || !date || !time || !selectedExperience || !phone || !phoneType || !occasion || !guestCount || parseInt(guestCount) < 2}
             className="w-full bg-teal text-white font-semibold py-3 rounded hover:bg-orange transition mt-6 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             Submit Booking - {formatPrice(totalPrice)}

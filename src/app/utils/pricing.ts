@@ -273,7 +273,7 @@ export function calculateTotal(
 
   // Calculate guest pricing: base price includes 2 guests, each additional guest is $25
   const additionalGuests = Math.max(0, guestCount - 2);
-  const guestPricing = additionalGuests * 25;
+  const guestPricing = additionalGuests * 50;
 
   return experiencePrice + packagePrice + addonsPrice + guestPricing;
 }
