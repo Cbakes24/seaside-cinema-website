@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
+import FallDiscountModal from "./components/FallDiscountModal";
 import {
   packages,
   addons,
@@ -32,6 +33,9 @@ export default function Home() {
 
   return (
     <main className="w-full">
+      {/* Fall Discount Modal */}
+      {/* <FallDiscountModal /> */}
+      
       {/* Hero Section with Parallax */}
       <section className="relative h-[90vh] w-full overflow-hidden">
         <video

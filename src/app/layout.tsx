@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 import Link from 'next/link'
 import Header from './components/header'
 import Footer from './components/footer'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: 'Seaside Cinema',
@@ -20,7 +21,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="bg-white text-gray-900 font-inter">
       <Header />
-        <main className="min-h-[calc(100vh-80px)]">{children}</main>
+        <main className="min-h-[calc(100vh-80px)]">
+          {children}
+          <SpeedInsights />
+        </main>
         <Footer />
         <footer className="text-center py-6 text-sm text-gray-500">
           &copy; {new Date().getFullYear()} Seaside Cinema · San Diego, CA

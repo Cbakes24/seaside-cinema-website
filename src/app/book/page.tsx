@@ -2,6 +2,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
+import FallPromoModal2 from "../components/FallDiscountModal2";
 import {
   packages,
   addons,
@@ -170,6 +171,7 @@ function BookingPageContent() {
 
   return (
     <main className="min-h-screen bg-peach text-gray-800 px-4 py-10">
+      {/* <FallPromoModal2 /> */}
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-playfair font-bold text-teal mb-8 text-center">
           Book Your Experience
