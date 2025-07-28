@@ -105,7 +105,7 @@ export const experiences = [
     name: "Holiday Magic",
     price: 449,
     description:
-      "Celebrate the magic of the season with our Christmas Movie Night experience.",
+    "Imagine this: your favorite holiday movie 🎥, the gentle sound of the bay 🌊, a blanket of stars overhead, and steaming cups of hot chocolate in hand 🍫☕. Gather your loved ones for a cozy, unforgettable evening of laughter, warmth, and holiday cheer! 🎁💫",
     image: "/holiday1.JPG",
     includes: [
       "Twinkling lights",

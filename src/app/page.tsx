@@ -83,8 +83,8 @@ export default function Home() {
               transition: 'transform .01s ease-in'
             }}
           >
-            Curated sunset experiences on the San Diego bay. Movie magic, cozy
-            vibes, unforgettable memories.
+    
+            Birthdays |  | Anniversaries |  | Date Nights |  | Picnics | | Corporate Events 
           </p>
           <Link
             href="/book"
