@@ -452,7 +452,8 @@ export default function Home() {
       <section
         className="relative h-[30vh] w-full bg-fixed bg-cover bg-center"
         style={{ backgroundImage: "url('/verticalPicnic.jpeg')",
-          backgroundAttachment: "fixed"
+          backgroundAttachment: "scroll",
+
          }}
       >
         <div className="absolute inset-0 bg-black/30" />

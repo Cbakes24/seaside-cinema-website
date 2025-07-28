@@ -1,64 +1,35 @@
-"use client";
-
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 
 export default function InstagramSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const backgroundRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current || !backgroundRef.current) return;
-
-      const rect = sectionRef.current.getBoundingClientRect();
-      const scrolled = window.pageYOffset;
-      const rate = scrolled * -0.5; // Adjust speed here
-
-      // Only apply parallax when section is in view
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        backgroundRef.current.style.transform = `translate3d(0, ${rate}px, 0)`;
-      }
-    };
-
-    // Throttle scroll events for better performance
-    let ticking = false;
-    const throttledScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-    
-    // Initial call
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', throttledScroll);
-    };
-  }, []);
-
   return (
-    <section ref={sectionRef} className="relative py-20 px-6 text-center overflow-hidden">
+    <section className="relative py-20 px-6 text-center overflow-hidden">
       {/* Background Image Container */}
       <div 
-        ref={backgroundRef}
         className="absolute inset-0 w-full h-full"
         style={{
           backgroundImage: "url('/verticalSunset.jpeg')",
+          // backgroundAttachment: "local",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          // Hardware acceleration for smooth performance
-          transform: "translate3d(0, 0, 0)",
+          // Use transform for better mobile performance
+          transform: "translateZ(10)",
           willChange: "transform"
         }}
-      />
+      >
+        {/* Mobile-specific background handling */}
+        <div 
+          className="hidden md:block absolute inset-0"
+          style={{
+            backgroundImage: "url('/verticalSunset.jpeg')",
+            backgroundAttachment: "scroll",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
+          }}
+        />
+      </div>
       
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
