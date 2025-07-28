@@ -458,15 +458,62 @@ export default function Home() {
         </p>
       </section>
       {/* Content Section 1 */}
-      {/* <section className="py-20 px-6 bg-peach h-100 text-center">
-        <h2 className="text-2xl sm:text-4xl text-teal font-bold text-orange">
-          An Unforgettable Experience
-        </h2>
-        <p className="mt-4 max-w-2xl mx-auto text-teal">
-          Whether its a romantic date, girls night, or special celebration, we
-          create cozy, curated memories that last.
-        </p>
-      </section> */}
+      {/* Large Events Section */}
+      <section className="py-20 px-6 bg-peach text-center">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            <div className="text-left">
+              <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">
+                Large Events &amp; Corporate Gatherings
+              </h2>
+              <p className="text-lg text-teal/80 mb-6 leading-relaxed">
+                Hosting a big celebration? We specialize in large-scale beach movie nights perfect for corporate events, family reunions, and group celebrations. Our team can accommodate groups of all sizes with custom setups and premium service.
+              </p>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">Groups of 10-50+ people</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">Corporate team building events</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">Family reunions & celebrations</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">Custom catering & beverage options</span>
+                </div>
+              </div>
+              <Link
+                href="/large-events"
+                className="bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
+              >
+                Learn About Large Events
+              </Link>
+            </div>
+            <div className="relative">
+              <div className="relative h-96 rounded-xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/Kids_birthday_photoshopped.png"
+                  alt="Large Beach Movie Event"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <span className="bg-teal/90 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    Large Events
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* FAQ Section */}
       <section className="py-20 px-6 bg-sand">
