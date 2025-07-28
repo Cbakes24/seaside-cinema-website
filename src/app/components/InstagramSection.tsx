@@ -14,7 +14,7 @@ export default function InstagramSection() {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           // Use transform for better mobile performance
-          transform: "translateZ(10)",
+          transform: "translateZ(0)",
           willChange: "transform"
         }}
       >
