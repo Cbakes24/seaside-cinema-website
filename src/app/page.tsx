@@ -407,7 +407,7 @@ export default function Home() {
 
       {/* Content Section 2 */}
       <section className="py-20 px-6 bg-offwhite text-center">
-        <h2 className="text-2xl sm:text-4xl font-bold text-orange">
+        <h2 className="text-2xl sm:text-4xl font-bold text-peach">
           Relax. We&apos;ll Handle the Details.
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-teal">
@@ -455,9 +455,6 @@ export default function Home() {
       >
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 h-full flex items-center justify-center text-center text-offwhite px-6">
-          {/* <h2 className="text-3xl text-sand sm:text-5xl font-semibold drop-shadow-md">
-            Custom Packages For Any Occasion
-          </h2> */}
         </div>
       </section>
       {/* Final CTA */}
