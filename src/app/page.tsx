@@ -457,6 +457,9 @@ export default function Home() {
       >
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 h-full flex items-center justify-center text-center text-offwhite px-6">
+          <h2 className="text-3xl text-sand sm:text-5xl font-semibold drop-shadow-md">
+            Custom Packages For Any Occasion
+          </h2>
         </div>
       </section>
       {/* Final CTA */}
