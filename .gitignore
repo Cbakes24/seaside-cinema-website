@@ -42,3 +42,10 @@ next-env.d.ts
 # /public/LoveBoat3.mp4
 # *.mp4
 # *.mov
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

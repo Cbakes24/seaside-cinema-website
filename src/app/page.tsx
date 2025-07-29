@@ -17,6 +17,8 @@ import {
   getAddonById,
   experiences,
   getExperienceById,
+  seasonalOptions,
+  getSeasonalById,
 } from "./utils/pricing";
 
 export default function Home() {
@@ -301,7 +303,7 @@ export default function Home() {
               <div className="relative h-64">
                 <Image
                   src={
-                    getExperienceById("halloween")?.image || "/IMG_1255.jpeg"
+                    getSeasonalById("halloween")?.image || "/IMG_1255.jpeg"
                   }
                   alt="Halloween Movie Night"
                   fill
@@ -317,16 +319,16 @@ export default function Home() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-teal mb-3">
-                  {getExperienceById("halloween")?.name ||
+                  {getSeasonalById("halloween")?.name ||
                     "Pumpkin Spice and Everything Nice"}
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  {getExperienceById("halloween")?.description ||
+                  {getSeasonalById("halloween")?.description ||
                     "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. Picture yourself under the stars, surrounded by pumpkins, rustic lanterns, and warm, earthy tones of autumn decor... Possibly watching a Skelington obessed with xmas!"}
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-teal">
-                    {formatPrice(getExperienceById("halloween")?.price || 349)}
+                    {formatPrice(getSeasonalById("halloween")?.price || 349)}
                   </span>
                   <Link
                     href="/book?experience=halloween"
@@ -342,7 +344,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-64">
                 <Image
-                  src={getExperienceById("valentines")?.image || "/vday3.jpg"}
+                  src={getSeasonalById("valentines")?.image || "/vday3.jpg"}
                   alt="Valentine's Day Movie Night"
                   fill
                   priority
@@ -357,16 +359,16 @@ export default function Home() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-teal mb-3">
-                  {getExperienceById("valentines")?.name ||
+                  {getSeasonalById("valentines")?.name ||
                     "Love Under the Stars"}
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  {getExperienceById("valentines")?.description ||
+                  {getSeasonalById("valentines")?.description ||
                     "Our Valentine's Day Movie Night offers the perfect ambiance — surrounded by the glow of candles, roses, and chocolates. Whether you're watching a romance classic or a film that means something to you, it's a truly unforgettable experience."}
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-teal">
-                    {formatPrice(getExperienceById("valentines")?.price || 599)}
+                    {formatPrice(getSeasonalById("valentines")?.price || 599)}
                   </span>
                   <Link
                     href="/book?experience=valentines"
@@ -382,7 +384,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-64">
                 <Image
-                  src={getExperienceById("christmas")?.image || "/holiday1.JPG"}
+                  src={getSeasonalById("christmas")?.image || "/holiday1.JPG"}
                   alt="Christmas Movie Night"
                   fill
                   priority
@@ -397,15 +399,15 @@ export default function Home() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-teal mb-3">
-                  {getExperienceById("christmas")?.name || "Holiday Magic"}
+                  {getSeasonalById("christmas")?.name || "Holiday Magic"}
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  {getExperienceById("christmas")?.description ||
+                  {getSeasonalById("christmas")?.description ||
                     "Celebrate the magic of the season with our Christmas Movie Night experience — twinkling lights, trees, cozy blankets, and the bay as your backdrop. Perfect for creating memories with loved ones in a whimsical holiday setting."}
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-teal">
-                    {formatPrice(getExperienceById("christmas")?.price || 449)}
+                    {formatPrice(getSeasonalById("christmas")?.price || 449)}
                   </span>
                   <Link
                     href="/book?experience=christmas"

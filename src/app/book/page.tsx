@@ -50,7 +50,16 @@ function BookingPageContent() {
     const packageParam = searchParams.get('package');
     
     if (experienceParam) {
-      setSelectedExperience(experienceParam);
+      // Check if this is a seasonal holiday
+      const seasonalHoliday = seasonalOptions.find(h => h.id === experienceParam);
+      if (seasonalHoliday) {
+        // If it's a seasonal holiday, set experience to "seasonal" and the holiday
+        setSelectedExperience("seasonal");
+        setSelectedSeasonalHoliday(experienceParam);
+      } else {
+        // Otherwise set the regular experience
+        setSelectedExperience(experienceParam);
+      }
     }
     
     if (packageParam) {
@@ -529,18 +538,35 @@ function BookingPageContent() {
                   className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer"
                 >
                   <div className="flex items-center space-x-3">
-                    <input
-                      type="checkbox"
-                      checked={selectedAddons.includes(addon.id)}
-                      onChange={(e) => {
-                        setSelectedAddons((prev) =>
-                          e.target.checked
-                            ? [...prev, addon.id]
-                            : prev.filter((id) => id !== addon.id)
-                        );
-                      }}
-                      className="w-4 h-4 text-teal bg-white border-gray-300 rounded focus:ring-teal focus:ring-2"
-                    />
+                    <div className="relative">
+                      <input
+                        type="checkbox"
+                        checked={selectedAddons.includes(addon.id)}
+                        onChange={(e) => {
+                          setSelectedAddons((prev) =>
+                            e.target.checked
+                              ? [...prev, addon.id]
+                              : prev.filter((id) => id !== addon.id)
+                          );
+                        }}
+                        className="w-5 h-5 text-teal bg-white border-2 border-gray-300 rounded focus:ring-2 focus:ring-teal focus:ring-offset-2 appearance-none checked:bg-teal checked:border-teal"
+                      />
+                      {selectedAddons.includes(addon.id) && (
+                        <svg
+                          className="absolute top-0 left-0 w-5 h-5 text-white pointer-events-none"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={3}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      )}
+                    </div>
                     <div>
                       <span className="font-medium text-teal">
                         {addon.name}
