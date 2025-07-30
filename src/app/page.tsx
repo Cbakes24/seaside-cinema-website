@@ -233,7 +233,8 @@ export default function Home() {
           </p>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {experiences.slice(0, 4).map((experience) => (
+            {experiences.slice(0, 4).map((experience, i) => (
+              console.log("INDEX OF EXPERIENCE!!!!!!", i),
               <div
                 key={experience.id}
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
@@ -242,7 +243,8 @@ export default function Home() {
                   <Image
                     src={experience.image}
                     alt={experience.name}
-                    priority
+                    priority={i === 0}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     fill
                     className="object-cover"
                   />
