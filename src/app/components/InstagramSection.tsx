@@ -51,7 +51,7 @@ export default function InstagramSection() {
         >
           <div className="relative">
             <Image
-              src="/igSnap2.PNG"
+              src="/igSnap2.jpg"
               alt="Seaside Cinema Instagram Preview"
               width={300}
               height={300}

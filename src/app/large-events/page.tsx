@@ -45,10 +45,11 @@ export default function LargeEventsPage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="relative h-64">
                 <Image
-                  src="/Kids_birthday_photoshopped.png"
-                  alt="Large Birthday Party"
+                  src="/largeBali1.jpg"
+                  alt="Large Bali Event Setup"
                   fill
                   className="object-cover"
+                  priority
                 />
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="absolute top-4 left-4">
@@ -78,7 +79,7 @@ export default function LargeEventsPage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="relative h-64">
                 <Image
-                  src="/largeBali2.PNG"
+                  src="/Kids_birthday_photoshopped.jpg"
                   alt="Corporate Beach Event"
                   fill
                   className="object-cover"
@@ -111,7 +112,7 @@ export default function LargeEventsPage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="relative h-64">
                 <Image
-                  src="/largeBali3.JPG"
+                  src="/baliBdayBig.jpeg"
                   alt="Bachelor/Bachelorette Party"
                   fill
                   className="object-cover"
@@ -344,7 +345,7 @@ export default function LargeEventsPage() {
             </div>
             <div className="relative h-64 rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="/largeBali2.PNG"
+                src="/Lowlarge_classic.jpeg"
                 alt="Corporate Beach Event"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -352,7 +353,7 @@ export default function LargeEventsPage() {
             </div>
             <div className="relative h-64 rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="/largeBali3.JPG"
+                src="/Low_largeBali3.jpeg"
                 alt="Large Group Celebration"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -360,7 +361,7 @@ export default function LargeEventsPage() {
             </div>
             <div className="relative h-64 rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="/Kids_birthday_photoshopped.png"
+                src="/Kids_birthday_photoshopped.jpg"
                 alt="Kids Birthday Party"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -368,7 +369,7 @@ export default function LargeEventsPage() {
             </div>
             <div className="relative h-64 rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="/Kids_birthday_2photoshopped.png"
+                src="/Kids_birthday_2photoshopped.jpg"
                 alt="Large Birthday Celebration"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"

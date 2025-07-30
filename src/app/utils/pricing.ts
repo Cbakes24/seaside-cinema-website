@@ -20,7 +20,7 @@ export const experiences = [
     price: 399,
     description:
       "Transport to a tropical island with boho tones, and dreamy lighting.",
-    image: "/bayview_behind.jpg",
+    image: "/bayview_behindLow.jpeg",
     includes: [
       "Upgraded Bali Decor",
       "Backdrop Seating",
@@ -54,7 +54,7 @@ export const experiences = [
     name: "Seasonal",
     price: 0,
     description: "Fall, Holiday, or Spring themes for a magical movie night.",
-    image: "/IMG_1255.jpeg",
+    image: "/fall_night_back.jpeg",
     includes: [
       "Seasonal decor",
       "2 hour booking",
@@ -77,7 +77,7 @@ export const seasonalOptions = [
   price: 449,
   description:
     "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. The perfect way to enjoy the season with a movie under the stars.",
-  image: "/IMG_1255.jpeg",
+  image: "/fall_night_back.jpeg",
   includes: [
     "Pumpkin decor",
     "Rustic lanterns",
@@ -94,7 +94,7 @@ export const seasonalOptions = [
   price: 599,
   description:
     "Celebrate love with a magical Seaside Cinema experience! ✨ Cozy blankets, glowing lanterns, 🍫 chocolate, and a picture-perfect movie night.",
-  image: "/vday3.jpg",
+  image: "/vday3.jpeg",
   includes: [
     "Candles and roses",
     "Romantic lighting",
@@ -144,7 +144,7 @@ export const packages = [
     name: "Romance",
     price: 150,
     description: "Candles, rose petals, cozy blankets, and love vibes.",
-    image: "/vday3.jpg",
+    image: "/vday3.jpeg",
     includes: [
       "Faux Roses",
       "Candles",
@@ -160,7 +160,7 @@ export const packages = [
     name: "Proposal",
     price: 300,
     description: "Give your loved one a special memory they can look back on. Custom setup for the perfect 'Yes!' moment.",
-    image: "/vday3.jpg",
+    image: "/proposal1.jpeg",
     includes: [
       "Custom sign",
       "Proposal decor",

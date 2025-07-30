@@ -7,10 +7,10 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full overflow-hidden">
         <Image
-          src="/bayview_behind.jpg"
+          src="/projectorClose.jpeg"
           alt="About Seaside Cinema"
           fill
-          className="object-cover"
+          className="object-contain"
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 text-white">

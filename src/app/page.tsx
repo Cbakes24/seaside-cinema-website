@@ -28,12 +28,12 @@ export default function Home() {
   // Birthday images array
   const birthdayImages = [
     {
-      src: "/Kids_birthday_photoshopped.png",
+      src: "/Kids_birthday_photoshopped.jpg",
       alt: "Birthday Celebration",
       label: "Birthday Celebration"
     },
     {
-      src: "/Kids_birthday_2photoshopped.png",
+      src: "/Kids_birthday_2photoshopped.jpg",
       alt: "Kids Birthday Party",
       label: "Kids Birthday Party"
     },
@@ -43,19 +43,19 @@ export default function Home() {
       label: "Poolside Birthday"
     },
     {
-      src: "/bali_bday_night.jpeg",
+      src: "/bali_bday_nightLow.jpeg",
       alt: "Bali Night Birthday",
       label: "Bali Night Birthday"
     },
     {
-      src: "/classic_large_birthday.jpeg",
+      src: "/Low_classic_large_birthday.jpeg",
       alt: "Classic Large Birthday",
       label: "Classic Large Birthday"
     },
     {
-      src: "/IMG_1562.jpg",
-      alt: "Birthday Setup 6",
-      label: "Birthday Setup 6"
+      src: "/Low_L_bday_classic.jpeg",
+      alt: "L Birthday Classic",
+      label: "L Birthday Classic"
     }
   ];
 
@@ -627,7 +627,7 @@ export default function Home() {
             <div className="relative">
               <div className="relative h-96 rounded-xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/Kids_birthday_photoshopped.png"
+                  src="/Kids_birthday_photoshopped.jpg"
                   alt="Large Beach Movie Event"
                   fill
                   className="object-cover"

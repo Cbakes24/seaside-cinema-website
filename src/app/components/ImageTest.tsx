@@ -6,11 +6,12 @@ import Image from 'next/image';
 const ImageTest: React.FC = () => {
   const [testResults, setTestResults] = useState<{ [key: string]: boolean }>({});
 
-  const testImages = [
-    '/poolsBday7.jpg',
-    '/vday1.jpg',
+  const images = [
     '/projectorLogoTEAL.png',
-    '/fall_decor.jpeg',
+    '/projectorLogoSand.png',
+    '/projectorLogoPeach.png',
+    '/projectorLogoOffWhite.png',
+    '/projectorNoBackground.png',
   ];
 
   const testImage = (src: string) => {
@@ -27,7 +28,7 @@ const ImageTest: React.FC = () => {
   };
 
   const runTests = () => {
-    testImages.forEach(testImage);
+    images.forEach(testImage);
   };
 
   return (
@@ -42,7 +43,7 @@ const ImageTest: React.FC = () => {
       </button>
 
       <div className="space-y-2">
-        {testImages.map((src) => (
+        {images.map((src) => (
           <div key={src} className="flex items-center space-x-2">
             {/* <span className="w-4 h-4 rounded-full bg-gray-200"></span> */}
             <span className="text-sm">{src}</span>
@@ -56,7 +57,7 @@ const ImageTest: React.FC = () => {
       </div>
 
       <div className="mt-6 grid grid-cols-2 gap-4">
-        {testImages.map((src) => (
+        {images.map((src) => (
           <div key={src} className="aspect-square bg-gray-100 rounded overflow-hidden">
             <Image
               src={src}

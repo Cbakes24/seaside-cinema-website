@@ -33,9 +33,9 @@ function BookingPageContent() {
   const [guestCount, setGuestCount] = useState("");
   const [occasion, setOccasion] = useState("");
   const [eventImages, setEventImages] = useState([
-    "/vday3.jpg",
-    "/big_bali.JPG",
-    "/IMG_1255.jpeg",
+    "/vday3.jpeg",
+    "/largeBali1.jpg",
+    "/fall_night_back.jpeg",
     "/poolsBday5Large.jpeg",
     "/verticalSunset.jpeg",
   ]);

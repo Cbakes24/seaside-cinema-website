@@ -13,9 +13,9 @@ export default function ExperiencePage() {
   const rotations = [-30, -15, 0, 15, 30];
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [eventImages, setEventImages] = useState([
-    "/vday3.jpg",
-    "/big_bali.JPG",
-    "/IMG_1255.jpeg",
+    "/vday3.jpeg",
+    "/largeBali1.jpg",
+    "/fall_night_back.jpeg",
     "/poolsBday5Large.jpeg",
     "/verticalSunset.jpeg",
 
@@ -34,7 +34,7 @@ export default function ExperiencePage() {
           <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
             <div className="relative w-full md:max-w-[600px] h-[250px] mx-auto overflow-hidden">
               <Image
-                src="/bayview_behind.jpg"
+                src="/bayview_behindLow.jpeg"
                 alt="Bali by the Bay"
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-300"
@@ -127,7 +127,7 @@ export default function ExperiencePage() {
           <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
             <div className="relative w-full md:max-w-[600px] h-[250px] mx-auto overflow-hidden">
               <Image
-                src="/IMG_1255.jpeg"
+                src="/fall_night_back.jpeg"
                 alt="Pumpkin Spice"
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-300"
@@ -158,7 +158,7 @@ export default function ExperiencePage() {
           <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
             <div className="relative w-full md:max-w-[600px] h-[250px] mx-auto overflow-hidden">
               <Image
-                src="/vday3.jpg"
+                src="/vday3.jpeg"
                 alt="Valentines"
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-300"
