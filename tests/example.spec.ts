@@ -4,7 +4,7 @@ test('get book now link', async ({ page }) => {
   await page.goto('https://www.seasidecinemas.com/');
 
   // Wait for the page to load
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('domcontentloaded');
 
   // Click the Book Now button - using a more specific selector
   await page.getByRole('link', { name: 'Book Now!' }).click();

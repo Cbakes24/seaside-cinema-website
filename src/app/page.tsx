@@ -83,24 +83,24 @@ export default function Home() {
   // }, []);
 
 
-  useEffect(() => {
-    const playVideo = async () => {
-      if (videoRef.current) {
-        try {
-          // small delay gives browser time to "settle" after hydration
-          setTimeout(() => {
-            videoRef.current?.play().catch(err => {
-              console.warn("Autoplay blocked:", err);
-            });
-          }, 300);
-        } catch (err) {
-          console.warn("Autoplay failed:", err);
-        }
-      }
-    };
+  // useEffect(() => {
+  //   const playVideo = async () => {
+  //     if (videoRef.current) {
+  //       try {
+  //         // small delay gives browser time to "settle" after hydration
+  //         setTimeout(() => {
+  //           videoRef.current?.play().catch(err => {
+  //             console.warn("Autoplay blocked:", err);
+  //           });
+  //         }, 300);
+  //       } catch (err) {
+  //         console.warn("Autoplay failed:", err);
+  //       }
+  //     }
+  //   };
   
-    playVideo();
-  }, []);
+  //   playVideo();
+  // }, []);
 
 
   return (
@@ -118,7 +118,7 @@ export default function Home() {
 >
         {/* <Image src="/verticalSunset.jpeg" alt="Sunset" fill className="object-cover" /> */}
         <video
-        poster="/verticalSunset.jpeg"
+        // poster="/verticalSunset.jpeg"
         ref={videoRef}
           autoPlay
           muted
