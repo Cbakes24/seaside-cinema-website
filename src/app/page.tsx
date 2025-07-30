@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 
 import Image from "next/image";
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
@@ -24,7 +24,7 @@ import {
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
-
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   // Birthday images array
   const birthdayImages = [
     {
@@ -68,6 +68,41 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // useEffect(() => {
+  //   const playVideo = async () => {
+  //     if (videoRef.current) {
+  //       try {
+  //         await videoRef.current.play();
+  //       } catch (err) {
+  //         console.warn("Autoplay failed:", err);
+  //       }
+  //     }
+  //   };
+
+  //   playVideo();
+  // }, []);
+
+
+  useEffect(() => {
+    const playVideo = async () => {
+      if (videoRef.current) {
+        try {
+          // small delay gives browser time to "settle" after hydration
+          setTimeout(() => {
+            videoRef.current?.play().catch(err => {
+              console.warn("Autoplay blocked:", err);
+            });
+          }, 300);
+        } catch (err) {
+          console.warn("Autoplay failed:", err);
+        }
+      }
+    };
+  
+    playVideo();
+  }, []);
+
+
   return (
     <main className="w-full">
       <style jsx>{`
@@ -79,8 +114,12 @@ export default function Home() {
       {/* <FallDiscountModal /> */}
       
       {/* Hero Section with Parallax */}
-      <section className="relative h-[90vh] w-full overflow-hidden">
+      <section className="relative h-[90vh] w-full overflow-hidden"      
+>
+        {/* <Image src="/verticalSunset.jpeg" alt="Sunset" fill className="object-cover" /> */}
         <video
+        poster="/verticalSunset.jpeg"
+        ref={videoRef}
           autoPlay
           muted
           loop

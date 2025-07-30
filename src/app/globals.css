@@ -38,8 +38,8 @@ body {
 
 
 }
-/* 
-body::before {
+
+/* body::before {
   content: '';
   position: fixed;
   top: 0;
@@ -52,5 +52,5 @@ body::before {
   background-repeat: no-repeat;
   z-index: -1;
   pointer-events: none;
-  transform: translateZ(0); /* Fix for some rendering glitches
+  transform: translateZ(0); 
   } */
