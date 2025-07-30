@@ -26,7 +26,7 @@ export default function PackagesPage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-48">
                 <Image
-                  src="/poolsBday5.JPG"
+                  src="/poolsBday5Large.jpeg"
                   alt="Birthday Package"
                   fill
                   className="object-cover"
@@ -67,7 +67,7 @@ export default function PackagesPage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-48">
                 <Image
-                  src="/vday3.jpg"
+                  src="/romance8.jpeg"
                   alt="Romance Package"
                   fill
                   className="object-cover"

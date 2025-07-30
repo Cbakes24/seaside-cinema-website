@@ -101,7 +101,7 @@ export default function AboutPage() {
             <div className="text-center">
               <div className="relative w-48 h-48 mx-auto mb-6">
                 <Image
-                  src="/poolsBday5.JPG"
+                  src="/poolsBday5Large.jpeg"
                   alt="Team member"
                   fill
                   className="rounded-full object-cover"

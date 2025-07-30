@@ -131,7 +131,7 @@ export const packages = [
     name: "Birthday",
     price: 150,
     description: "Decor and flair to celebrate any age.",
-    image: "/poolsBday5.JPG",
+    image: "/poolsBday5Large.jpeg",
     includes: [
       "8 inch round birthday cake",
       "Birthday signage",

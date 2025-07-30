@@ -10,7 +10,7 @@ interface GalleryProps {
   maxImages?: number;
   images?: GalleryImage[]; // Allow passing custom images
   autoLoad?: boolean; // Whether to auto-load from public directory
-  sortBy?: 'name' | 'date' | 'none';
+  sortBy?: 'name' | 'date' | 'none' | 'random';
   showLoading?: boolean;
   aspectRatio?: 'square' | '16/9' | '4/3' | '3/2';
   gridCols?: {
@@ -43,6 +43,16 @@ const Gallery: React.FC<GalleryProps> = ({
   const [loading, setLoading] = useState(true);
   const [clickedImages, setClickedImages] = useState<Set<number>>(new Set());
 
+  // Shuffle function for random ordering
+  const shuffleArray = (array: GalleryImage[]): GalleryImage[] => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   const handleImageClick = (index: number) => {
     setClickedImages(prev => {
       const newSet = new Set(prev);
@@ -66,13 +76,14 @@ const Gallery: React.FC<GalleryProps> = ({
         } else if (autoLoad) {
           // Auto-load from public directory - using actual files from your public folder
           const publicImages: GalleryImage[] = [
-            { src: '/poolsBday7.jpg', alt: 'Pool Birthday 7', filename: 'poolsBday7.jpg' },
-            { src: '/poolsBday6.JPG', alt: 'Pool Birthday 6', filename: 'poolsBday6.JPG' },
-            { src: '/poolsBday5.JPG', alt: 'Pool Birthday 5', filename: 'poolsBday5.JPG' },
-            { src: '/poolsBday4.JPG', alt: 'Pool Birthday 4', filename: 'poolsBday4.JPG' },
-            { src: '/poolsbday3.JPG', alt: 'Pool Birthday 3', filename: 'poolsbday3.JPG' },
-            { src: '/poolsBday2.JPG', alt: 'Pool Birthday 2', filename: 'poolsBday2.JPG' },
-            { src: '/poolsBday.JPG', alt: 'Pool Birthday', filename: 'poolsBday.JPG' },
+            { src: '/poolsBday5Large.jpeg', alt: 'Pool Birthday 5', filename: 'poolsBday5Large.jpeg' },
+
+
+            { src: '/poolsBday7.jpg', alt: 'Pool Birthday 7', filename: 'poolsBday57.jpg' },
+            { src: '/poolsBday6.JPG', alt: 'Pool Birthday 6', filename: 'poolsBday56.JPG' },
+            { src: '/poolsBday5Large.jpeg', alt: 'Pool Birthday 5', filename: 'poolsBday5Large.jpeg' },
+            { src: '/poolsBday3.JPG', alt: 'Pool Birthday 3', filename: 'poolsBday53.JPG' },
+            { src: '/poolsBday2.JPG', alt: 'Pool Birthday 2', filename: 'poolsBday52.JPG' },
             { src: '/IMG_1255.jpeg', alt: 'Image 1255', filename: 'IMG_1255.jpeg' },
             { src: '/fall_night_back.jpeg', alt: 'Fall Night Background', filename: 'fall_night_back.jpeg' },
             { src: '/fall_decor3.jpeg', alt: 'Fall Decor 3', filename: 'fall_decor3.jpeg' },
@@ -107,7 +118,15 @@ const Gallery: React.FC<GalleryProps> = ({
             { src: '/igSnap2.PNG', alt: 'Instagram Snap 2', filename: 'igSnap2.PNG' },
             { src: '/igSnap1.jpg', alt: 'Instagram Snap 1', filename: 'igSnap1.jpg' },
             { src: '/holiday1.JPG', alt: 'Holiday 1', filename: 'holiday1.JPG' },
-          ];
+            // { src: '/romance1.jpeg', alt: 'Romance 1', filename: 'romance1.jpeg' },
+            // { src: '/romance2.jpeg', alt: 'Romance 2', filename: 'romance2.jpeg' },
+            // { src: '/romance3.jpeg', alt: 'Romance 3', filename: 'romance3.jpeg' },
+            // { src: '/romance4.jpeg', alt: 'Romance 4', filename: 'romance4.jpeg' },
+            { src: '/romance5.jpeg', alt: 'Romance 5', filename: 'romance5.jpeg' },
+            // { src: '/romance6.jpeg', alt: 'Romance 6', filename: 'romance6.jpeg' },
+            { src: '/romance7.jpeg', alt: 'Romance 7', filename: 'romance7.jpeg' },
+           
+                      ];
 
           // Generate alt text for images that don't have it
           imageList = publicImages.map(img => ({
@@ -123,6 +142,8 @@ const Gallery: React.FC<GalleryProps> = ({
         let sortedImages = filteredImages;
         if (sortBy === 'name') {
           sortedImages = sortImages(filteredImages);
+        } else if (sortBy === 'random') {
+          sortedImages = shuffleArray(filteredImages);
         }
 
         // Limit images if maxImages is specified

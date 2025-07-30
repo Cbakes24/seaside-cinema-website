@@ -120,7 +120,7 @@ export default function Home() {
         </div>
         <div>
           <Image
-            src="/poolsBday5.JPG"
+            src="/poolsBday5Large.jpeg"
             alt="Beach Party"
             width={400}
             height={250}

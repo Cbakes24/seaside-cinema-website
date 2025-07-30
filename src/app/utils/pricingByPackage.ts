@@ -35,7 +35,7 @@ export interface AddonPricing {
 //     "Classic": "/verticalSunset.jpeg",
 //     "Bali": "/bayview_behind.jpg",
 //     "Picnic": "/verticalPicnic.jpeg",
-//     "Birthday": "/poolsBday5.JPG",
+//     "Birthday": "/poolsBday5Large.jpeg",
 //     "Proposal": "/vday3.jpg",
 //     "Seasonal": "/IMG_1255.jpeg",
 //   };
@@ -58,7 +58,7 @@ export const packageOptions: PackageOptions = {
     Birthday: {
       price: 449,
       addons: ["Birthday Package"],
-      image: "/poolsBday5.JPG",
+      image: "/poolsBday5Large.jpeg",
     },
     Proposal: {
       price: 599,

@@ -16,7 +16,7 @@ export default function ExperiencePage() {
     "/vday3.jpg",
     "/big_bali.JPG",
     "/IMG_1255.jpeg",
-    "/poolsBday5.JPG",
+    "/poolsBday5Large.jpeg",
     "/verticalSunset.jpeg",
 
   ]);
@@ -63,7 +63,7 @@ export default function ExperiencePage() {
         {/* Classic */}
         <div className="group">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <div className="relative w-full max-w-[400px] h-[250px] mx-auto overflow-hidden">
+            <div className="relative w-full md:max-w-[600px] h-[250px] mx-auto overflow-hidden">
               <Image
                 src="/verticalSunset.jpeg"
                 alt="Classic"
@@ -94,7 +94,7 @@ export default function ExperiencePage() {
         {/* Proper Picnic */}
         <div className="group">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <div className="relative w-full max-w-[400px] h-[250px] mx-auto overflow-hidden">
+            <div className="relative w-full md:max-w-[600px] h-[250px] mx-auto overflow-hidden">
               <Image
                 src="/verticalPicnic.jpeg"
                 alt="Proper Picnic"
@@ -125,7 +125,7 @@ export default function ExperiencePage() {
         {/* Pumpkin Spice */}
         <div className="group">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <div className="relative w-full max-w-[400px] h-[250px] mx-auto overflow-hidden">
+            <div className="relative w-full md:max-w-[600px] h-[250px] mx-auto overflow-hidden">
               <Image
                 src="/IMG_1255.jpeg"
                 alt="Pumpkin Spice"
@@ -156,7 +156,7 @@ export default function ExperiencePage() {
         {/* Valentines */}
         <div className="group">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <div className="relative w-full max-w-[400px] h-[250px] mx-auto overflow-hidden">
+            <div className="relative w-full md:max-w-[600px] h-[250px] mx-auto overflow-hidden">
               <Image
                 src="/vday3.jpg"
                 alt="Valentines"
@@ -187,7 +187,7 @@ export default function ExperiencePage() {
         {/* Holidays */}
         <div className="group">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <div className="relative w-full max-w-[400px] h-[250px] mx-auto overflow-hidden">
+            <div className="relative w-full md:max-w-[600px] h-[250px] mx-auto overflow-hidden">
               <Image
                 src="/holiday1.JPG"
                 alt="Holiday Movie Night"

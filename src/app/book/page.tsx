@@ -36,7 +36,7 @@ function BookingPageContent() {
     "/vday3.jpg",
     "/big_bali.JPG",
     "/IMG_1255.jpeg",
-    "/poolsBday5.JPG",
+    "/poolsBday5Large.jpeg",
     "/verticalSunset.jpeg",
   ]);
   const rotations = [-30, -15, 0, 15, 30];
