@@ -1,3 +1,14 @@
+import React from 'react'
+
+function page() {
+  return (
+    <div>Sup welcome to the secret page</div>
+  )
+}
+
+export default page
+
+
 // "use client";
 // export const dynamic = "force-dynamic";
 
