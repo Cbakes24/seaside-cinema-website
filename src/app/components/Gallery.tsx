@@ -188,9 +188,11 @@ const Gallery: React.FC<GalleryProps> = ({
     <div className={`${getGridClasses()} ${className}`}>
       {images.map((image, index) => (
         <div key={index} className={`group relative ${getAspectRatioClass()} overflow-hidden rounded-lg bg-peach cursor-pointer`}>
-          <img
+          <Image
             src={image.src}
             alt={image.alt}
+            width={400}
+            height={400}
             className={`w-full h-full object-cover transition-all duration-300 group-hover:scale-105 ${
               clickedImages.has(index) ? 'scale-125' : ''
             }`}

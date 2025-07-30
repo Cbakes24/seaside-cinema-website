@@ -32,7 +32,7 @@ export default function ExperiencePage() {
         {/* Bali by the Bay */}
         <div className="group">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <div className="relative w-full max-w-[400px] h-[250px] mx-auto overflow-hidden">
+            <div className="relative w-full md:max-w-[600px] h-[250px] mx-auto overflow-hidden">
               <Image
                 src="/bayview_behind.jpg"
                 alt="Bali by the Bay"

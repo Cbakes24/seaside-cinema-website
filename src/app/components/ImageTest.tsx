@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 const ImageTest: React.FC = () => {
   const [testResults, setTestResults] = useState<{ [key: string]: boolean }>({});
@@ -13,7 +14,7 @@ const ImageTest: React.FC = () => {
   ];
 
   const testImage = (src: string) => {
-    const img = new Image();
+    const img = new window.Image();
     img.onload = () => {
       setTestResults(prev => ({ ...prev, [src]: true }));
       console.log(`✅ Image loaded successfully: ${src}`);
@@ -57,9 +58,11 @@ const ImageTest: React.FC = () => {
       <div className="mt-6 grid grid-cols-2 gap-4">
         {testImages.map((src) => (
           <div key={src} className="aspect-square bg-gray-100 rounded overflow-hidden">
-            <img
+            <Image
               src={src}
               alt="Test"
+              width={300}
+              height={300}
               className="w-full h-full object-cover"
               onError={(e) => {
                 e.currentTarget.style.backgroundColor = 'red';
