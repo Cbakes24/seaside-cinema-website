@@ -8,6 +8,7 @@ import Link from "next/link";
 import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
 import FallDiscountModal from "./components/FallDiscountModal";
+import BirthdayCarousel from "./components/BirthdayCarousel";
 import {
   packages,
   addons,
@@ -23,19 +24,18 @@ import {
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Birthday images array
   const birthdayImages = [
     {
-      src: "/Kids_birthday_2photoshopped.png",
-      alt: "Kids Birthday Party",
-      label: "Kids Birthday Party"
-    },
-    {
       src: "/Kids_birthday_photoshopped.png",
       alt: "Birthday Celebration",
       label: "Birthday Celebration"
+    },
+    {
+      src: "/Kids_birthday_2photoshopped.png",
+      alt: "Kids Birthday Party",
+      label: "Kids Birthday Party"
     },
     {
       src: "/poolsBday5Large.jpeg",
@@ -67,17 +67,6 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Auto-rotate images every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === birthdayImages.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [birthdayImages.length]);
 
   return (
     <main className="w-full">
@@ -336,9 +325,54 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      {/* Birthday Setups Section */}
+      <section className="py-20 px-6 bg-offwhite text-center">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            <div className="relative">
+              <BirthdayCarousel 
+                images={birthdayImages}
+                autoRotateInterval={5000}
+                className=""
+              />
+            </div>
+            <div className="text-left">
+              <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">
+                Birthday Party Magic
+              </h2>
+              <p className="text-lg text-teal/80 mb-6 leading-relaxed">
+                Make every birthday unforgettable with our themed beach movie night setups. From kids&apos; parties to milestone celebrations, we create the perfect atmosphere for your special day with custom decorations, themed snacks, and magical beachside ambiance.
+              </p>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">Kids birthday parties (ages 3-12)</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">Teen celebrations &amp; sweet 16s</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">Adult milestone birthdays</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">Themed decorations & party favors</span>
+                </div>
+              </div>
+              <Link
+                href="/book?package=birthday"
+                className="bg-peach text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
+              >
+                Plan Your Birthday Party
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Seasonal Packages Section */}
-      <section className="py-20 px-6 bg-offwhite">
+      <section className="py-20 px-6 bg-sand">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-teal text-center mb-12">
             Seasonal Experiences
@@ -572,105 +606,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Birthday Setups Section */}
-      <section className="py-20 px-6 bg-offwhite text-center">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid gap-12 lg:grid-cols-2 items-center">
-            <div className="relative">
-              {/* Birthday Photos Carousel */}
-              <div className="relative h-96 rounded-xl overflow-hidden shadow-2xl">
-                <div className="relative h-96 bg-gray-200">
-                  <Image
-                    src={birthdayImages[currentImageIndex].src}
-                    alt={birthdayImages[currentImageIndex].alt}
-                    fill
-                    className="object-cover"
-                    priority
-                    onError={(e) => {
-                      console.error('Failed to load image:', e);
-                      e.currentTarget.style.backgroundColor = 'red';
-                    }}
-                    onLoad={() => console.log('Image loaded successfully')}
-                  />
-                  <div className="absolute inset-0 bg-black/20"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <span className="bg-peach/90 text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {birthdayImages[currentImageIndex].label}
-                    </span>
-                  </div>
-                </div>
-                
-                {/* Manual Navigation */}
-                <button 
-                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-10"
-                  onClick={() => {
-                    setCurrentImageIndex((prevIndex) => 
-                      prevIndex === 0 ? birthdayImages.length - 1 : prevIndex - 1
-                    );
-                  }}
-                >
-                  ←
-                </button>
-                <button 
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-10"
-                  onClick={() => {
-                    setCurrentImageIndex((prevIndex) => 
-                      prevIndex === birthdayImages.length - 1 ? 0 : prevIndex + 1
-                    );
-                  }}
-                >
-                  →
-                </button>
-                
-                {/* Carousel Indicators */}
-                <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
-                  {birthdayImages.map((_, index) => (
-                    <button
-                      key={index}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        index === currentImageIndex ? 'bg-white' : 'bg-white/50 hover:bg-white'
-                      }`}
-                      onClick={() => setCurrentImageIndex(index)}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">
-                Birthday Party Magic
-              </h2>
-              <p className="text-lg text-teal/80 mb-6 leading-relaxed">
-                Make every birthday unforgettable with our themed beach movie night setups. From kids&apos; parties to milestone celebrations, we create the perfect atmosphere for your special day with custom decorations, themed snacks, and magical beachside ambiance.
-              </p>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center space-x-3">
-                  <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Kids birthday parties (ages 3-12)</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Teen celebrations &amp; sweet 16s</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Adult milestone birthdays</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Themed decorations & party favors</span>
-                </div>
-              </div>
-              <Link
-                href="/book?package=birthday"
-                className="bg-peach text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
-              >
-                Plan Your Birthday Party
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* FAQ Section */}
       <section className="py-20 px-6 bg-sand">
