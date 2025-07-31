@@ -200,7 +200,7 @@ function BookingPageContent() {
       discountAmount,
       totalPrice,
     };
-    console.log("***  FORM DATA  ***", formData);
+    console.log("***  FORM DATA CLient side ***", formData);
     await fetch("/api/send-booking", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

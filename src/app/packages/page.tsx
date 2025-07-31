@@ -145,29 +145,29 @@ export default function PackagesPage() {
               </div>
             </div>
 
-            {/* Drive-Thru */}
+            {/* Drive-in */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-48">
                 <Image
                   src="/verticalSunset.jpeg"
-                  alt="Drive-Thru Package"
+                  alt="Drive-in Package"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="absolute top-4 left-4">
                   <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    🍿 Drive-Thru
+                    🍿 Drive-in
                   </span>
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-teal mb-3">Drive-Thru Package</h3>
+                <h3 className="text-xl font-semibold text-teal mb-3">Drive-in Package</h3>
                 <p className="text-gray-600 text-sm mb-4">
                   Nostalgic movie vibes with clapboard decor, candy trays, popcorn, and retro styling.
                 </p>
                 <div className="text-left text-xs text-gray-500 space-y-1 mb-4">
-                  {packages.find(p => p.id === 'drive-thru')?.includes.map((item, index) => (
+                  {packages.find(p => p.id === 'drive-in')?.includes.map((item, index) => (
                     <div key={index} className="flex items-center">
                       <span className="text-teal mr-2">✓</span>
                       {item}
@@ -177,7 +177,7 @@ export default function PackagesPage() {
                 <div className="flex items-center justify-between">
                   <span className="text-lg font-bold text-teal">$125</span>
                   <Link
-                    href="/book?package=drive-thru"
+                    href="/book?package=drive-in"
                     className="bg-teal text-white px-4 py-2 rounded-lg hover:bg-orange transition text-sm"
                   >
                     Add Package

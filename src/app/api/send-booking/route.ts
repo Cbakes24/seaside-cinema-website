@@ -6,9 +6,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req: Request) {
   try {
     const formData = await req.json();
-
+console.log("formDataaaaa Server sideee!!!!", formData);
     const {
       fullName,
+      howHeard,
       email,
       phone,
       date,
@@ -19,6 +20,9 @@ export async function POST(req: Request) {
       selectedSeasonalHoliday,
       phoneType,
       addons,
+      discountCode,
+      discountAmount,
+      totalPrice,
     } = formData;
 
     const message = `
@@ -35,6 +39,10 @@ Package: ${selectedPackage}
 Seasonal Holiday: ${selectedSeasonalHoliday || 'None'}
 Phone Type: ${phoneType}
 Add-ons: ${addons?.join(', ') || 'None'}
+Discount Code: ${discountCode}
+Discount Amount: ${discountAmount}
+Total Price: ${totalPrice}
+
     `;
 
     const { data, error } = await resend.emails.send({
