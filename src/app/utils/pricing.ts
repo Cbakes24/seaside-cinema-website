@@ -271,7 +271,7 @@ export function calculateTotal(
     })
     .reduce((sum, val) => sum + val, 0);
 
-  // Calculate guest pricing: base price includes 2 guests, each additional guest is $25
+  // Calculate guest pricing: base price includes 2 guests, each additional guest is $50
   const additionalGuests = Math.max(0, guestCount - 2);
   const guestPricing = additionalGuests * 50;
 

@@ -25,15 +25,16 @@ function BookingPageContent() {
   const [mainImage, setMainImage] = useState("/verticalSunset.jpeg");
   const [fullName, setFullName] = useState("");
   const [howHeard, setHowHeard] = useState("");
+  const [howHeardOther, setHowHeardOther] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [phoneType, setPhoneType] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guestCount, setGuestCount] = useState("");
-  const [occasion, setOccasion] = useState("");
   const [discountCode, setDiscountCode] = useState("");
   const [discountApplied, setDiscountApplied] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
   const [eventImages, setEventImages] = useState([
     "/vday3.jpeg",
     "/largeBali1.jpg",
@@ -121,21 +122,44 @@ function BookingPageContent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate that all required fields are filled
-    if (!fullName || !email || !date || !time || !selectedExperience) {
-      alert("Please fill out all required fields and select an experience.");
-      return;
+    // Clear previous validation errors
+    setValidationErrors({});
+    
+    const errors: {[key: string]: string} = {};
+    
+    // Validate required fields
+    if (!fullName.trim()) {
+      errors.fullName = "Full name is required";
     }
-
-    // Validate guest count is entered and is at least 2
+    if (!howHeard) {
+      errors.howHeard = "Please let us know how you heard about us";
+    } else if (howHeard === "other" && !howHeardOther.trim()) {
+      errors.howHeardOther = "Please specify how you heard about us";
+    }
+    if (!email.trim()) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      errors.email = "Please enter a valid email address";
+    }
+    if (!phone.trim()) {
+      errors.phone = "Phone number is required";
+    }
+    if (!phoneType) {
+      errors.phoneType = "Please select your phone type";
+    }
+    if (!date) {
+      errors.date = "Please select a preferred date";
+    }
+    if (!time) {
+      errors.time = "Please select a start time";
+    }
+    if (!selectedExperience) {
+      errors.experience = "Please select an experience";
+    }
     if (!guestCount || guestCount.trim() === "") {
-      alert("Please enter the number of guests for your booking.");
-      return;
-    }
-
-    if (parseInt(guestCount) < 2) {
-      alert("Guest count must be at least 2.");
-      return;
+      errors.guestCount = "Please enter the number of guests";
+    } else if (parseInt(guestCount) < 2) {
+      errors.guestCount = "Guest count must be at least 2";
     }
 
     // Validate seasonal holiday selection if seasonal experience is selected
@@ -144,9 +168,23 @@ function BookingPageContent() {
       return;
     }
 
+    // If there are validation errors, display them and stop submission
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      
+      // Scroll to the first error
+      const firstErrorField = Object.keys(errors)[0];
+      const errorElement = document.querySelector(`[data-field="${firstErrorField}"]`);
+      if (errorElement) {
+        errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      
+      return;
+    }
+
     const formData = {
       fullName,
-      howHeard,
+      howHeard: howHeard === "other" ? howHeardOther : howHeard,
       email,
       phone,
       phoneType,
@@ -219,6 +257,17 @@ function BookingPageContent() {
     } else {
       setDiscountApplied(false);
       alert("❌ Invalid discount code. Please try again.");
+    }
+  };
+
+  // Clear validation error when user starts typing
+  const clearValidationError = (fieldName: string) => {
+    if (validationErrors[fieldName]) {
+      setValidationErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[fieldName];
+        return newErrors;
+      });
     }
   };
 
@@ -756,22 +805,63 @@ function BookingPageContent() {
                 className="w-full p-2 border-b-2 rounded"
                 required
                 value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                onChange={(e) => {
+                  setFullName(e.target.value);
+                  clearValidationError('fullName');
+                }}
                 placeholder="Enter your full name"
+                data-field="fullName"
               />
+              {validationErrors.fullName && (
+                <p className="text-red-500 text-xs mt-1">{validationErrors.fullName}</p>
+              )}
           </div>
           <div>
               <label className="block font-medium mb-1">
                 How did you hear about us? <span className="text-red-500">*</span>
               </label>
-              <input
-                type="text"
+              <select
+                name="howHeard"
                 className="w-full p-2 border-b-2 rounded"
                 required
                 value={howHeard}
-                onChange={(e) => setHowHeard(e.target.value)}
-                placeholder="Social media, friend, etc."
-              />
+                onChange={(e) => {
+                  setHowHeard(e.target.value);
+                  clearValidationError('howHeard');
+                  if (e.target.value !== "other") {
+                    setHowHeardOther("");
+                  }
+                }}
+                data-field="howHeard"
+              >
+                <option value="">Select how you heard about us</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Instagram">Instagram</option>
+                <option value="TikTok">TikTok</option>
+                <option value="Friends/Family">Friends/Family</option>
+                <option value="Google">Google</option>
+                <option value="TripAdvisor">TripAdvisor</option>
+                <option value="other">Other</option>
+              </select>
+              {validationErrors.howHeard && (
+                <p className="text-red-500 text-xs mt-1">{validationErrors.howHeard}</p>
+              )}
+              {howHeard === "other" && (
+                <input
+                  type="text"
+                  className="w-full p-2 border-b-2 rounded mt-1"
+                  value={howHeardOther}
+                  onChange={(e) => {
+                    setHowHeardOther(e.target.value);
+                    clearValidationError('howHeardOther');
+                  }}
+                  placeholder="Please specify"
+                  data-field="howHeardOther"
+                />
+              )}
+              {validationErrors.howHeardOther && (
+                <p className="text-red-500 text-xs mt-1">{validationErrors.howHeardOther}</p>
+              )}
           </div>
           <div>
               <label className="block font-medium mb-1">
@@ -782,9 +872,16 @@ function BookingPageContent() {
                 className="w-full p-2 border-b-2 rounded"
                 required
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  clearValidationError('email');
+                }}
                 placeholder="your@email.com"
+                data-field="email"
               />
+              {validationErrors.email && (
+                <p className="text-red-500 text-xs mt-1">{validationErrors.email}</p>
+              )}
           </div>
           <div>
               <label className="block font-medium mb-1">
@@ -795,9 +892,16 @@ function BookingPageContent() {
                 className="w-full p-2 border-b-2 rounded"
                 required
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                  clearValidationError('phone');
+                }}
                 placeholder="(555) 123-4567"
+                data-field="phone"
               />
+              {validationErrors.phone && (
+                <p className="text-red-500 text-xs mt-1">{validationErrors.phone}</p>
+              )}
           </div>
           <div>
               <label className="block font-medium mb-1">
@@ -808,25 +912,19 @@ function BookingPageContent() {
                 className="w-full p-2 border-b-2 rounded"
                 required
                 value={phoneType}
-                onChange={(e) => setPhoneType(e.target.value)}
+                onChange={(e) => {
+                  setPhoneType(e.target.value);
+                  clearValidationError('phoneType');
+                }}
+                data-field="phoneType"
               >
               <option value="">Select phone type</option>
               <option value="iphone">iPhone</option>
               <option value="android">Android</option>
             </select>
-          </div>
-          <div>
-              <label className="block font-medium mb-1">
-                Occasion Type <span className="text-red-500">*</span>
-              </label>
-            <input
-              type="text"
-              placeholder="Date Night, Birthday, Proposal..."
-              className="w-full p-2 border-b-2 rounded"
-                required
-              value={occasion}
-                onChange={(e) => setOccasion(e.target.value)}
-            />
+            {validationErrors.phoneType && (
+              <p className="text-red-500 text-xs mt-1">{validationErrors.phoneType}</p>
+            )}
           </div>
             <div>
               <label className="block font-medium mb-1">
@@ -837,8 +935,15 @@ function BookingPageContent() {
                 className="w-full p-2 border-b-2 rounded"
                 required
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={(e) => {
+                  setDate(e.target.value);
+                  clearValidationError('date');
+                }}
+                data-field="date"
               />
+              {validationErrors.date && (
+                <p className="text-red-500 text-xs mt-1">{validationErrors.date}</p>
+              )}
             </div>
             <div>
               <label className="block font-medium mb-1">
@@ -849,8 +954,15 @@ function BookingPageContent() {
                 className="w-full p-2 border-b-2 rounded"
                 required
                 value={time}
-                onChange={(e) => setTime(e.target.value)}
+                onChange={(e) => {
+                  setTime(e.target.value);
+                  clearValidationError('time');
+                }}
+                data-field="time"
               />
+              {validationErrors.time && (
+                <p className="text-red-500 text-xs mt-1">{validationErrors.time}</p>
+              )}
             </div>
             <div className="md:col-span-2">
               <label className="block font-medium mb-1">
@@ -864,22 +976,28 @@ function BookingPageContent() {
                     required
                     className="w-24 p-3 border-2 border-yellow-300 rounded text-center font-bold text-lg text-yellow-800 bg-white focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200"
                     value={guestCount}
-                    onChange={(e) => setGuestCount(e.target.value)}
+                    onChange={(e) => {
+                      setGuestCount(e.target.value);
+                      clearValidationError('guestCount');
+                    }}
                     placeholder="2"
+                    data-field="guestCount"
                   />
                   <div className="text-sm text-yellow-700">
                     <p className="font-medium">Please enter the actual number of guests</p>
-                    <p className="text-xs">Minimum 2 guests • Each additional guest: +$25</p>
+                    <p className="text-xs">Minimum 2 guests • Each additional guest: +$50</p>
                   </div>
                 </div>
               </div>
+              {validationErrors.guestCount && (
+                <p className="text-red-500 text-xs mt-1">{validationErrors.guestCount}</p>
+              )}
             </div>
           </div>
 
           {/* Submit */}
           <button
             type="submit"
-            disabled={!fullName || !email || !date || !time || !selectedExperience || !phone || !phoneType || !occasion || !guestCount || parseInt(guestCount) < 2}
             className="w-full bg-teal text-white font-semibold py-3 rounded hover:bg-orange transition mt-6 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             Submit Booking - {formatPrice(totalPrice)}
