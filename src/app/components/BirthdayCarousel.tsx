@@ -64,7 +64,16 @@ const BirthdayCarousel: React.FC<BirthdayCarouselProps> = ({
   }
 
   return (
-    <div className={`relative h-96 rounded-xl overflow-hidden shadow-2xl ${className}`}>
+    <>  
+
+    <style jsx>{`
+      #birthdayCarousel {
+    margin-top: -100px;
+    box-shadow: 10px 5px 60px -27px;
+        border: 10px solid white;
+      }
+    `}</style>
+    <section id="birthdayCarousel" className={`relative h-96 rounded-xl overflow-hidden shadow-2xl ${className}`}>
       <div className="relative h-96 bg-gray-200">
         <Image
           src={images[currentImageIndex].src}
@@ -121,7 +130,8 @@ const BirthdayCarousel: React.FC<BirthdayCarouselProps> = ({
           ))}
         </div>
       )}
-    </div>
+    </section>
+    </>
   );
 };
 
