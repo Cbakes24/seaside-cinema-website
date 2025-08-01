@@ -3,6 +3,7 @@ import Image from "next/image";
 
 export default function InstagramSection() {
   return (
+
     <section className="relative py-20 px-6 text-center overflow-hidden">
       {/* Background Image Container */}
       <div 

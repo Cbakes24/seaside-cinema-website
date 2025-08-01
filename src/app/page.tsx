@@ -9,6 +9,8 @@ import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
 import FallDiscountModal from "./components/FallDiscountModal";
 import BirthdayCarousel from "./components/BirthdayCarousel";
+
+
 import {
   packages,
   addons,
@@ -21,42 +23,53 @@ import {
   seasonalOptions,
   getSeasonalById,
 } from "./utils/pricing";
+import { flag } from "@vercel/flags/next";
+//vercel flag test
+// const vercelFlag: any = flag<boolean>({
+//   key: "vercel-flag-test",
+//   defaultValue: false,
+//   decide(): boolean {
+//     return true;
+//   },
+// });
+
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+// const flag:boolean = await vercelFlag.get()
   // Birthday images array
   const birthdayImages = [
     {
       src: "/Kids_birthday_photoshopped.jpg",
       alt: "Birthday Celebration",
-      label: "Birthday Celebration"
+      label: "Birthday Celebration",
     },
     {
       src: "/Kids_birthday_2photoshopped.jpg",
       alt: "Kids Birthday Party",
-      label: "Kids Birthday Party"
+      label: "Kids Birthday Party",
     },
     {
       src: "/poolsBday5Large.jpeg",
       alt: "Poolside Birthday",
-      label: "Poolside Birthday"
+      label: "Poolside Birthday",
     },
     {
       src: "/bali_bday_nightLow.jpeg",
       alt: "Bali Night Birthday",
-      label: "Bali Night Birthday"
+      label: "Bali Night Birthday",
     },
     {
       src: "/Low_classic_large_birthday.jpeg",
       alt: "Classic Large Birthday",
-      label: "Classic Large Birthday"
+      label: "Classic Large Birthday",
     },
     {
       src: "/Low_L_bday_classic.jpeg",
       alt: "L Birthday Classic",
-      label: "L Birthday Classic"
-    }
+      label: "L Birthday Classic",
+    },
   ];
 
   useEffect(() => {
@@ -82,7 +95,6 @@ export default function Home() {
   //   playVideo();
   // }, []);
 
-
   // useEffect(() => {
   //   const playVideo = async () => {
   //     if (videoRef.current) {
@@ -98,28 +110,33 @@ export default function Home() {
   //       }
   //     }
   //   };
-  
+
   //   playVideo();
   // }, []);
 
-
   return (
     <main className="w-full">
-      <style jsx>{`
-        #birthdayCarousel::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+      {/* Insterting CSS with this line of code, can apply to sections by the id of the element as #(whatever id). */}
+{/* <style jsx>{`
+  #HeroSection,
+  #HeroSection video,
+   #HeroSection h1,
+  #InstagramSection section{
+  margin-top: 30px;
+  padding-top: 30px;
+  border: 10px solid red;
+  background-color: blue;
+  }
+`}</style> */}
       {/* Fall Discount Modal */}
       {/* <FallDiscountModal /> */}
-      
+
       {/* Hero Section with Parallax */}
-      <section className="relative h-[90vh] w-full overflow-hidden"      
->
+      <section className="relative h-[90vh] w-full overflow-hidden" id="HeroSection">
         {/* <Image src="/verticalSunset.jpeg" alt="Sunset" fill className="object-cover" /> */}
         <video
-        // poster="/verticalSunset.jpeg"
-        ref={videoRef}
+          // poster="/verticalSunset.jpeg"
+          ref={videoRef}
           autoPlay
           muted
           loop
@@ -179,6 +196,25 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      {process.env.NEXT_PUBLIC_FEATURE_FLAG === "true" && (
+        <section className="py-20 px-6 bg-lightblue">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-teal mb-12">
+              Exclusive Feature
+            </h2>
+            <p className="text-lg text-teal mb-8">
+              This is an exclusive feature available only when the feature flag
+              is enabled.
+            </p>
+            <Link
+              href="/exclusive"
+              className="bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
+            >
+              Explore Now
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* How It Works / Booking Steps */}
       <section className="pb-20 pt-20 px-6 bg-offwhite">
@@ -233,44 +269,49 @@ export default function Home() {
           </p>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {experiences.slice(0, 4).map((experience, i) => (
-              console.log("INDEX OF EXPERIENCE!!!!!!", i),
-              <div
-                key={experience.id}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={experience.image}
-                    alt={experience.name}
-                    priority={i === 0}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/20"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-teal mb-2">
-                    {experience.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                    {experience.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-teal">
-                      {formatPrice(experience.price)}
-                    </span>
-                    <Link
-                      href={`/book?experience=${experience.id}`}
-                      className="bg-teal text-white px-3 py-1 rounded text-sm hover:bg-orange transition"
-                    >
-                      Book Now
-                    </Link>
+            {experiences.slice(0, 4).map(
+              (experience, i) => (
+              
+                (
+                  <div
+                    key={experience.id}
+                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="relative h-48">
+                      <Image
+                      
+                        src={experience.image}
+                        alt={experience.name}
+                        priority={i === 0}   // Note: Ensure the image is responsive and prioritized for the first item
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold text-teal mb-2">
+                        {experience.name}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                        {experience.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xl font-bold text-teal">
+                          {formatPrice(experience.price)}
+                        </span>
+                        <Link
+                          href={`/book?experience=${experience.id}`}
+                          className="bg-teal text-white px-3 py-1 rounded text-sm hover:bg-orange transition"
+                        >
+                          Book Now
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                )
+              )
+            )}
           </div>
 
           <div className="text-center mt-12">
@@ -371,7 +412,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div className="relative">
-              <BirthdayCarousel 
+              <BirthdayCarousel
                 images={birthdayImages}
                 autoRotateInterval={5000}
                 className=""
@@ -382,16 +423,24 @@ export default function Home() {
                 Birthday Party Magic
               </h2>
               <p className="text-lg text-teal/80 mb-6 leading-relaxed">
-                Make every birthday unforgettable with our themed beach movie night setups. From kids&apos; parties to milestone celebrations, we create the perfect atmosphere for your special day with custom decorations, themed snacks, and magical beachside ambiance.
+                Make every birthday unforgettable with our themed beach movie
+                night setups. From kids&apos; parties to milestone celebrations,
+                we create the perfect atmosphere for your special day with
+                custom decorations, themed snacks, and magical beachside
+                ambiance.
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-3">
                   <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Kids birthday parties (ages 3-12)</span>
+                  <span className="text-teal">
+                    Kids birthday parties (ages 3-12)
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Teen celebrations &amp; sweet 16s</span>
+                  <span className="text-teal">
+                    Teen celebrations &amp; sweet 16s
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <span className="text-teal text-xl">✓</span>
@@ -399,7 +448,9 @@ export default function Home() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Themed decorations & party favors</span>
+                  <span className="text-teal">
+                    Themed decorations & party favors
+                  </span>
                 </div>
               </div>
               <Link
@@ -428,9 +479,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-64">
                 <Image
-                  src={
-                    getSeasonalById("halloween")?.image || "/IMG_1255.jpeg"
-                  }
+                  src={getSeasonalById("halloween")?.image || "/IMG_1255.jpeg"}
                   alt="Halloween Movie Night"
                   fill
                   priority
@@ -556,7 +605,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <InstagramSection />
+      {/* Instagram Section */}
+      <InstagramSection/>
 
       {/* Testimonials / Reviews */}
       {/* <section className="py-20 px-6 bg-sand">
@@ -599,7 +649,10 @@ export default function Home() {
                 Large Events &amp; Corporate Gatherings
               </h2>
               <p className="text-lg text-teal/80 mb-6 leading-relaxed">
-                Hosting a big celebration? We specialize in large-scale beach movie nights perfect for corporate events, family reunions, and group celebrations. Our team can accommodate groups of all sizes with custom setups and premium service.
+                Hosting a big celebration? We specialize in large-scale beach
+                movie nights perfect for corporate events, family reunions, and
+                group celebrations. Our team can accommodate groups of all sizes
+                with custom setups and premium service.
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-3">
@@ -608,15 +661,21 @@ export default function Home() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Corporate team building events</span>
+                  <span className="text-teal">
+                    Corporate team building events
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Family reunions & celebrations</span>
+                  <span className="text-teal">
+                    Family reunions & celebrations
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Custom catering & beverage options</span>
+                  <span className="text-teal">
+                    Custom catering & beverage options
+                  </span>
                 </div>
               </div>
               <Link
@@ -718,12 +777,10 @@ export default function Home() {
         </Link>
       </section>
 
-      <Gallery className="p-5" maxImages={12} sortBy="random"/>
+      <Gallery className="p-5" maxImages={12} sortBy="random" />
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-12 px-6">
-
-      </footer>
+      <footer className="bg-gray-800 text-white py-12 px-6"></footer>
     </main>
   );
 }

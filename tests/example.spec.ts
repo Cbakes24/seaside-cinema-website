@@ -32,7 +32,7 @@ await page.getByRole('button', { name: 'Bali' }).click();
 await page.getByPlaceholder('Enter your full name').fill('Cory Baker');
 await page.locator('select[name="howHeard"]').selectOption('Instagram');
 await page.getByPlaceholder('(555) 123-4567').fill('7814920313');
-await page.getByPlaceholder('your@email.com').fill('cory@seasidecinemas.com');
+await page.getByPlaceholder('your@email.com').fill('cory@seasidecinemasTEST.com');
 await page.locator('input[type="date"]').fill('2025-07-16');
 await page.locator('[type="time"]').fill('16:45'); // 24-hr format
 await page.locator('select[name="type"]').selectOption('iphone');
@@ -66,7 +66,7 @@ await expect(page.locator('text=🎉 Success! Your booking has been submitted. T
   await page.getByPlaceholder('Enter your full name').fill('Cory Baker');
   await page.locator('select[name="howHeard"]').selectOption('Instagram');
   await page.getByPlaceholder('(555) 123-4567').fill('7814920313');
-  await page.getByPlaceholder('your@email.com').fill('cory@seasidecinemas.com');
+  await page.getByPlaceholder('your@email.com').fill('cory@seasidecinemasTEST.com');
   await page.locator('input[type="date"]').fill('2025-07-16');
   await page.locator('[type="time"]').fill('16:45'); // 24-hr format
   await page.locator('select[name="type"]').selectOption('iphone');
@@ -100,7 +100,7 @@ await page.getByRole('button', { name: 'Holiday Magic' }).click();
 await page.getByPlaceholder('Enter your full name').fill('Cory Baker');
 await page.locator('select[name="howHeard"]').selectOption('Instagram');
 await page.getByPlaceholder('(555) 123-4567').fill('7814920313');
-await page.getByPlaceholder('your@email.com').fill('cory@seasidecinemas.com');
+await page.getByPlaceholder('your@email.com').fill('cory@seasidecinemasTEST.com');
 await page.locator('input[type="date"]').fill('2025-07-16');
 await page.locator('[type="time"]').fill('16:45'); // 24-hr format
 await page.locator('select[name="type"]').selectOption('iphone');
@@ -114,34 +114,34 @@ await expect(page.locator('text=🎉 Success! Your booking has been submitted. T
 
 //FROM GPT
 
-test('should submit a booking successfully', async ({ page }) => {
-  // Go to homepage
-  await page.goto('https://www.seasidecinemas.com/');
+// test('should submit a booking successfully', async ({ page }) => {
+//   // Go to homepage
+//   await page.goto('https://www.seasidecinemas.com/');
 
-  // Click the main "Book Now!" button
-  await page.getByRole('link', { name: /Book Now/i }).click();
+//   // Click the main "Book Now!" button
+//   await page.getByRole('link', { name: /Book Now/i }).nth(0).click();
 
-  // Wait for the heading on the booking page
-  await expect(page.getByRole('heading', { name: /Book Your Experience/i })).toBeVisible();
+//   // Wait for the heading on the booking page
+//   await expect(page.getByRole('heading', { name: /Book Your Experience/i })).toBeVisible();
 
-  // Select experience (pick a visible button/dropdown item)
-  await page.getByRole('button', { name: /Select Your Experience/i }).click();
-  await page.getByRole('button', { name: /Classic/i }).click();
+//   // Select experience (pick a visible button/dropdown item)
+//   await page.getByRole('button', { name: /Classic/i }).click();
+//   await page.getByRole('button', { name: /Bali/i }).click();
 
-  // Fill in form fields
-  await page.getByLabel('Full Name *').fill('Test User');
-  await page.getByLabel('How did you hear about us? *').fill('Google');
-  await page.getByLabel('Email *').fill('test@example.com');
-  await page.getByLabel('Phone Number *').fill('555-123-4567');
-  await page.getByLabel('Type Of Phone *').selectOption('iphone');
-  await page.getByLabel('Occasion Type *').fill('Birthday');
-  await page.getByLabel('Preferred Date *').fill('2025-12-25');
-  await page.getByLabel('Start Time *').fill('18:00');
-  await page.getByLabel('👥 Number of Guests *').fill('4');
+//   // Fill in form fields
+//   await page.getByLabel('Full Name *').fill('Test User');
+//   await page.getByLabel('How did you hear about us? *').fill('Google');
+//   await page.getByLabel('Email *').fill('test@example.com');
+//   await page.getByLabel('Phone Number *').fill('555-123-4567');
+//   await page.getByLabel('Type Of Phone *').selectOption('iphone');
+//   await page.getByLabel('Occasion Type *').fill('Birthday');
+//   await page.getByLabel('Preferred Date *').fill('2025-12-25');
+//   await page.getByLabel('Start Time *').fill('18:00');
+//   await page.getByLabel('👥 Number of Guests *').fill('4');
 
-  // Submit the form
-  await page.getByRole('button', { name: /Submit Booking/i }).click();
+//   // Submit the form
+//   await page.getByRole('button', { name: /Submit Booking/i }).click();
 
-  // Expect success toast to appear
-  await expect(page.locator('text=🎉 Success! Your booking has been submitted')).toBeVisible();
-});
+//   // Expect success toast to appear
+//   await expect(page.locator('text=🎉 Success! Your booking has been submitted')).toBeVisible();
+// });
