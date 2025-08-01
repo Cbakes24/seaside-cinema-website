@@ -25,6 +25,19 @@ console.log("formDataaaaa Server sideee!!!!", formData);
       totalPrice,
     } = formData;
 
+    // Parse the time to 12-hour format
+    const parsedTime = time.replace(/^(\d{2}):(\d{2})$/, (_: string, hours: string, minutes: string) => {
+      const hour = parseInt(hours, 10);
+      const ampm = hour >= 12 ? 'PM' : 'AM';
+      const hour12 = hour % 12 || 12;
+      return `${hour12}:${minutes} ${ampm}`;
+    });
+
+    // Format add-ons as bullet list
+    const addonsList = addons?.length > 0 
+      ? addons.map((addon: string) => `<li>${addon}</li>`).join('')
+      : '<li>None</li>';
+
     const message = `
 🎥 New Seaside Cinema Booking Request
 
@@ -214,7 +227,7 @@ Total Price: ${totalPrice}
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Time:</span>
-                    <span class="detail-value">${time}</span>
+                    <span class="detail-value">${parsedTime}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Guests:</span>
@@ -226,7 +239,7 @@ Total Price: ${totalPrice}
                 <div class="section-title">🎭 Experience & Package</div>
                 <div class="detail-row">
                     <span class="detail-label">Experience:</span>
-                    <span class="detail-value">${selectedExperience}</span>
+                    <span class="detail-value">${guestCount} people -- ${selectedExperience}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Package:</span>
@@ -240,7 +253,11 @@ Total Price: ${totalPrice}
                 ` : ''}
                 <div class="detail-row">
                     <span class="detail-label">Add-ons:</span>
-                    <span class="detail-value">${addons?.length > 0 ? addons.join(', ') : 'None'}</span>
+                    <span class="detail-value">
+                        <ul style="margin: 0; padding-left: 20px; text-align: left;">
+                            ${addonsList}
+                        </ul>
+                    </span>
                 </div>
             </div>
 
