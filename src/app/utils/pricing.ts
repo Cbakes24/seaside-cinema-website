@@ -35,7 +35,7 @@ export const experiences = [
   {
     id: "picnic",
     name: "Picnic",
-    price: 399,
+    price: 349,
     description: "An intimate elegant style picnic setup without the movie screen.",
     image: "/verticalPicnic.jpeg",
     includes: [
@@ -129,7 +129,7 @@ export const packages = [
   {
     id: "birthday",
     name: "Birthday",
-    price: 150,
+    price: 125,
     description: "Decor and flair to celebrate any age.",
     image: "/poolsBday5Large.jpeg",
     includes: [
@@ -142,7 +142,7 @@ export const packages = [
   {
     id: "romance",
     name: "Romance",
-    price: 150,
+    price: 125,
     description: "Candles, rose petals, cozy blankets, and love vibes.",
     image: "/vday3.jpeg",
     includes: [
@@ -182,7 +182,7 @@ export const packages = [
       "Popcorn",
       "Candy and Snack Tray",
       "Movie signs",
-      "Clapboard decor",
+      "Classic Theater decor",
     ],
   },
   {
