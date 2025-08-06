@@ -251,9 +251,10 @@ function BookingPageContent() {
 
   // Handle discount code validation
   const handleDiscountCode = () => {
-    if (discountCode.trim().toUpperCase() === "AUTUMN25") {
+    const code = discountCode.trim().toUpperCase();
+    if (code === "AUTUMN25" || code === "SUMMERMAMA") {
       setDiscountApplied(true);
-      alert("🎉 Discount code applied! 10% off your total!");
+      alert(`🎉 Discount code applied! 10% off your total!`);
     } else {
       setDiscountApplied(false);
       alert("❌ Invalid discount code. Please try again.");
@@ -757,7 +758,7 @@ function BookingPageContent() {
               {discountApplied && (
                 <div className="flex justify-between items-center py-2 bg-green-50 rounded-lg px-3">
                   <span className="text-green-700 text-sm font-medium">
-                    🎉 Discount Applied: {discountCode.toUpperCase()}
+                    🎉 Discount Applied: {discountCode.toUpperCase()} (10% off)
                   </span>
                   <span className="text-green-700 font-semibold">
                     -{formatPrice(discountAmount)}
