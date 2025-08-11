@@ -3,18 +3,18 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-interface FallDiscountModalProps {
+interface SummerSaleModalProps {
   onClose?: () => void;
 }
 
-const FallDiscountModal: React.FC<FallDiscountModalProps> = ({ onClose }) => {
+const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Show modal after 5 seconds
+    // Show modal after 3 seconds
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -27,8 +27,8 @@ const FallDiscountModal: React.FC<FallDiscountModalProps> = ({ onClose }) => {
   const handleBookNow = () => {
     setIsOpen(false);
     onClose?.();
-    // Navigate to booking page with fall discount parameter
-    window.location.href = '/book?discount=fall10';
+    // Navigate to booking page
+    window.location.href = '/book';
   };
 
   return (
@@ -36,12 +36,12 @@ const FallDiscountModal: React.FC<FallDiscountModalProps> = ({ onClose }) => {
       {/* Modal backdrop */}
       {isOpen && (
         <div className="modal modal-open">
-          <div className="modal-box bg-white rounded-lg shadow-xl max-w-md w-full mx-4 relative">
+          <div className="modal-box bg-white rounded-lg shadow-xl max-w-md w-5/6 mx-4 relative">
             {/* Header */}
             <div className="text-center mb-6">
-              <div className="text-6xl mb-4">🍂</div>
+              <div className="text-6xl mb-4">☀️</div>
               <h3 className="text-2xl font-bold text-teal mb-2">
-                Fall Special Offer!
+                End of Summer Sale!
               </h3>
               <div className="w-16 h-1 bg-gradient-to-r from-orange to-teal mx-auto rounded-full mb-4"></div>
             </div>
@@ -49,17 +49,20 @@ const FallDiscountModal: React.FC<FallDiscountModalProps> = ({ onClose }) => {
             {/* Content */}
             <div className="text-center mb-6">
               <p className="text-lg text-gray-700 mb-4">
-                <span className="font-bold text-orange text-2xl">10% OFF</span>
+                <span className="font-bold text-orange text-5xl">$50 OFF!!!</span>
               </p>
               <p className="text-gray-600 mb-4">
-                Any fall event booked this week
+                Any Classic or Bali setup!
               </p>
               <div className="bg-peach/50 p-4 rounded-lg mb-4">
                 <p className="text-sm text-teal font-medium">
-                  Valid for September, October & November events
+                  Classic: <span className="line-through">$299</span> → <span className="font-bold text-orange">$249</span>
                 </p>
-                <p className="text-xs text-gray-500 mt-1">
-                  Book by end of week to secure your discount
+                <p className="text-sm text-teal font-medium mt-1">
+                  Bali: <span className="line-through">$399</span> → <span className="font-bold text-orange">$349</span>
+                </p>
+                <p className="text-xs text-gray-500 mt-2">
+                  Limited time offer - book now to secure your discount!
                 </p>
               </div>
             </div>
@@ -68,15 +71,15 @@ const FallDiscountModal: React.FC<FallDiscountModalProps> = ({ onClose }) => {
             <div className="modal-action flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleBookNow}
-                className="btn bg-teal text-white hover:bg-orange transition-colors flex-1"
+                className="btn bg-teal text-white hover:bg-orange transition-colors flex-1 py-2"
               >
-                🎬 Book Now & Save!
+                🎬 Book Now & Save $50!
               </button>
               <button
                 onClick={handleClose}
-                className="btn btn-outline border-teal text-teal hover:bg-teal hover:text-white transition-colors flex-1"
+                className="py-2 btn btn-outline border-teal text-teal hover:bg-teal hover:text-white transition-colors flex-1"
               >
-                Maybe Later
+                Check Later
               </button>
             </div>
 
@@ -100,4 +103,4 @@ const FallDiscountModal: React.FC<FallDiscountModalProps> = ({ onClose }) => {
   );
 };
 
-export default FallDiscountModal; 
+export default SummerSaleModal; 

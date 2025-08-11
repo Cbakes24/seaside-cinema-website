@@ -370,7 +370,18 @@ function BookingPageContent() {
                           </div>
                           <div className="text-right">
                             <div className="text-md font-bold text-teal">
-                              {formatPrice(exp.price)}
+                              {exp.id === "classic" || exp.id === "bali" ? (
+                                <div className="flex flex-col items-end">
+                                  <span className="line-through text-gray-400 text-xs">
+                                    {formatPrice(exp.originalPrice || exp.price)}
+                                  </span>
+                                  <span className="text-orange font-bold">
+                                    {formatPrice(exp.price)}
+                                  </span>
+                                </div>
+                              ) : (
+                                formatPrice(exp.price)
+                              )}
                             </div>
                           </div>
                         </div>
@@ -468,10 +479,19 @@ function BookingPageContent() {
                     </p>
                   </div>
                   <span className="text-lg font-bold text-teal">
-                    {formatPrice(
-                      selectedExperience === "seasonal" && currentSeasonalHoliday
-                        ? Number(currentSeasonalHoliday.price)
-                        : currentExperience?.price || 0
+                    {selectedExperience === "seasonal" && currentSeasonalHoliday ? (
+                      formatPrice(Number(currentSeasonalHoliday.price))
+                    ) : currentExperience && (currentExperience.id === "classic" || currentExperience.id === "bali") ? (
+                      <div className="flex flex-col items-end">
+                        <span className="line-through text-gray-400 text-sm">
+                          {formatPrice(currentExperience.originalPrice || currentExperience.price)}
+                        </span>
+                        <span className="text-orange font-bold">
+                          {formatPrice(currentExperience.price)}
+                        </span>
+                      </div>
+                    ) : (
+                      formatPrice(currentExperience?.price || 0)
                     )}
                   </span>
                 </div>
@@ -705,11 +725,31 @@ function BookingPageContent() {
                   </div>
                 </div>
                 <span className="font-semibold text-teal">
-                  {formatPrice(
-                    (selectedExperience === "seasonal" && currentSeasonalHoliday
-                      ? Number(currentSeasonalHoliday.price)
-                      : currentExperience?.price || 0) + 
-                    (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
+                  {selectedExperience === "seasonal" && currentSeasonalHoliday ? (
+                    formatPrice(
+                      Number(currentSeasonalHoliday.price) + 
+                      (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
+                    )
+                  ) : currentExperience && (currentExperience.id === "classic" || currentExperience.id === "bali") ? (
+                    <div className="flex flex-col items-end">
+                      <span className="line-through text-gray-400 text-sm">
+                        {formatPrice(
+                          (currentExperience.originalPrice || currentExperience.price) + 
+                          (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
+                        )}
+                      </span>
+                      <span className="text-orange font-bold">
+                        {formatPrice(
+                          currentExperience.price + 
+                          (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
+                        )}
+                      </span>
+                    </div>
+                  ) : (
+                    formatPrice(
+                      (currentExperience?.price || 0) + 
+                      (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
+                    )
                   )}
                 </span>
               </div>

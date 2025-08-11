@@ -9,6 +9,7 @@ import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
 import FallDiscountModal from "./components/FallDiscountModal";
 import BirthdayCarousel from "./components/BirthdayCarousel";
+import SummerSaleModal from "./components/FallDiscountModal";
 
 
 import {
@@ -116,6 +117,9 @@ export default function Home() {
 
   return (
     <main className="w-full">
+      {/* Summer Sale Modal */}
+      <SummerSaleModal />
+      
       {/* Insterting CSS with this line of code, can apply to sections by the id of the element as #(whatever id). */}
 {/* <style jsx>{`
   #HeroSection,
@@ -298,7 +302,18 @@ export default function Home() {
                       </p>
                       <div className="flex items-center justify-between">
                         <span className="text-xl font-bold text-teal">
-                          {formatPrice(experience.price)}
+                          {experience.id === "classic" || experience.id === "bali" ? (
+                            <div className="flex flex-col items-end">
+                              <span className="line-through text-gray-400 text-sm">
+                                {formatPrice(experience.originalPrice || experience.price)}
+                              </span>
+                              <span className="text-orange font-bold">
+                                {formatPrice(experience.price)}
+                              </span>
+                            </div>
+                          ) : (
+                            formatPrice(experience.price)
+                          )}
                         </span>
                         <Link
                           href={`/book?experience=${experience.id}`}
