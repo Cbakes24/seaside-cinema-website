@@ -800,7 +800,7 @@ function BookingPageContent() {
                   <span className="text-green-700 text-sm font-medium">
                     🎉 Discount Applied: {discountCode.toUpperCase()} (10% off)
                   </span>
-                  <span className="text-green-700 font-semibold">
+                  <span className="text-green-700 font-semibold flex-shrink-0">
                     -{formatPrice(discountAmount)}
                   </span>
                 </div>
