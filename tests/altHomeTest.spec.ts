@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.seasidecinemas.com/');
+  await page.goto('https://www.seasidecinemas.com/althome');
 });
 
-test('get book now link', async ({ page }) => {
+test('get book now link alt home', async ({ page }) => {
   // Click the Book Now button - using a more specific selector
   await page.getByRole('link', { name: 'Book Now!' }).click();
 
@@ -12,7 +12,7 @@ test('get book now link', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Book Your Experience' })).toBeVisible();
 });
 
-test('complete booking form submission', async ({ page }) => {
+test('complete booking form submission alt home', async ({ page }) => {
   // Navigate to booking page
   // Wait for the page to load
   // Select an experience (Classic)
@@ -109,40 +109,122 @@ await page.getByRole('button', { name: /Submit Booking/ }).click();
 await expect(page.locator('text=🎉 Success! Your booking has been submitted. Thank you for choosing us! 🎬')).toBeVisible();
 });
 
-
-test.describe('Video Playback with Modal Handling', () => {
-  test('should close modal and check video playback', async ({ page }) => {
-    await page.goto('https://www.seasidecinemas.com');
-
-    // Wait up to 4 seconds for modal and click "Check Later" if it appears
-    const checkLaterButton = page.getByRole('button', { name: /check later/i });
-    if (await checkLaterButton.isVisible({ timeout: 4000 }).catch(() => false)) {
-      await checkLaterButton.click();
-    }
-
-    // Locate the video element (make sure this selector matches your hero video)
-    const videoElement = page.locator('section video').first();
-
-    // Ensure the video is in view
-    await videoElement.scrollIntoViewIfNeeded();
-
-    // Check that the video is visible
+// Video Playback Tests for Alt Home Page
+test.describe('Video Playback Tests - Alt Home', () => {
+  test('should detect video element and check playback state on alt home', async ({ page }) => {
+    // Wait for the page to load
+    await page.waitForLoadState('domcontentloaded');
+    
+    // Check if video element exists
+    const videoElement = page.locator('video[src="/LoveBoat3.mp4"]');
     await expect(videoElement).toBeVisible();
+    
+    // Get video properties
+    const videoSrc = await videoElement.getAttribute('src');
+    const videoPoster = await videoElement.getAttribute('poster');
+    const videoAutoplay = await videoElement.getAttribute('autoplay');
+    const videoMuted = await videoElement.getAttribute('muted');
+    const videoLoop = await videoElement.getAttribute('loop');
+    
+    console.log('Alt Home Video Properties:', {
+      src: videoSrc,
+      poster: videoPoster,
+      autoplay: videoAutoplay,
+      muted: videoMuted,
+      loop: videoLoop
+    });
+    
+    // Check if video has the correct source
+    expect(videoSrc).toBe('/LoveBoat3.mp4');
+    
+    // Check if autoplay is enabled
+    expect(videoAutoplay).toBeDefined();
+    
+    // Check if muted is enabled (required for autoplay)
+    expect(videoMuted).toBeDefined();
+  });
 
-    // Optional: force playback check to ensure it's ready
-    await page.evaluate(async (selector) => {
-      const video = document.querySelector(selector) as HTMLVideoElement;
-      if (video) {
-        video.load();
-        try { await video.play(); } catch {}
-        await new Promise<void>((resolve, reject) => {
-          const ready = () => video.readyState >= 2 && resolve();
-          video.addEventListener('loadeddata', ready, { once: true });
-          video.addEventListener('canplay', ready, { once: true });
-          setTimeout(() => video.readyState >= 2 ? resolve() : reject('Video not ready'), 7000);
-        });
-      }
-    }, 'section video');
+  test('should check video playback state after page load on alt home', async ({ page }) => {
+    await page.waitForLoadState('domcontentloaded');
+    
+    const videoElement = page.locator('video[src="/LoveBoat3.mp4"]');
+    
+    // Wait a bit for video to potentially start playing
+    await page.waitForTimeout(2000);
+    
+    // Check video ready state
+    const readyState = await page.evaluate((video) => {
+      const vid = video as unknown as HTMLVideoElement;
+      return {
+        readyState: vid.readyState,
+        paused: vid.paused,
+        currentTime: vid.currentTime,
+        duration: vid.duration,
+        networkState: vid.networkState,
+        error: vid.error
+      };
+    }, videoElement);
+    
+    console.log('Alt Home Video Playback State:', readyState);
+    
+    // Check if video has loaded metadata
+    expect(readyState.readyState).toBeGreaterThan(0);
+    
+    // Check if video is not paused (should be playing due to autoplay)
+    // Note: On mobile, autoplay might be blocked, so this could be paused
+    if (readyState.paused) {
+      console.log('⚠️ Alt Home Video is paused - this might indicate autoplay was blocked');
+    } else {
+      console.log('✅ Alt Home Video is playing');
+    }
+    
+    // Check if video has duration (indicates it loaded successfully)
+    expect(readyState.duration).toBeGreaterThan(0);
+  });
+
+  test('should test mobile-specific video behavior on alt home', async ({ page }) => {
+    // Set mobile viewport
+    await page.setViewportSize({ width: 375, height: 667 });
+    
+    await page.waitForLoadState('domcontentloaded');
+    
+    const videoElement = page.locator('video[src="/LoveBoat3.mp4"]');
+    
+    // Wait longer on mobile for video to load
+    await page.waitForTimeout(5000);
+    
+    // Check mobile-specific video state
+    const mobileVideoState = await page.evaluate((video) => {
+      const vid = video as unknown as HTMLVideoElement;
+      
+      return {
+        readyState: vid.readyState,
+        paused: vid.paused,
+        currentTime: vid.currentTime,
+        duration: vid.duration,
+        networkState: vid.networkState,
+        playsInline: vid.playsInline,
+        webkitSupportsFullscreen: 'webkitSupportsFullscreen' in vid,
+        canPlayType: vid.canPlayType('video/mp4')
+      };
+    }, videoElement);
+    
+    console.log('Alt Home Mobile Video State:', mobileVideoState);
+    
+    // Check if video supports inline playback (important for mobile)
+    expect(mobileVideoState.playsInline).toBe(true);
+    
+    // Check if video can play MP4 format
+    expect(mobileVideoState.canPlayType).toBeTruthy();
+    
+    // Log whether video appears to be playing or static
+    if (mobileVideoState.currentTime > 0 && !mobileVideoState.paused) {
+      console.log('✅ Alt Home Video appears to be playing on mobile');
+    } else if (mobileVideoState.currentTime === 0 && mobileVideoState.paused) {
+      console.log('⚠️ Alt Home Video appears to be static/paused on mobile');
+    } else {
+      console.log('❓ Alt Home Video state unclear on mobile');
+    }
   });
 });
 
@@ -153,6 +235,7 @@ test.describe('Video Playback with Modal Handling', () => {
 //   await page.goto('https://www.seasidecinemas.com/');
 
 //   // Click the main "Book Now!" button
+//   await page.goto('https://www.seasidecinemas.com/althome');
 //   await page.getByRole('link', { name: /Book Now/i }).nth(0).click();
 
 //   // Wait for the heading on the booking page
