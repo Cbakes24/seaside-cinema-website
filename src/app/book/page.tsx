@@ -541,17 +541,7 @@ function BookingPageContent() {
                 {/* Custom Package Dropdown List */}
                 {isPackageDropdownOpen && (
                   <div className="absolute z-50 w-full mt-2 bg-white border-2 border-teal/20 rounded-xl shadow-lg overflow-hidden">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSelectedPackage("");
-                        setIsPackageDropdownOpen(false);
-                      }}
-                      className="w-full p-3 text-left hover:bg-teal/5 transition-colors duration-150 border-b border-gray-100 text-gray-600"
-                    >
-                      <div className="font-semibold text-md">No Package</div>
-                      <div className="text-sm text-gray-500 mt-1">Just the experience</div>
-                    </button>
+
                     {packages.map((pkg) => (
                       <button
                         key={pkg.id}

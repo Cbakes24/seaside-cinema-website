@@ -300,7 +300,7 @@ export default function BookingPage() {
                       }}
                       className="w-full p-3 text-left hover:bg-teal/5 transition-colors duration-150 border-b border-gray-100 text-gray-600"
                     >
-                      <div className="font-semibold text-md">No Package</div>
+                      <div className="font-semibold text-md">No PackageEEEEE</div>
                       <div className="text-sm text-gray-500 mt-1">Just the experience</div>
                     </button>
                     {packages.map((pkg) => (
