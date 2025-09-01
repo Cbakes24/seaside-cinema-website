@@ -248,6 +248,19 @@ export const addons = [
     price: 200,
   },
   {
+    id: "fire-pit",
+    name: "Table Top Fire Pit",
+    description: "Cozy up with a warm table top fire pit.",
+    price: 50,
+  },
+  {
+    id: "fire-pit-marshmallow",
+    name: "Add on Smores kit for fire pit!",
+    description: "Cozy up with a warm table top fire pit.",
+    price: 20,
+  },
+  
+  {
     id: "photographer",
     name: "Photographer",
     description: "Price varies based on photographer's current rates.",
