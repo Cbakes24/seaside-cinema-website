@@ -259,6 +259,12 @@ export const addons = [
     description: "Cozy up with a warm table top fire pit.",
     price: 20,
   },
+  {
+    id: "custom-signage",
+    name: "Custom Signage",
+    description: "Custom signage for your event.",
+    price: 50,
+  },
 
   {
     id: "photographer",
@@ -266,6 +272,7 @@ export const addons = [
     description: "Price varies based on photographer's current rates.",
     price: 0, // Set to 0 since it's handled separately
   },
+
 ];
 
 // Utility Functions
