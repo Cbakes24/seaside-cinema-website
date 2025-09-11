@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.seasidecinemas.com/althome');
+  await page.goto('https://www.seasidecinemas.com');
 });
 
-test('get book now link alt home', async ({ page }) => {
+test('get book now link home', async ({ page }) => {
   // Click the Book Now button - using a more specific selector
   await page.getByRole('link', { name: 'Book Now!' }).click();
 
@@ -12,7 +12,7 @@ test('get book now link alt home', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Book Your Experience' })).toBeVisible();
 });
 
-test('complete booking form submission alt home', async ({ page }) => {
+test('complete booking form submission home', async ({ page }) => {
   // Navigate to booking page
   // Wait for the page to load
   // Select an experience (Classic)
@@ -262,3 +262,4 @@ test.describe('Video Playback Tests - Alt Home', () => {
 //   // Expect success toast to appear
 //   await expect(page.locator('text=🎉 Success! Your booking has been submitted')).toBeVisible();
 // });
+

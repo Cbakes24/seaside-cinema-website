@@ -97,7 +97,7 @@ export default page
 //       `}</style> */}
 //       {/* Fall Discount Modal */}
 //       {/* <FallDiscountModal /> */}
-
+      
 //       {/* Hero Section with Parallax */}
 //       <HeroSection />
       
