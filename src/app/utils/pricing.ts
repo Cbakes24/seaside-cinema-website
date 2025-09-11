@@ -259,7 +259,7 @@ export const addons = [
     description: "Cozy up with a warm table top fire pit.",
     price: 20,
   },
-  id: ""
+
   {
     id: "photographer",
     name: "Photographer",
