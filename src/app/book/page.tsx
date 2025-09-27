@@ -14,6 +14,7 @@ import {
   getExperienceById,
   seasonalOptions,
 } from "../utils/pricing";
+import { validateDiscountCode, calculateDiscountAmount, type DiscountCode } from "../utils/discounts";
 
 function BookingPageContent() {
   const router = useRouter();
@@ -33,7 +34,8 @@ function BookingPageContent() {
   const [time, setTime] = useState("");
   const [guestCount, setGuestCount] = useState("");
   const [discountCode, setDiscountCode] = useState("");
-  const [discountApplied, setDiscountApplied] = useState(false);
+  const [hasDiscount, setHasDiscount] = useState(false);
+  const [specDiscount, setSpecDiscount] = useState<DiscountCode | null>(null);
   const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
   const [eventImages, setEventImages] = useState([
     "/vday3.jpeg",
@@ -83,7 +85,7 @@ function BookingPageContent() {
   ) + (Number(currentSeasonalHoliday?.price) || 0);
 
   // Apply discount if code is valid
-  const discountAmount = discountApplied ? basePrice * 0.1 : 0;
+  const discountAmount = hasDiscount && specDiscount ? calculateDiscountAmount(basePrice, specDiscount) : 0;
   const totalPrice = basePrice - discountAmount;
 
   // Update main image when experience or seasonal holiday changes
@@ -196,7 +198,7 @@ function BookingPageContent() {
       selectedSeasonalHoliday,
       addons: selectedAddons,
       basePrice,
-      discountCode: discountApplied ? discountCode : "",
+      discountCode: hasDiscount ? discountCode : "",
       discountAmount,
       totalPrice,
     };
@@ -251,12 +253,14 @@ function BookingPageContent() {
 
   // Handle discount code validation
   const handleDiscountCode = () => {
-    const code = discountCode.trim().toUpperCase();
-    if (code === "AUTUMN25" || code === "SUMMERMAMA") {
-      setDiscountApplied(true);
-      alert(`🎉 Discount code applied! 10% off your total!`);
+    const discount = validateDiscountCode(discountCode);
+    if (discount) {
+      setHasDiscount(true);
+      setSpecDiscount(discount);
+      alert(`🎉 Discount code applied! ${discount.percentage}% off your total!`);
     } else {
-      setDiscountApplied(false);
+      setHasDiscount(false);
+      setSpecDiscount(null);
       alert("❌ Invalid discount code. Please try again.");
     }
   };
@@ -785,10 +789,10 @@ function BookingPageContent() {
                   Apply
                 </button>
               </div>
-              {discountApplied && (
+              {hasDiscount && specDiscount && (
                 <div className="flex justify-between items-center py-2 bg-green-50 rounded-lg px-3">
                   <span className="text-green-700 text-sm font-medium">
-                    🎉 Discount Applied: {discountCode.toUpperCase()} (10% off)
+                    🎉 Discount Applied: {specDiscount.code} ({specDiscount.percentage}% off)
                   </span>
                   <span className="text-green-700 font-semibold flex-shrink-0">
                     -{formatPrice(discountAmount)}
