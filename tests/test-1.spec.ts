@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test('test CODE GEN test rceated', async ({ page }) => {
+  // await page.goto('https://www.seasidecinemas.com/book');
+  // await page.waitForLoadState('domcontentloaded');
   await page.getByRole('button', { name: 'Check Later' }).click();
   await page.locator('div').filter({ hasText: 'Seasonal ExperiencesCelebrate' }).getByRole('link').first().click();
   await page.getByRole('button', { name: 'No Package Selected' }).click();
