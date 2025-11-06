@@ -262,4 +262,3 @@ test.describe('Video Playback Tests - Alt Home', () => {
 //   // Expect success toast to appear
 //   await expect(page.locator('text=🎉 Success! Your booking has been submitted')).toBeVisible();
 // });
-

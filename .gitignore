@@ -49,3 +49,7 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# OAuth credentials and tokens
+oauth2-credentials.json
+oauth2-tokens.json
