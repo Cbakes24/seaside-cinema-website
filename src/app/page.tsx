@@ -518,7 +518,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-teal">
-                    {formatPrice(getSeasonalById("halloween")?.price || 349)}
+                    {formatPrice((getSeasonalById("halloween")?.price ?? 349) as number)}
                   </span>
                   <Link
                     href="/book?experience=halloween"
@@ -558,7 +558,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-teal">
-                    {formatPrice(getSeasonalById("valentines")?.price || 599)}
+                    {formatPrice((getSeasonalById("valentines")?.price ?? 599) as number)}
                   </span>
                   <Link
                     href="/book?experience=valentines"
@@ -597,7 +597,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-teal">
-                    {formatPrice(getSeasonalById("christmas")?.price || 449)}
+                    {formatPrice((getSeasonalById("christmas")?.price ?? 449) as number)}
                   </span>
                   <Link
                     href="/book?experience=christmas"
