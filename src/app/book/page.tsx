@@ -2,7 +2,6 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import FallPromoModal2 from "../components/FallDiscountModal2";
 import {
   packages,
   addons,
@@ -37,14 +36,6 @@ function BookingPageContent() {
   const [hasDiscount, setHasDiscount] = useState(false);
   const [specDiscount, setSpecDiscount] = useState<DiscountCode | null>(null);
   const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
-  const [eventImages, setEventImages] = useState([
-    "/vday3.jpeg",
-    "/largeBali1.jpg",
-    "/fall_night_back.jpeg",
-    "/poolsBday5Large.jpeg",
-    "/verticalSunset.jpeg",
-  ]);
-  const rotations = [-30, -15, 0, 15, 30];
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isPackageDropdownOpen, setIsPackageDropdownOpen] = useState(false);
   const [isSeasonalDropdownOpen, setIsSeasonalDropdownOpen] = useState(false);
