@@ -67,13 +67,13 @@ function BookingPageContent() {
   const currentExperience = getExperienceById(selectedExperience);
   const currentSeasonalHoliday = seasonalOptions.find(h => h.id === selectedSeasonalHoliday);
   
-  // Calculate total price including seasonal holiday
+  // Calculate total price - seasonal experience is $449, holiday themes don't add cost
   const basePrice = calculateTotal(
     selectedExperience,
     selectedPackage,
     selectedAddons,
     parseInt(guestCount) || 2
-  ) + (Number(currentSeasonalHoliday?.price) || 0);
+  );
 
   // Apply discount if code is valid
   const discountAmount = hasDiscount && specDiscount ? calculateDiscountAmount(basePrice, specDiscount) : 0;
@@ -445,7 +445,7 @@ function BookingPageContent() {
                             </div>
                             <div className="text-right">
                               <div className="text-md font-bold text-teal">
-                                {formatPrice(Number(holiday.price))}
+                                {formatPrice(currentExperience?.price || 449)}
                               </div>
                             </div>
                           </div>
@@ -475,7 +475,7 @@ function BookingPageContent() {
                   </div>
                   <span className="text-lg font-bold text-teal">
                     {selectedExperience === "seasonal" && currentSeasonalHoliday ? (
-                      formatPrice(Number(currentSeasonalHoliday.price))
+                      formatPrice(currentExperience?.price || 449)
                     ) : currentExperience && (currentExperience.id === "classic" || currentExperience.id === "bali") ? (
                       <div className="flex flex-col items-end">
                         <span className="line-through text-gray-400 text-sm">
@@ -712,7 +712,7 @@ function BookingPageContent() {
                 <span className="font-semibold text-teal">
                   {selectedExperience === "seasonal" && currentSeasonalHoliday ? (
                     formatPrice(
-                      Number(currentSeasonalHoliday.price) + 
+                      (currentExperience?.price || 449) + 
                       (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
                     )
                   ) : currentExperience && (currentExperience.id === "classic" || currentExperience.id === "bali") ? (
