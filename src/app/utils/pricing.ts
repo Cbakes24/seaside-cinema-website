@@ -76,7 +76,7 @@ export const seasonalOptions = [
 {
   id: "halloween",
   name: "Pumpkin Spice and Everything Nice",
-  price: "",
+  price: 449,
   description:
     "Embrace the cozy vibes of autumn with our Fall Movie Night at the bay. The perfect way to enjoy the season with a movie under the stars.",
   image: "/fall_night_back.jpeg",
