@@ -257,7 +257,7 @@ export const addons = [
     id: "fire-pit-marshmallow",
     name: "Add on Smores kit for fire pit!",
     description: "Cozy up with a warm table top fire pit.",
-    price: 20,
+    price: 50,
   },
   {
     id: "custom-signage",
