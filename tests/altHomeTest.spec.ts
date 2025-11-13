@@ -115,16 +115,22 @@ test.describe('Video Playback Tests - Alt Home', () => {
     // Wait for the page to load
     await page.waitForLoadState('domcontentloaded');
     
-    // Check if video element exists
-    const videoElement = page.locator('video[src="/LoveBoat3.mp4"]');
+    // Find video element that contains source with LoveBoat3.mp4
+    // Use evaluate to find the video element that has the source
+    const videoElement = page.locator('video').filter({
+      has: page.locator('source[src="/LoveBoat3.mp4"]')
+    });
     await expect(videoElement).toBeVisible();
     
     // Get video properties
-    const videoSrc = await videoElement.getAttribute('src');
     const videoPoster = await videoElement.getAttribute('poster');
     const videoAutoplay = await videoElement.getAttribute('autoplay');
     const videoMuted = await videoElement.getAttribute('muted');
     const videoLoop = await videoElement.getAttribute('loop');
+    
+    // Get the source src from the nested source element
+    const sourceElement = videoElement.locator('source[src="/LoveBoat3.mp4"]');
+    const videoSrc = await sourceElement.getAttribute('src');
     
     console.log('Alt Home Video Properties:', {
       src: videoSrc,
@@ -144,26 +150,31 @@ test.describe('Video Playback Tests - Alt Home', () => {
     expect(videoMuted).toBeDefined();
   });
 
-  test('should check video playback state after page load on alt home', async ({ page }) => {
+  test('should check video playback state after page load', async ({ page }) => {
     await page.waitForLoadState('domcontentloaded');
     
-    const videoElement = page.locator('video[src="/LoveBoat3.mp4"]');
+    // Find video element that contains source with LoveBoat3.mp4
+    const videoElement = page.locator('video').filter({
+      has: page.locator('source[src="/LoveBoat3.mp4"]')
+    });
+    await expect(videoElement).toBeVisible();
     
     // Wait a bit for video to potentially start playing
     await page.waitForTimeout(2000);
     
-    // Check video ready state
+    // Check video ready state - use elementHandle() to get a serializable handle
+    const videoHandle = await videoElement.elementHandle();
     const readyState = await page.evaluate((video) => {
-      const vid = video as unknown as HTMLVideoElement;
+      const vid = video as HTMLVideoElement;
       return {
         readyState: vid.readyState,
         paused: vid.paused,
         currentTime: vid.currentTime,
         duration: vid.duration,
         networkState: vid.networkState,
-        error: vid.error
+        error: vid.error ? vid.error.message : null
       };
-    }, videoElement);
+    }, videoHandle);
     
     console.log('Alt Home Video Playback State:', readyState);
     
@@ -188,14 +199,19 @@ test.describe('Video Playback Tests - Alt Home', () => {
     
     await page.waitForLoadState('domcontentloaded');
     
-    const videoElement = page.locator('video[src="/LoveBoat3.mp4"]');
+    // Find video element that contains source with LoveBoat3.mp4
+    const videoElement = page.locator('video').filter({
+      has: page.locator('source[src="/LoveBoat3.mp4"]')
+    });
+    await expect(videoElement).toBeVisible();
     
     // Wait longer on mobile for video to load
     await page.waitForTimeout(5000);
     
-    // Check mobile-specific video state
+    // Check mobile-specific video state - use elementHandle() to get a serializable handle
+    const videoHandle = await videoElement.elementHandle();
     const mobileVideoState = await page.evaluate((video) => {
-      const vid = video as unknown as HTMLVideoElement;
+      const vid = video as HTMLVideoElement;
       
       return {
         readyState: vid.readyState,
@@ -207,7 +223,7 @@ test.describe('Video Playback Tests - Alt Home', () => {
         webkitSupportsFullscreen: 'webkitSupportsFullscreen' in vid,
         canPlayType: vid.canPlayType('video/mp4')
       };
-    }, videoElement);
+    }, videoHandle);
     
     console.log('Alt Home Mobile Video State:', mobileVideoState);
     
