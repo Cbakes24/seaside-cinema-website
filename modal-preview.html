@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fall Discount Modal Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --peach: #faaa86;
+            --teal: #4f878b;
+            --orange: #ee9550;
+        }
+        .bg-peach\/50 {
+            background-color: rgba(250, 170, 134, 0.5);
+        }
+        .text-teal {
+            color: #4f878b;
+        }
+        .text-orange {
+            color: #ee9550;
+        }
+        .bg-orange {
+            background-color: #ee9550;
+        }
+        .bg-teal {
+            background-color: #4f878b;
+        }
+        .from-orange {
+            --tw-gradient-from: #ee9550;
+        }
+        .to-teal {
+            --tw-gradient-to: #4f878b;
+        }
+        .border-teal {
+            border-color: #4f878b;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="modal modal-open">
+            <div class="modal-box bg-white rounded-lg shadow-xl max-w-md w-5/6 mx-4 relative">
+                <!-- Header -->
+                <div class="text-center mb-6">
+                    <div class="text-6xl mb-4">☀️</div>
+                    <h3 class="text-2xl font-bold text-teal mb-2">
+                        End of Summer Sale!
+                    </h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-orange to-teal mx-auto rounded-full mb-4"></div>
+                </div>
+
+                <!-- Content -->
+                <div class="text-center mb-6">
+                    <p class="text-lg text-gray-700 mb-4">
+                        <span class="font-bold text-orange text-5xl">$50 OFF!!!</span>
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        Any Classic or Bali setup!
+                    </p>
+                    <div class="bg-peach/50 p-4 rounded-lg mb-4">
+                        <p class="text-sm text-teal font-medium">
+                            Classic: <span class="line-through">$299</span> → <span class="font-bold text-orange">$249</span>
+                        </p>
+                        <p class="text-sm text-teal font-medium mt-1">
+                            Bali: <span class="line-through">$399</span> → <span class="font-bold text-orange">$349</span>
+                        </p>
+                        <p class="text-xs text-gray-500 mt-2">
+                            Limited time offer - book now to secure your discount!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="modal-action flex flex-col sm:flex-row gap-3">
+                    <button class="btn bg-teal text-white hover:bg-orange transition-colors flex-1 py-2">
+                        🎬 Book Now & Save $50!
+                    </button>
+                    <button class="py-2 btn btn-outline border-teal text-teal hover:bg-teal hover:text-white transition-colors flex-1">
+                        Check Later
+                    </button>
+                </div>
+
+                <!-- Close button -->
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" aria-label="Close modal">
+                    ✕
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

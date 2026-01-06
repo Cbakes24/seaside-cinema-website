@@ -1,0 +1,108 @@
+"use client";
+
+import React, { useState, useEffect } from 'react';
+
+interface ValentinesDayModalProps {
+  onClose?: () => void;
+}
+
+const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    // Show modal after 3 seconds
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // close the modal
+  const handleClose = () => {
+    setIsOpen(false);
+    onClose?.();
+  };
+
+  // navigate to booking page
+  const handleBookNow = () => {
+    setIsOpen(false);
+    onClose?.();
+    window.location.href = '/book';
+  };
+
+  return (
+    <>
+      {/* Modal backdrop */}
+      {isOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box bg-white rounded-lg shadow-2xl max-w-md w-5/6 mx-4 relative border-2 border-pink-200">
+            {/* Header */}
+            <div className="text-center mb-6">
+              <div className="text-6xl mb-4">💕</div>
+              <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-pink-600 via-purple-600 to-red-500 bg-clip-text text-transparent">
+                Valentine&apos;s Day Special
+              </h3>
+              <div className="w-16 h-1 bg-gradient-to-r from-pink-400 via-purple-400 to-red-400 mx-auto rounded-full mb-4"></div>
+            </div>
+
+            {/* Content */}
+            <div className="text-center mb-6">
+              <p className="text-lg text-gray-700 mb-4">
+                <span className="font-bold bg-gradient-to-r from-pink-600 to-red-500 bg-clip-text text-transparent text-5xl">
+                  10% OFF
+                </span>
+              </p>
+              <p className="text-gray-600 mb-4">
+                Any Classic or Bali setup!
+              </p>
+              <div className="bg-gradient-to-br from-pink-50 via-purple-50 to-red-50 p-4 rounded-lg mb-4 border border-pink-200">
+                <p className="text-sm font-medium mb-1">
+                  <span className="text-purple-700">Classic:</span> <span className="line-through text-gray-400">$299</span> → <span className="font-bold text-pink-600">$269</span>
+                </p>
+                <p className="text-sm font-medium mt-1">
+                  <span className="text-purple-700">Bali:</span> <span className="line-through text-gray-400">$399</span> → <span className="font-bold text-pink-600">$359</span>
+                </p>
+                <p className="text-xs text-gray-500 mt-2 italic">
+                  Limited time offer - book now to secure your discount!
+                </p>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="modal-action flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={handleBookNow}
+                className="btn text-white hover:opacity-90 transition-all flex-1 py-2 shadow-lg bg-gradient-to-r from-pink-500 via-purple-500 to-red-500 hover:from-pink-600 hover:via-purple-600 hover:to-red-600"
+              >
+                💝 Book Now & Save 10%!
+              </button>
+              <button
+                onClick={handleClose}
+                className="py-2 btn btn-outline border-2 border-pink-300 text-pink-600 hover:bg-pink-50 hover:border-pink-400 transition-colors flex-1"
+              >
+                Check Later
+              </button>
+            </div>
+
+            {/* Close button */}
+            <button
+              onClick={handleClose}
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-gray-400 hover:text-pink-500"
+              aria-label="Close modal"
+            >
+              ✕
+            </button>
+          </div>
+          
+          {/* Modal backdrop for clicking outside to close */}
+          <form method="dialog" className="modal-backdrop" onClick={handleClose}>
+            <button>close</button>
+          </form>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default ValentinesDayModal;
