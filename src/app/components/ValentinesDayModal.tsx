@@ -36,7 +36,7 @@ const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
       {/* Modal backdrop */}
       {isOpen && (
         <div className="modal modal-open">
-          <div className="modal-box bg-white rounded-lg shadow-2xl max-w-md w-5/6 mx-4 relative border-2 border-pink-200">
+          <div className="modal-box bg-white rounded-lg shadow-2xl max-w-lg w-5/6 mx-4 relative border-2 border-pink-200">
             {/* Header */}
             <div className="text-center mb-6">
               <div className="text-6xl mb-4">💕</div>
@@ -73,13 +73,13 @@ const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
             <div className="modal-action flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleBookNow}
-                className="btn text-white hover:opacity-90 transition-all flex-1 py-2 shadow-lg bg-gradient-to-r from-pink-500 via-purple-500 to-red-500 hover:from-pink-600 hover:via-purple-600 hover:to-red-600"
+                className="btn text-white h-15 w-50 rounded-md hover:opacity-90 transition-all flex-1 py-2 shadow-lg bg-gradient-to-r from-pink-500 via-purple-500 to-red-500 hover:from-pink-600 hover:via-purple-600 hover:to-red-600"
               >
                 💝 Book Now & Save 10%!
               </button>
               <button
                 onClick={handleClose}
-                className="py-2 btn btn-outline border-2 border-pink-300 text-pink-600 hover:bg-pink-50 hover:border-pink-400 transition-colors flex-1"
+                className="py-2 btn h-15 w-15 rounded-md btn-outline border-2 border-pink-300 text-pink-600 hover:bg-pink-50 hover:border-pink-400 transition-colors flex-1"
               >
                 Check Later
               </button>

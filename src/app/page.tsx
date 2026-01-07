@@ -10,7 +10,7 @@ import InstagramSection from "./components/InstagramSection";
 import FallDiscountModal from "./components/FallDiscountModal";
 import BirthdayCarousel from "./components/BirthdayCarousel";
 import SummerSaleModal from "./components/FallDiscountModal";
-
+import ValentinesDayModal from "./components/ValentinesDayModal";
 
 import {
   packages,
@@ -118,6 +118,7 @@ export default function Home() {
   return (
     <main className="w-full">
       {/* Summer Sale Modal */}
+      <ValentinesDayModal />
       {/* <SummerSaleModal /> */}
       
       {/* Insterting CSS with this line of code, can apply to sections by the id of the element as #(whatever id). */}
