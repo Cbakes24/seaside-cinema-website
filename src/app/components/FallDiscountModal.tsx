@@ -18,16 +18,16 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose }) => {
 
     return () => clearTimeout(timer);
   }, []);
-
+// close the modal
   const handleClose = () => {
     setIsOpen(false);
     onClose?.();
   };
 
+// navigate to booking page
   const handleBookNow = () => {
     setIsOpen(false);
     onClose?.();
-    // Navigate to booking page
     window.location.href = '/book';
   };
 
@@ -41,7 +41,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose }) => {
             <div className="text-center mb-6">
               <div className="text-6xl mb-4">☀️</div>
               <h3 className="text-2xl font-bold text-teal mb-2">
-                End of Summer Sale!
+                Valentine's Day Sale!
               </h3>
               <div className="w-16 h-1 bg-gradient-to-r from-orange to-teal mx-auto rounded-full mb-4"></div>
             </div>
