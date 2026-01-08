@@ -75,8 +75,13 @@ function BookingPageContent() {
     parseInt(guestCount) || 2
   );
 
-  // Apply discount if code is valid
-  const discountAmount = hasDiscount && specDiscount ? calculateDiscountAmount(basePrice, specDiscount) : 0;
+  // Apply automatic 10% discount for Valentine's Day (Love Under the Stars)
+  const valentinesDiscount = selectedSeasonalHoliday === "valentines" ? basePrice * 0.1 : 0;
+  
+  // Apply discount code if valid
+  const codeDiscountAmount = hasDiscount && specDiscount ? calculateDiscountAmount(basePrice, specDiscount) : 0;
+  
+  const discountAmount = valentinesDiscount + codeDiscountAmount;
   const totalPrice = basePrice - discountAmount;
 
   // Update main image when experience or seasonal holiday changes
@@ -190,6 +195,8 @@ function BookingPageContent() {
       addons: selectedAddons,
       basePrice,
       discountCode: hasDiscount ? discountCode : "",
+      valentinesDiscount: valentinesDiscount,
+      codeDiscountAmount: codeDiscountAmount,
       discountAmount,
       totalPrice,
     };
@@ -780,13 +787,23 @@ function BookingPageContent() {
                   Apply
                 </button>
               </div>
-              {hasDiscount && specDiscount && (
-                <div className="flex justify-between items-center py-2 bg-green-50 rounded-lg px-3">
+              {valentinesDiscount > 0 && (
+                <div className="flex justify-between items-center py-2 bg-pink-50 rounded-lg px-3 mb-2">
+                  <span className="text-pink-700 text-sm font-medium">
+                    💕 Valentine&apos;s Day Special: 10% off
+                  </span>
+                  <span className="text-pink-700 font-semibold flex-shrink-0">
+                    -{formatPrice(valentinesDiscount)}
+                  </span>
+                </div>
+              )}
+              {hasDiscount && specDiscount && codeDiscountAmount > 0 && (
+                <div className={`flex justify-between items-center py-2 bg-green-50 rounded-lg px-3 ${valentinesDiscount > 0 ? 'mb-2' : ''}`}>
                   <span className="text-green-700 text-sm font-medium">
                     🎉 Discount Applied: {specDiscount.code} ({specDiscount.percentage}% off)
                   </span>
                   <span className="text-green-700 font-semibold flex-shrink-0">
-                    -{formatPrice(discountAmount)}
+                    -{formatPrice(codeDiscountAmount)}
                   </span>
                 </div>
               )}

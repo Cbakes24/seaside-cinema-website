@@ -54,20 +54,7 @@ const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
                   10% OFF Vday Packages!
                 </span>
               </p>
-              <p className="text-gray-600 mb-4">
-                Any Classic or Bali setup!
-              </p>
-              <div className="bg-gradient-to-br from-pink-50 via-purple-50 to-red-50 p-4 rounded-lg mb-4 border border-pink-200">
-                <p className="text-sm font-medium mb-1">
-                  <span className="text-purple-700">Classic:</span> <span className="line-through text-gray-400">$299</span> → <span className="font-bold text-pink-600">$269</span>
-                </p>
-                <p className="text-sm font-medium mt-1">
-                  <span className="text-purple-700">Bali:</span> <span className="line-through text-gray-400">$399</span> → <span className="font-bold text-pink-600">$359</span>
-                </p>
-                <p className="text-xs text-gray-500 mt-2 italic">
-                  Limited time offer - book now to secure your discount!
-                </p>
-              </div>
+            
             </div>
 
             {/* Actions */}
