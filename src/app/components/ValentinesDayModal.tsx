@@ -25,11 +25,11 @@ const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
     onClose?.();
   };
 
-  // navigate to booking page
+  // navigate to booking page with valentines seasonal option pre-selected
   const handleBookNow = () => {
     setIsOpen(false);
     onClose?.();
-    window.location.href = '/book';
+    window.location.href = '/book?experience=valentines';
   };
 
   return (
