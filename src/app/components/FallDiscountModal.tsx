@@ -41,7 +41,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose }) => {
             <div className="text-center mb-6">
               <div className="text-6xl mb-4">☀️</div>
               <h3 className="text-2xl font-bold text-teal mb-2">
-                Valentine's Day Sale!
+                Valentines Day Sale!
               </h3>
               <div className="w-16 h-1 bg-gradient-to-r from-orange to-teal mx-auto rounded-full mb-4"></div>
             </div>
