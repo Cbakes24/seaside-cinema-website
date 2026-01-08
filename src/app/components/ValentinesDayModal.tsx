@@ -8,6 +8,7 @@ interface ValentinesDayModalProps {
 
 const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const title = "Valentine's Day Special";
 
   useEffect(() => {
     // Show modal after 3 seconds
@@ -41,7 +42,7 @@ const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
             <div className="text-center mb-6">
               <div className="text-6xl mb-4">💕</div>
               <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-pink-600 via-purple-600 to-red-500 bg-clip-text text-transparent">
-                Valentine's Day Special
+                {title}
               </h3>
               <div className="w-16 h-1 bg-gradient-to-r from-pink-400 via-purple-400 to-red-400 mx-auto rounded-full mb-4"></div>
             </div>
