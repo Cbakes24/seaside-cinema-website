@@ -51,7 +51,7 @@ const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
             <div className="text-center mb-6">
               <p className="text-lg text-gray-700 mb-4">
                 <span className="font-bold bg-gradient-to-r from-pink-600 to-red-500 bg-clip-text text-transparent text-5xl">
-                  10% OFF
+                  10% OFF Vday Packages!
                 </span>
               </p>
               <p className="text-gray-600 mb-4">
@@ -76,7 +76,7 @@ const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
                 onClick={handleBookNow}
                 className="btn text-white h-15 w-50 rounded-md hover:opacity-90 transition-all flex-1 py-2 shadow-lg bg-gradient-to-r from-pink-500 via-purple-500 to-red-500 hover:from-pink-600 hover:via-purple-600 hover:to-red-600"
               >
-                💝 Book Now & Save 10%!
+                💝 Book Now & Save 10% 
               </button>
               <button
                 onClick={handleClose}
