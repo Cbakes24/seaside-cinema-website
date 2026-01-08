@@ -372,7 +372,7 @@ function BookingPageContent() {
                           </div>
                           <div className="text-right">
                             <div className="text-md font-bold text-teal">
-                              {exp.id === "classic" || exp.id === "bali" ? (
+                              {exp.id === "classic" || exp.id === "bali" || exp.id === "seasonal"  ? (
                                 <div className="flex flex-col items-end">
                                   <span className="line-through text-gray-400 text-xs">
                                     {formatPrice(exp.originalPrice || exp.price)}
@@ -483,7 +483,7 @@ function BookingPageContent() {
                   <span className="text-lg font-bold text-teal">
                     {selectedExperience === "seasonal" && currentSeasonalHoliday ? (
                       formatPrice(currentExperience?.price || 449)
-                    ) : currentExperience && (currentExperience.id === "classic" || currentExperience.id === "bali") ? (
+                    ) : currentExperience && (currentExperience.id === "classic" || currentExperience.id === "bali" || currentExperience.id === "valentines") ? (
                       <div className="flex flex-col items-end">
                         <span className="line-through text-gray-400 text-sm">
                           {formatPrice(currentExperience.originalPrice || currentExperience.price)}

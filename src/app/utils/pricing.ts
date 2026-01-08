@@ -54,7 +54,8 @@ export const experiences = [
   {
     id: "seasonal",
     name: "Seasonal",
-    price: 449,
+    price: 499,
+    originalPrice: 599,
     description: "Fall, Holiday, or Spring themes for a magical movie night.",
     image: "/fall_night_back.jpeg",
     includes: [
@@ -93,14 +94,16 @@ export const seasonalOptions = [
 {
   id: "valentines",
   name: "Love Under the Stars",
-  price: 599,
+  price: 499,
+  originalPrice: 599,
   description:
     "Celebrate love with a magical Seaside Cinema experience! ✨ Cozy blankets, glowing lanterns, 🍫 chocolate, and a picture-perfect movie night.",
   image: "/vday3.jpeg",
   includes: [
-    "Candles and roses",
+    "A Dozen Roses 🌹",
     "Romantic lighting",
     "Chocolates",
+    "Sparkling Cider",
     "2 hour booking",
     "100 inch Projector setup with speaker",
     "Cozy blankets",
@@ -152,7 +155,7 @@ export const packages = [
       "Candles",
       "Mood lighting",
       "Blankets",
-      "Sparkling Coder",
+      "Sparkling Cider",
       "Tiki Torches x2",
       "Upgraded lighting",
     ],
