@@ -289,7 +289,8 @@ function BookingPageContent() {
                   alt="Package Preview"
                   fill
                   className={`object-cover ${selectedExperience === "seasonal" && currentSeasonalHoliday?.id === "valentines" ? "border-10 border-red-500 rounded-lg" : 
-                    currentSeasonalHoliday?.id === "halloween" ? "border-10 border-orange-500 rounded-lg" : ""}`}
+                    currentSeasonalHoliday?.id === "halloween" ? "border-10 border-orange-500 rounded-lg" :
+                    currentSeasonalHoliday?.id === "christmas" ? "border-10 border-green-500 rounded-lg" : ""}`}
                   />
                   {selectedExperience === "seasonal" && currentSeasonalHoliday?.id === "valentines" && (
                     <div className="absolute top-0 left-0 w-full h-full bg-red-500/25"></div>
