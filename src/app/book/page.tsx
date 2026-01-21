@@ -14,6 +14,7 @@ import {
   seasonalOptions,
 } from "../utils/pricing";
 import { validateDiscountCode, calculateDiscountAmount, type DiscountCode } from "../utils/discounts";
+import SeasonalSelectionModal from "../components/SeasonalSelectionModal";
 
 function BookingPageContent() {
   const router = useRouter();
@@ -38,7 +39,7 @@ function BookingPageContent() {
   const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isPackageDropdownOpen, setIsPackageDropdownOpen] = useState(false);
-  const [isSeasonalDropdownOpen, setIsSeasonalDropdownOpen] = useState(false);
+  const [isSeasonalModalOpen, setIsSeasonalModalOpen] = useState(false);
 
   // Handle URL parameters for auto-selection
   useEffect(() => {
@@ -103,19 +104,16 @@ function BookingPageContent() {
       if (!target.closest(".package-dropdown-container")) {
         setIsPackageDropdownOpen(false);
       }
-      if (!target.closest(".seasonal-dropdown-container")) {
-        setIsSeasonalDropdownOpen(false);
-      }
     };
 
-    if (isDropdownOpen || isPackageDropdownOpen || isSeasonalDropdownOpen) {
+    if (isDropdownOpen || isPackageDropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isDropdownOpen, isPackageDropdownOpen, isSeasonalDropdownOpen]);
+  }, [isDropdownOpen, isPackageDropdownOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -283,15 +281,26 @@ function BookingPageContent() {
         </h1>
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Experience Selection */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-white p-6 rounded-lg shadow-md w-full">
             {mainImage && (
-              <div className="relative w-full h-64 mb-6 rounded-lg overflow-hidden">
+              <div className="relative w-full h-80 mb-6 rounded-lg overflow-hidden">
                 <Image
                   src={mainImage}
                   alt="Package Preview"
                   fill
-                  className="object-cover"
-                />
+                  className={`object-cover ${selectedExperience === "seasonal" && currentSeasonalHoliday?.id === "valentines" ? "border-10 border-red-500 rounded-lg" : 
+                    currentSeasonalHoliday?.id === "halloween" ? "border-10 border-orange-500 rounded-lg" :
+                    currentSeasonalHoliday?.id === "christmas" ? "border-10 border-green-500 rounded-lg" : ""}`}
+                  />
+                  {selectedExperience === "seasonal" && currentSeasonalHoliday?.id === "valentines" && (
+                    <div className="absolute top-0 left-0 w-full h-full bg-red-500/25"></div>
+                  )}
+                  {selectedExperience === "seasonal" && currentSeasonalHoliday?.id === "halloween" && (
+                    <div className="absolute top-0 left-0 w-full h-full bg-orange-500/25"></div>
+                  )}
+                       {selectedExperience === "seasonal" && currentSeasonalHoliday?.id === "christmas" && (
+                    <div className="absolute top-0 left-0 w-full h-full bg-green-500/25"></div>
+                  )}
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="absolute bottom-4 left-4 text-white">
                   <h3 className="text-xl font-semibold">
@@ -348,10 +357,14 @@ function BookingPageContent() {
                         key={exp.id}
                         type="button"
                         onClick={() => {
-                          setSelectedExperience(exp.id);
-                          setIsDropdownOpen(false);
-                          // Reset seasonal holiday when changing experience
-                          if (exp.id !== "seasonal") {
+                          if (exp.id === "seasonal") {
+                            // Open modal for seasonal selection
+                            setIsSeasonalModalOpen(true);
+                            setIsDropdownOpen(false);
+                          } else {
+                            setSelectedExperience(exp.id);
+                            setIsDropdownOpen(false);
+                            // Reset seasonal holiday when changing experience
                             setSelectedSeasonalHoliday("");
                           }
                         }}
@@ -394,73 +407,35 @@ function BookingPageContent() {
               </div>
             </div>
 
-            {/* Seasonal Holiday Selection - Only show when "seasonal" is selected */}
-            {selectedExperience === "seasonal" && (
+            {/* Seasonal Holiday Selection Button - Only show when "seasonal" is selected but no holiday chosen */}
+            {selectedExperience === "seasonal" && !selectedSeasonalHoliday && (
+              <div className="mb-6">
+                <button
+                  type="button"
+                  onClick={() => setIsSeasonalModalOpen(true)}
+                  className="w-full p-4 border-2 border-teal rounded-xl focus:ring-2 focus:ring-teal focus:border-teal bg-teal/5 appearance-none cursor-pointer text-lg font-medium text-teal shadow-sm hover:bg-teal/10 transition-all duration-200"
+                >
+                  Select Your Holiday Theme *
+                </button>
+              </div>
+            )}
+
+            {/* Show selected holiday when seasonal is selected */}
+            {selectedExperience === "seasonal" && currentSeasonalHoliday && (
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-3">
-                  Select Your Holiday Theme *
+                  Selected Holiday Theme
                 </label>
-                <div className="relative seasonal-dropdown-container">
-                  <button
-                    type="button"
-                    onClick={() => setIsSeasonalDropdownOpen(!isSeasonalDropdownOpen)}
-                    className="w-full p-4 pr-12 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-teal focus:border-teal bg-white appearance-none cursor-pointer text-lg font-medium text-gray-800 shadow-sm hover:border-teal/50 transition-all duration-200 flex justify-between items-center"
-                  >
-                    <span>
-                      {currentSeasonalHoliday?.name || "Select a holiday theme"}
-                    </span>
-                    <svg
-                      className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isSeasonalDropdownOpen ? "rotate-180" : ""}`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
-
-                  {/* Custom Seasonal Dropdown List */}
-                  {isSeasonalDropdownOpen && (
-                    <div className="absolute z-50 w-full mt-2 bg-white border-2 border-teal/20 rounded-xl shadow-lg overflow-hidden">
-                      {seasonalOptions.map((holiday) => (
-                        <button
-                          key={holiday.id}
-                          type="button"
-                          onClick={() => {
-                            setSelectedSeasonalHoliday(holiday.id);
-                            setIsSeasonalDropdownOpen(false);
-                          }}
-                          className={`w-full p-3 text-left hover:bg-teal/5 transition-colors duration-150 border-b border-gray-100 last:border-b-0 ${
-                            selectedSeasonalHoliday === holiday.id
-                              ? "bg-teal/10 text-teal"
-                              : "text-gray-800"
-                          }`}
-                        >
-                          <div className="flex justify-between items-center">
-                            <div>
-                              <div className="font-semibold text-md">
-                                {holiday.name}
-                              </div>
-                              <div className="text-sm text-gray-600 mt-1">
-                                {holiday.description}
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <div className="text-md font-bold text-teal">
-                                {formatPrice(currentExperience?.price || 449)}
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsSeasonalModalOpen(true)}
+                  className="w-full p-4 pr-12 border-2 border-teal rounded-xl focus:ring-2 focus:ring-teal focus:border-teal bg-white appearance-none cursor-pointer text-lg font-medium text-gray-800 shadow-sm hover:border-teal/50 transition-all duration-200 flex justify-between items-center"
+                >
+                  <span className="text-teal font-semibold">
+                    {currentSeasonalHoliday.name}
+                  </span>
+                  <span className="text-sm text-gray-500">Change</span>
+                </button>
               </div>
             )}
 
@@ -1047,6 +1022,17 @@ function BookingPageContent() {
           </button>
         </form>
       </div>
+
+      {/* Seasonal Selection Modal */}
+      <SeasonalSelectionModal
+        isOpen={isSeasonalModalOpen}
+        onClose={() => setIsSeasonalModalOpen(false)}
+        onSelect={(holidayId) => {
+          setSelectedExperience("seasonal");
+          setSelectedSeasonalHoliday(holidayId);
+        }}
+        selectedHolidayId={selectedSeasonalHoliday}
+      />
     </main>
   );
 }
