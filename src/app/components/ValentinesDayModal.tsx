@@ -41,7 +41,7 @@ const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
             {/* Header */}
             <div className="text-center mb-6">
               <div className="text-6xl mb-4">💕</div>
-              <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-pink-600 via-purple-600 to-red-500 bg-clip-text text-transparent">
+              <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-pink-600 via-purple-600 to-red-500 bg-clip-text text-transparent" style={{ fontFamily: '"Shadows Into Light", cursive' }}>
                 {title}
               </h3>
               <div className="w-16 h-1 bg-gradient-to-r from-pink-400 via-purple-400 to-red-400 mx-auto rounded-full mb-4"></div>
@@ -58,7 +58,7 @@ const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
             </div>
 
             {/* Actions */}
-            <div className="modal-action flex flex-col sm:flex-row gap-3">
+            <div className="modal-action flex flex-row gap-3">
               <button
                 onClick={handleBookNow}
                 className="btn text-white h-15 w-50 rounded-md hover:opacity-90 transition-all flex-1 py-2 shadow-lg bg-gradient-to-r from-pink-500 via-purple-500 to-red-500 hover:from-pink-600 hover:via-purple-600 hover:to-red-600"
@@ -67,7 +67,7 @@ const ValentinesDayModal: React.FC<ValentinesDayModalProps> = ({ onClose }) => {
               </button>
               <button
                 onClick={handleClose}
-                className="py-2 btn h-15 w-15 rounded-md btn-outline border-2 border-pink-300 text-pink-600 hover:bg-pink-50 hover:border-pink-400 transition-colors flex-1"
+                className=" py-2 btn h-15 w-50 rounded-md btn-outline border-2 border-pink-300 text-pink-600 hover:bg-pink-50 hover:border-pink-400 transition-colors flex-1"
               >
                 Check Later
               </button>
