@@ -76,14 +76,15 @@ function BookingPageContent() {
     parseInt(guestCount) || 2
   );
 
+  // DISCOUNT VARIABLES and PACKAGES
   // Apply automatic 10% discount for Valentine's Day (Love Under the Stars)
-  const valentinesDiscount = selectedSeasonalHoliday === "valentines" ? basePrice * 0.1 : 0;
+  // const valentinesDiscount = selectedSeasonalHoliday === "valentines" ? basePrice * 0.1 : 0;
   
   // Apply discount code if valid
   const codeDiscountAmount = hasDiscount && specDiscount ? calculateDiscountAmount(basePrice, specDiscount) : 0;
   
-  const discountAmount = valentinesDiscount + codeDiscountAmount;
-  const totalPrice = basePrice - discountAmount;
+  // const discountAmount = valentinesDiscount + codeDiscountAmount;
+  // const totalPrice = basePrice - discountAmount;
 
   // Update main image when experience or seasonal holiday changes
   useEffect(() => {
