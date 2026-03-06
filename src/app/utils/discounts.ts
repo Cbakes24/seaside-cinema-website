@@ -11,13 +11,6 @@ export interface DiscountCode {
 }
 
 export const discountCodes: DiscountCode[] = [
-  // {
-  //   code: ["Autumn25", "pumpkinSpice", "pumpkin spice"],
-  //   name: "Autumn Special",
-  //   description: "10% off your total booking",
-  //   percentage: 10,
-  //   isActive: true,
-  // },
   {
     code: ["SpringMovies26"],
     name: "Spring Time Special",
@@ -25,6 +18,13 @@ export const discountCodes: DiscountCode[] = [
     percentage: 10,
     isActive: true,
   },
+  // {
+  //   code: ["Autumn25", "pumpkinSpice", "pumpkin spice"],
+  //   name: "Autumn Special",
+  //   description: "10% off your total booking",
+  //   percentage: 10,
+  //   isActive: true,
+  // },
   // {
   //   code: ["SUMMERMAMA"],
   //   name: "Summer Mama",

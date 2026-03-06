@@ -118,7 +118,7 @@ export default function Home() {
   return (
     <main className="w-full">
       {/* Summer Sale Modal */}
-      <ValentinesDayModal />
+      {/* <ValentinesDayModal /> */}
       {/* <SummerSaleModal /> */}
       
       {/* Insterting CSS with this line of code, can apply to sections by the id of the element as #(whatever id). */}
