@@ -11,20 +11,27 @@ export interface DiscountCode {
 }
 
 export const discountCodes: DiscountCode[] = [
+  // {
+  //   code: ["Autumn25", "pumpkinSpice", "pumpkin spice"],
+  //   name: "Autumn Special",
+  //   description: "10% off your total booking",
+  //   percentage: 10,
+  //   isActive: true,
+  // },
   {
-    code: ["Autumn25", "pumpkinSpice", "pumpkin spice"],
-    name: "Autumn Special",
+    code: ["SpringMovies26"],
+    name: "Spring Time Special",
     description: "10% off your total booking",
     percentage: 10,
     isActive: true,
   },
-  {
-    code: ["SUMMERMAMA"],
-    name: "Summer Mama",
-    description: "10% off your total booking",
-    percentage: 10,
-    isActive: true,
-  },
+  // {
+  //   code: ["SUMMERMAMA"],
+  //   name: "Summer Mama",
+  //   description: "10% off your total booking",
+  //   percentage: 10,
+  //   isActive: true,
+  // },
   // Add more discount codes here as needed
   // {
   //   code: "WINTER20",
