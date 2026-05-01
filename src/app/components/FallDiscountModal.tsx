@@ -68,7 +68,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose }) => {
                 </svg>
                 </div>
               </div>
-              <p className="inline-flex items-center rounded-full bg-orange/30 px-3 py-1 text-xs font-semibold tracking-wide text-orange mb-3">
+              <p className="inline-flex items-center rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold tracking-wide text-sky-700 mb-3">
                 SUMMER EARLY BIRD
               </p>
               <h3 className="text-2xl font-bold text-teal mb-2 leading-tight">
@@ -80,7 +80,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose }) => {
             {/* Content */}
             <div className="text-center mb-6">
               <p className="text-lg text-gray-700 mb-4">
-                <span className="font-bold text-orange text-4xl">10% OFF</span>
+                <span className="font-bold text-sky-600 text-4xl">10% OFF</span>
               </p>
               <p className="text-gray-600 mb-4">
                 Book your summer movie night by June 15, 2026.
@@ -88,7 +88,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose }) => {
               <div className="bg-gradient-to-br from-peach/60 to-offwhite p-4 rounded-xl mb-4 border border-orange/20">
                 <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">Promo code</p>
                 <p className="text-lg text-teal font-bold">
-                  Use code: <span className="text-orange">SeasideSummer26</span>
+                  Use code: <span className="text-sky-700">SeasideSummer26</span>
                 </p>
                 <p className="text-sm text-gray-600 mt-2">
                   Offer valid for bookings made before 6/15/26.
