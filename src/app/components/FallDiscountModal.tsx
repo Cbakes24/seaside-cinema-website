@@ -68,7 +68,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose }) => {
                 </svg>
                 </div>
               </div>
-              <p className="inline-flex items-center rounded-full bg-orange/10 px-3 py-1 text-xs font-semibold tracking-wide text-orange mb-3">
+              <p className="inline-flex items-center rounded-full bg-orange/30 px-3 py-1 text-xs font-semibold tracking-wide text-orange mb-3">
                 SUMMER EARLY BIRD
               </p>
               <h3 className="text-2xl font-bold text-teal mb-2 leading-tight">
