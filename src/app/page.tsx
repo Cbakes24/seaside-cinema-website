@@ -7,10 +7,8 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
-import FallDiscountModal from "./components/FallDiscountModal";
 import BirthdayCarousel from "./components/BirthdayCarousel";
 import SummerSaleModal from "./components/FallDiscountModal";
-import ValentinesDayModal from "./components/ValentinesDayModal";
 
 import {
   packages,
@@ -122,7 +120,7 @@ export default function Home() {
  {/* MODALS */}
       {/* Summer Sale Modal */}
       {/* <ValentinesDayModal /> */}
-      {/* <SummerSaleModal /> */}
+      <SummerSaleModal />
       
 
       
@@ -138,9 +136,6 @@ export default function Home() {
   background-color: blue;
   }
 `}</style> */}
-      {/* Fall Discount Modal */}
-      {/* <FallDiscountModal /> */}
-
       {/* Hero Section with Parallax */}
       <section className="relative h-[90vh] w-full overflow-hidden" id="HeroSection">
         {/* <Image src="/verticalSunset.jpeg" alt="Sunset" fill className="object-cover" /> */}
