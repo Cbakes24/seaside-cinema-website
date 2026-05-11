@@ -203,16 +203,10 @@ export const packages = [
 // Add-ons
 export const addons = [
   {
-    id: "addl-30min",
-    name: "Addl. 30 Minutes",
-    description: "Extend your event by 30 minutes.",
-    price: 50,
-  },
-  {
-    id: "addl-1hour",
-    name: "Addl. 1 Hour",
-    description: "Extend your event by 1 full hour.",
-    price: 90,
+    id: "blankets",
+    name: "Blankets",
+    description: "Add extra blankets for your group.",
+    price: 20,
   },
   {
     id: "tiki-2",
@@ -283,7 +277,9 @@ export function calculateTotal(
   selectedExperience: string,
   selectedPackage: string,
   selectedAddons: string[],
-  guestCount: number = 2
+  guestCount: number = 2,
+  tableCount: number = 0,
+  extraHalfHours: number = 0
 ): number {
   const experiencePrice =
     experiences.find((e) => e.id === selectedExperience)?.price || 0;
@@ -300,7 +296,10 @@ export function calculateTotal(
   const additionalGuests = Math.max(0, guestCount - 2);
   const guestPricing = additionalGuests * 50;
 
-  return experiencePrice + packagePrice + addonsPrice + guestPricing;
+  const tablePricing = Math.max(0, tableCount) * 20;
+  const extraTimePricing = Math.max(0, extraHalfHours) * 50;
+
+  return experiencePrice + packagePrice + addonsPrice + guestPricing + tablePricing + extraTimePricing;
 }
 
 export function formatPrice(price: number): string {

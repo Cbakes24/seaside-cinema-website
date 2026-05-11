@@ -20,6 +20,8 @@ function BookingPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
+  const [tableCount, setTableCount] = useState(0);
+  const [extraHalfHours, setExtraHalfHours] = useState(0);
   const [selectedExperience, setSelectedExperience] = useState("classic");
   const [selectedPackage, setSelectedPackage] = useState("none");
   const [selectedSeasonalHoliday, setSelectedSeasonalHoliday] = useState("");
@@ -73,7 +75,9 @@ function BookingPageContent() {
     selectedExperience,
     selectedPackage,
     selectedAddons,
-    parseInt(guestCount) || 2
+    parseInt(guestCount) || 2,
+    tableCount,
+    extraHalfHours
   );
 
   // Apply discount code if valid
@@ -81,6 +85,25 @@ function BookingPageContent() {
   
   const discountAmount = codeDiscountAmount;
   const totalPrice = basePrice - discountAmount;
+  const extraTimeHours = extraHalfHours * 0.5;
+  const extraTimeLabel =
+    extraTimeHours % 1 === 0
+      ? `${extraTimeHours.toFixed(0)} hour${extraTimeHours === 1 ? "" : "s"}`
+      : `${extraTimeHours.toFixed(1)} hours`;
+  const selectedAddonSummaries = selectedAddons
+    .map((addonId) => getAddonById(addonId))
+    .filter((addon): addon is NonNullable<typeof addon> => Boolean(addon))
+    .map((addon) => `${addon.name} - ${formatPrice(addon.price)}`);
+  if (tableCount > 0) {
+    selectedAddonSummaries.push(
+      `Tables x${tableCount} - ${formatPrice(tableCount * 20)}`
+    );
+  }
+  if (extraHalfHours > 0) {
+    selectedAddonSummaries.push(
+      `Extra Time (${extraTimeLabel}) - ${formatPrice(extraHalfHours * 50)}`
+    );
+  }
 
   // Update main image when experience or seasonal holiday changes
   useEffect(() => {
@@ -187,7 +210,9 @@ function BookingPageContent() {
       selectedExperience,
       selectedPackage,
       selectedSeasonalHoliday,
-      addons: selectedAddons,
+      addons: selectedAddonSummaries,
+      tableCount,
+      extraHalfHours,
       basePrice,
       discountCode: hasDiscount ? discountCode : "",
       codeDiscountAmount: codeDiscountAmount,
@@ -634,6 +659,65 @@ function BookingPageContent() {
                   </span>
                 </label>
               ))}
+              <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-sky-50">
+                <div>
+                  <span className="font-medium text-teal">Tables</span>
+                  <p className="text-sm text-gray-600">
+                    Add extra tables for guests. $20 per table.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <label htmlFor="table-count" className="text-sm text-gray-600">
+                    Qty
+                  </label>
+                  <select
+                    id="table-count"
+                    value={tableCount}
+                    onChange={(e) => setTableCount(parseInt(e.target.value, 10))}
+                    className="p-2 border border-gray-300 rounded bg-white text-teal font-semibold"
+                  >
+                    {Array.from({ length: 11 }, (_, index) => (
+                      <option key={index} value={index}>
+                        {index}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-yellow-50">
+                <div>
+                  <span className="font-medium text-teal">Extra Time</span>
+                  <p className="text-sm text-gray-600">
+                    2 hours are included. Add extra time at $50 per half hour.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <label htmlFor="extra-time" className="text-sm text-gray-600">
+                    Extra
+                  </label>
+                  <select
+                    id="extra-time"
+                    value={extraHalfHours}
+                    onChange={(e) =>
+                      setExtraHalfHours(parseInt(e.target.value, 10))
+                    }
+                    className="p-2 border border-gray-300 rounded bg-white text-teal font-semibold"
+                  >
+                    {Array.from({ length: 9 }, (_, index) => {
+                      const hours = index * 0.5;
+                      const optionLabel =
+                        hours === 0
+                          ? "None"
+                          : `${hours % 1 === 0 ? hours.toFixed(0) : hours.toFixed(1)} hour${hours === 1 ? "" : "s"}`;
+                      return (
+                        <option key={index} value={index}>
+                          {optionLabel}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -739,6 +823,18 @@ function BookingPageContent() {
                 </div>
               ) : null;
             })}
+            {tableCount > 0 && (
+              <div className="flex justify-between items-center py-1">
+                <span className="text-gray-600">+ Tables x{tableCount}</span>
+                <span className="text-gray-600">{formatPrice(tableCount * 20)}</span>
+              </div>
+            )}
+            {extraHalfHours > 0 && (
+              <div className="flex justify-between items-center py-1">
+                <span className="text-gray-600">+ Extra Time ({extraTimeLabel})</span>
+                <span className="text-gray-600">{formatPrice(extraHalfHours * 50)}</span>
+              </div>
+            )}
             
             {/* Discount Code Section */}
             <div className="py-4 border-t border-gray-200">
