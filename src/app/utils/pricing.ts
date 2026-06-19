@@ -2,8 +2,8 @@
 export const experiences = [
   {
     id: "classic",
-    name: "Classic - SpringSale!",
-    price: 299, // $50 off from $299
+    name: "Classic - Summer Sale!",
+    price: 249, // $100 off from $299
     originalPrice: 349,
     description: "Experience the feel of the classic movie theater set up and pair it with a beautiful sunset",
     image: "/verticalSunset.jpeg",
@@ -17,8 +17,8 @@ export const experiences = [
   },
   {
     id: "bali",
-    name: "Bali - Spring Sale!",
-    price: 399, // $50 off from $399
+    name: "Bali - Summer Sale!",
+    price: 349, // $50 off from $399
     originalPrice: 449,
     description:
       "Transport to a tropical island with boho tones, and dreamy lighting.",
