@@ -5,6 +5,7 @@ import Image from "next/image";
 import React from "react";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
 import BirthdayCarousel from "./components/BirthdayCarousel";
@@ -22,21 +23,12 @@ import {
   seasonalOptions,
   getSeasonalById,
 } from "./utils/pricing";
-import { flag } from "@vercel/flags/next";
-//vercel flag test
-// const vercelFlag: any = flag<boolean>({
-//   key: "vercel-flag-test",
-//   defaultValue: false,
-//   decide(): boolean {
-//     return true;
-//   },
-// });
 
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-// const flag:boolean = await vercelFlag.get()
+
   // Birthday images array
   const birthdayImages = [
     {
@@ -191,6 +183,9 @@ export default function Home() {
           </p>
           <Link
             href="/book"
+            onClick={() =>
+              track("Home Book Now Click", {}, { flags: ["summer-sale"] })
+            }
             className="mt-6 bg-offwhite inline-block text-teal px-6 py-3 rounded-lg font-medium hover:bg-sand transition text-semibold"
             style={{
               transform: `translateY(${scrollY * -0.01}px)`,

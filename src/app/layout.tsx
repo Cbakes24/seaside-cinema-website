@@ -6,13 +6,18 @@ import Header from './components/header'
 import Footer from './components/footer'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
+import { FlagValues } from "@vercel/flags/react"
+import { combine, evaluate } from "@vercel/flags/next"
+import { analyticsFlags } from "@/flags"
 
 export const metadata = {
   title: 'Seaside Cinema',
   description: 'Luxury beachside movie nights in San Diego',
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const values = combine(analyticsFlags, await evaluate(analyticsFlags))
+
   return (
     <html lang="en">
       <head>
@@ -24,6 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <Header />
         <main className="min-h-[calc(100vh-80px)]">
           {children}
+          <FlagValues values={values} />
           <Analytics />
           <SpeedInsights />
         </main>
