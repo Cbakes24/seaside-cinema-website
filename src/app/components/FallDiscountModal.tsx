@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-const PROMO_CUTOFF_TIMESTAMP = new Date("2026-06-16T00:00:00").getTime();
+const PROMO_CUTOFF_TIMESTAMP = new Date("2026-07-15T00:00:00").getTime();
 
 interface SummerSaleModalProps {
   onClose?: () => void;
@@ -88,7 +88,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose, enabled = fa
                 <span className="font-bold text-sky-600 text-4xl">10% OFF</span>
               </p>
               <p className="text-gray-600 mb-4">
-                Book your summer movie night by June 30th, 2026.
+                Book your summer movie night before July 15, 2026.
               </p>
               <div className="bg-gradient-to-br from-peach/60 to-offwhite p-4 rounded-xl mb-4 border border-orange/20">
                 <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">Promo code</p>
@@ -96,7 +96,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose, enabled = fa
                   Use code: <span className="text-sky-700">SeasideSummer26</span>
                 </p>
                 <p className="text-sm text-gray-600 mt-2">
-                  Offer valid for bookings made before 6/15/26.
+                  Offer valid for bookings made before 7/15/26.
                 </p>
               </div>
             </div>
