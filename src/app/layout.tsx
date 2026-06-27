@@ -17,6 +17,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const values = combine(analyticsFlags, await evaluate(analyticsFlags))
+  const isSummerSaleEnabled = values["summer-sale"] === true
 
   return (
     <html lang="en">
@@ -25,7 +26,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
       </head>
-      <body className="bg-white text-gray-900 font-inter">
+      <body className="bg-white text-gray-900 font-inter" data-summer-sale={String(isSummerSaleEnabled)}>
       <Header />
         <main className="min-h-[calc(100vh-80px)]">
           {children}

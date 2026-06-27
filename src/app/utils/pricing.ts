@@ -2,9 +2,9 @@
 export const experiences = [
   {
     id: "classic",
-    name: "Classic - Summer Sale!",
-    price: 249, // $100 off from $299
-    originalPrice: 299,
+    name: "Classic",
+    price: 299,
+    salePrice: 249, // $50 off when summer sale is active
     description: "Experience the feel of the classic movie theater set up and pair it with a beautiful sunset",
     image: "/verticalSunset.jpeg",
     includes: [
@@ -17,9 +17,9 @@ export const experiences = [
   },
   {
     id: "bali",
-    name: "Bali - Summer Sale!",
-    price: 349, // $50 off from $399
-    originalPrice: 399,
+    name: "Bali",
+    price: 399,
+    salePrice: 349, // $50 off when summer sale is active
     description:
       "Transport to a tropical island with boho tones, and dreamy lighting.",
     image: "/bayview_behindLow.jpeg",
@@ -279,10 +279,13 @@ export function calculateTotal(
   selectedAddons: string[],
   guestCount: number = 2,
   tableCount: number = 0,
-  extraHalfHours: number = 0
+  extraHalfHours: number = 0,
+  isSummerSaleEnabled: boolean = false
 ): number {
-  const experiencePrice =
-    experiences.find((e) => e.id === selectedExperience)?.price || 0;
+  const experiencePrice = getExperienceDisplayPrice(
+    selectedExperience,
+    isSummerSaleEnabled
+  );
   const packagePrice =
     packages.find((p) => p.id === selectedPackage)?.price || 0;
   const addonsPrice = selectedAddons
@@ -320,4 +323,34 @@ export function getSeasonalById(id: string) {
 
 export function getAddonById(id: string) {
   return addons.find((addon) => addon.id === id);
+}
+
+const SUMMER_SALE_EXPERIENCE_IDS = new Set(["classic", "bali"]);
+
+export function isSummerSaleExperience(experienceId?: string): boolean {
+  return Boolean(experienceId && SUMMER_SALE_EXPERIENCE_IDS.has(experienceId));
+}
+
+export function getExperienceRegularPrice(experienceId: string): number {
+  return experiences.find((exp) => exp.id === experienceId)?.price || 0;
+}
+
+export function getExperienceDisplayPrice(
+  experienceId: string,
+  isSummerSaleEnabled: boolean
+): number {
+  const experience = experiences.find((exp) => exp.id === experienceId);
+  if (!experience) {
+    return 0;
+  }
+
+  if (
+    isSummerSaleEnabled &&
+    isSummerSaleExperience(experienceId) &&
+    typeof experience.salePrice === "number"
+  ) {
+    return experience.salePrice;
+  }
+
+  return experience.price;
 }

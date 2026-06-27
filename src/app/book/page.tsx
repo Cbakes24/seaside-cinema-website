@@ -12,13 +12,18 @@ import {
   experiences,
   getExperienceById,
   seasonalOptions,
+  getExperienceDisplayPrice,
+  getExperienceRegularPrice,
+  isSummerSaleExperience,
 } from "../utils/pricing";
 import { validateDiscountCode, calculateDiscountAmount, type DiscountCode } from "../utils/discounts";
 import SeasonalSelectionModal from "../components/SeasonalSelectionModal";
+import { useSummerSaleFlag } from "../hooks/useSummerSaleFlag";
 
 function BookingPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const isSummerSaleEnabled = useSummerSaleFlag();
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [tableCount, setTableCount] = useState(0);
   const [extraHalfHours, setExtraHalfHours] = useState(0);
@@ -77,7 +82,8 @@ function BookingPageContent() {
     selectedAddons,
     parseInt(guestCount) || 2,
     tableCount,
-    extraHalfHours
+    extraHalfHours,
+    isSummerSaleEnabled
   );
 
   // Apply discount code if valid
@@ -406,17 +412,21 @@ function BookingPageContent() {
                           </div>
                           <div className="text-right">
                             <div className="text-md font-bold text-teal">
-                              {exp.id === "classic" || exp.id === "bali" || exp.id === "seasonal"  ? (
+                              {(exp.id === "seasonal" && exp.originalPrice) || (isSummerSaleEnabled && isSummerSaleExperience(exp.id)) ? (
                                 <div className="flex flex-col items-end">
                                   <span className="line-through text-gray-400 text-xs">
-                                    {formatPrice(exp.originalPrice || exp.price)}
+                                    {formatPrice(
+                                      exp.id === "seasonal"
+                                        ? (exp.originalPrice || exp.price)
+                                        : getExperienceRegularPrice(exp.id)
+                                    )}
                                   </span>
                                   <span className="text-orange font-bold">
-                                    {formatPrice(exp.price)}
+                                    {formatPrice(getExperienceDisplayPrice(exp.id, isSummerSaleEnabled))}
                                   </span>
                                 </div>
                               ) : (
-                                formatPrice(exp.price)
+                                formatPrice(getExperienceDisplayPrice(exp.id, isSummerSaleEnabled))
                               )}
                             </div>
                           </div>
@@ -479,17 +489,21 @@ function BookingPageContent() {
                   <span className="text-lg font-bold text-teal">
                     {selectedExperience === "seasonal" && currentSeasonalHoliday ? (
                       formatPrice(currentExperience?.price || 449)
-                    ) : currentExperience && (currentExperience.id === "classic" || currentExperience.id === "bali" || currentExperience.id === "valentines") ? (
+                    ) : currentExperience && isSummerSaleEnabled && isSummerSaleExperience(currentExperience.id) ? (
                       <div className="flex flex-col items-end">
                         <span className="line-through text-gray-400 text-sm">
-                          {formatPrice(currentExperience.originalPrice || currentExperience.price)}
+                          {formatPrice(getExperienceRegularPrice(currentExperience.id))}
                         </span>
                         <span className="text-orange font-bold">
-                          {formatPrice(currentExperience.price)}
+                          {formatPrice(getExperienceDisplayPrice(currentExperience.id, isSummerSaleEnabled))}
                         </span>
                       </div>
                     ) : (
-                      formatPrice(currentExperience?.price || 0)
+                      formatPrice(
+                        currentExperience
+                          ? getExperienceDisplayPrice(currentExperience.id, isSummerSaleEnabled)
+                          : 0
+                      )
                     )}
                   </span>
                 </div>
@@ -777,24 +791,26 @@ function BookingPageContent() {
                       (currentExperience?.price || 449) + 
                       (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
                     )
-                  ) : currentExperience && (currentExperience.id === "classic" || currentExperience.id === "bali") ? (
+                  ) : currentExperience && isSummerSaleEnabled && isSummerSaleExperience(currentExperience.id) ? (
                     <div className="flex flex-col items-end">
                       <span className="line-through text-gray-400 text-sm">
                         {formatPrice(
-                          (currentExperience.originalPrice || currentExperience.price) + 
+                          getExperienceRegularPrice(currentExperience.id) + 
                           (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
                         )}
                       </span>
                       <span className="text-orange font-bold">
                         {formatPrice(
-                          currentExperience.price + 
+                          getExperienceDisplayPrice(currentExperience.id, isSummerSaleEnabled) +
                           (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
                         )}
                       </span>
                     </div>
                   ) : (
                     formatPrice(
-                      (currentExperience?.price || 0) + 
+                      (currentExperience
+                        ? getExperienceDisplayPrice(currentExperience.id, isSummerSaleEnabled)
+                        : 0) + 
                       (Math.max(0, (parseInt(guestCount) || 2) - 2) * 50)
                     )
                   )}

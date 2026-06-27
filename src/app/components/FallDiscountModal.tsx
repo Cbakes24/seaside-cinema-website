@@ -6,12 +6,17 @@ const PROMO_CUTOFF_TIMESTAMP = new Date("2026-06-16T00:00:00").getTime();
 
 interface SummerSaleModalProps {
   onClose?: () => void;
+  enabled?: boolean;
 }
 
-const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose }) => {
+const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose, enabled = false }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     if (Date.now() >= PROMO_CUTOFF_TIMESTAMP) {
       return;
     }
@@ -22,7 +27,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose }) => {
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [enabled]);
 // close the modal
   const handleClose = () => {
     setIsOpen(false);

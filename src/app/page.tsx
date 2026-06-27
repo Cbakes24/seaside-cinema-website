@@ -10,24 +10,22 @@ import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
 import BirthdayCarousel from "./components/BirthdayCarousel";
 import SummerSaleModal from "./components/FallDiscountModal";
+import { useSummerSaleFlag } from "./hooks/useSummerSaleFlag";
 
 import {
-  packages,
-  addons,
-  calculateTotal,
   formatPrice,
-  getPackageById,
-  getAddonById,
   experiences,
-  getExperienceById,
-  seasonalOptions,
   getSeasonalById,
+  getExperienceDisplayPrice,
+  getExperienceRegularPrice,
+  isSummerSaleExperience,
 } from "./utils/pricing";
 
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const isSummerSaleEnabled = useSummerSaleFlag();
 
   // Birthday images array
   const birthdayImages = [
@@ -112,7 +110,7 @@ export default function Home() {
  {/* MODALS */}
       {/* Summer Sale Modal */}
       {/* <ValentinesDayModal /> */}
-      <SummerSaleModal />
+      <SummerSaleModal enabled={isSummerSaleEnabled} />
       
 
       
@@ -196,7 +194,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      {process.env.NEXT_PUBLIC_FEATURE_FLAG === "true" && (
+      {isSummerSaleEnabled && (
         <section className="py-20 px-6 bg-lightblue">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-teal mb-12">
@@ -298,17 +296,17 @@ export default function Home() {
                       </p>
                       <div className="flex items-center justify-between">
                         <span className="text-xl font-bold text-teal">
-                          {experience.id === "classic" || experience.id === "bali" ? (
+                          {isSummerSaleEnabled && isSummerSaleExperience(experience.id) ? (
                             <div className="flex flex-col items-end">
                               <span className="line-through text-gray-400 text-sm">
-                                {formatPrice(experience.originalPrice || experience.price)}
+                                {formatPrice(getExperienceRegularPrice(experience.id))}
                               </span>
                               <span className="text-orange font-bold">
-                                {formatPrice(experience.price)}
+                                {formatPrice(getExperienceDisplayPrice(experience.id, isSummerSaleEnabled))}
                               </span>
                             </div>
                           ) : (
-                            formatPrice(experience.price)
+                            formatPrice(getExperienceDisplayPrice(experience.id, isSummerSaleEnabled))
                           )}
                         </span>
                         <Link
