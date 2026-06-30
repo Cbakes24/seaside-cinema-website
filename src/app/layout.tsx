@@ -9,7 +9,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { FlagValues } from "@vercel/flags/react"
 import { combine, evaluate } from "@vercel/flags/next"
 import { analyticsFlags } from "@/flags"
-
+import Clarity from '@microsoft/clarity';
 export const metadata = {
   title: 'Seaside Cinema',
   description: 'Luxury beachside movie nights in San Diego',
