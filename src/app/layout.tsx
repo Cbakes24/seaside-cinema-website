@@ -1,7 +1,6 @@
 // src/app/layout.tsx
 import './globals.css'
 import { ReactNode } from 'react'
-import Link from 'next/link'
 import Header from './components/header'
 import Footer from './components/footer'
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -9,7 +8,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { FlagValues } from "@vercel/flags/react"
 import { combine, evaluate } from "@vercel/flags/next"
 import { analyticsFlags } from "@/flags"
-import Clarity from '@microsoft/clarity';
+import ClarityInit from "@/app/components/ClarityInit"
 export const metadata = {
   title: 'Seaside Cinema',
   description: 'Luxury beachside movie nights in San Diego',
@@ -30,6 +29,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <Header />
         <main className="min-h-[calc(100vh-80px)]">
           {children}
+          <ClarityInit />
           <FlagValues values={values} />
           <Analytics />
           <SpeedInsights />

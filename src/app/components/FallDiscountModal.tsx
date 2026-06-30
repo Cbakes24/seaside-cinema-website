@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Clarity from "@microsoft/clarity";
 
 const PROMO_CUTOFF_TIMESTAMP = new Date("2026-07-15T00:00:00").getTime();
 
@@ -36,6 +37,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose, enabled = fa
 
 // navigate to booking page
   const handleBookNow = () => {
+    Clarity.event("book-now-click-summer-modal");
     setIsOpen(false);
     onClose?.();
     window.location.href = '/book';

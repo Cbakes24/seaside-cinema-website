@@ -6,6 +6,7 @@ import React from "react";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
+import Clarity from "@microsoft/clarity";
 import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
 import BirthdayCarousel from "./components/BirthdayCarousel";
@@ -26,6 +27,10 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const isSummerSaleEnabled = useSummerSaleFlag();
+  const trackBookNowClick = (source: string) => {
+    track("Home Book Now Click", { source }, { flags: ["summer-sale"] });
+    Clarity.event(`book-now-click-${source}`);
+  };
 
   // Birthday images array
   const birthdayImages = [
@@ -181,9 +186,7 @@ export default function Home() {
           </p>
           <Link
             href="/book"
-            onClick={() =>
-              track("Home Book Now Click", {}, { flags: ["summer-sale"] })
-            }
+            onClick={() => trackBookNowClick("hero")}
             className="mt-6 bg-offwhite inline-block text-teal px-6 py-3 rounded-lg font-medium hover:bg-sand transition text-semibold"
             style={{
               transform: `translateY(${scrollY * -0.01}px)`,
@@ -249,6 +252,7 @@ export default function Home() {
           </div>
           <Link
             href="/book"
+            onClick={() => trackBookNowClick("how-it-works")}
             className="mt-8 bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
           >
             📅 Book Now
@@ -311,6 +315,9 @@ export default function Home() {
                         </span>
                         <Link
                           href={`/book?experience=${experience.id}`}
+                          onClick={() =>
+                            trackBookNowClick(`experience-card-${experience.id}`)
+                          }
                           className="bg-teal text-white px-3 py-1 rounded text-sm hover:bg-orange transition"
                         >
                           Book Now
@@ -363,6 +370,7 @@ export default function Home() {
 
             <Link
               href="/book?package=birthday"
+              onClick={() => trackBookNowClick("birthday-card")}
               className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 block"
             >
               <div className="text-center mb-6">
@@ -464,6 +472,7 @@ export default function Home() {
               </div>
               <Link
                 href="/book?package=birthday"
+                onClick={() => trackBookNowClick("birthday-section")}
                 className="bg-peach text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
               >
                 Plan Your Birthday Party
@@ -516,6 +525,7 @@ export default function Home() {
                   </span>
                   <Link
                     href="/book?experience=halloween"
+                    onClick={() => trackBookNowClick("seasonal-halloween")}
                     className="bg-teal text-white px-4 py-2 rounded-lg hover:bg-orange transition"
                   >
                     Book Now
@@ -556,6 +566,7 @@ export default function Home() {
                   </span>
                   <Link
                     href="/book?experience=valentines"
+                    onClick={() => trackBookNowClick("seasonal-valentines")}
                     className="bg-teal text-white px-4 py-2 rounded-lg hover:bg-orange transition"
                   >
                     Book Now
@@ -595,6 +606,7 @@ export default function Home() {
                   </span>
                   <Link
                     href="/book?experience=christmas"
+                    onClick={() => trackBookNowClick("seasonal-christmas")}
                     className="bg-teal text-white px-4 py-2 rounded-lg hover:bg-orange transition"
                   >
                     Book Now
@@ -780,6 +792,7 @@ export default function Home() {
         </p>
         <Link
           href="/book"
+          onClick={() => trackBookNowClick("final-cta")}
           className="bg-white text-teal px-8 py-3 rounded-lg font-medium hover:bg-sand transition inline-block"
         >
           🎬 Book Your Experience Now
