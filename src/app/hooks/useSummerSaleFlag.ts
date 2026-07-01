@@ -12,3 +12,14 @@ export function useSummerSaleFlag(): boolean {
 
   return isSummerSaleEnabled;
 }
+
+export function useJulyWeek1Flag(): boolean {
+  const [isJulyWeek1Enabled, setIsJulyWeek1Enabled] = useState(false);
+
+  useEffect(() => {
+    const value = document.body?.dataset?.julyweek1;
+    setIsJulyWeek1Enabled(value === "true");
+  }, []);
+
+  return isJulyWeek1Enabled;
+}

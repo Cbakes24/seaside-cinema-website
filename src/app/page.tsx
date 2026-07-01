@@ -11,7 +11,7 @@ import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
 import BirthdayCarousel from "./components/BirthdayCarousel";
 import SummerSaleModal from "./components/FallDiscountModal";
-import { useSummerSaleFlag } from "./hooks/useSummerSaleFlag";
+import { useJulyWeek1Flag, useSummerSaleFlag } from "./hooks/useSummerSaleFlag";
 
 import {
   formatPrice,
@@ -27,6 +27,7 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const isSummerSaleEnabled = useSummerSaleFlag();
+  const isJulyWeek1Enabled = useJulyWeek1Flag();
   const trackBookNowClick = (source: string) => {
     track("Home Book Now Click", { source }, { flags: ["summer-sale"] });
     Clarity.event(`book-now-click-${source}`);
@@ -115,7 +116,7 @@ export default function Home() {
  {/* MODALS */}
       {/* Summer Sale Modal */}
       {/* <ValentinesDayModal /> */}
-      <SummerSaleModal enabled={isSummerSaleEnabled} />
+      <SummerSaleModal enabled={isJulyWeek1Enabled} />
       
 
       
