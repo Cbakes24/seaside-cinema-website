@@ -1,5 +1,16 @@
-import { flag } from "@vercel/flags/next";
+import { flag } from "flags/next";
+import { vercelAdapter } from "@flags-sdk/vercel";
 
+
+export const julyweek1 = flag<boolean>({
+  key: "julyweek1",
+  description: "first week of July",
+  options: [
+    { label: "Off", value: false },
+    { label: "On", value: true },
+  ],
+  adapter: vercelAdapter,
+});
 export const summerSaleFlag = flag<boolean>({
   key: "summer-sale",
   description: "Enable summer sale campaign experiences.",
@@ -7,8 +18,7 @@ export const summerSaleFlag = flag<boolean>({
     { label: "Off", value: false },
     { label: "On", value: true },
   ],
-  defaultValue: false,
-  decide: () => process.env.NEXT_PUBLIC_FEATURE_FLAG === "true",
+  adapter: vercelAdapter,
 });
 
-export const analyticsFlags = [summerSaleFlag] as const;
+export const analyticsFlags = [summerSaleFlag, julyweek1] as const;

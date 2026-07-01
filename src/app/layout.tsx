@@ -5,8 +5,8 @@ import Header from './components/header'
 import Footer from './components/footer'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
-import { FlagValues } from "@vercel/flags/react"
-import { combine, evaluate } from "@vercel/flags/next"
+import { FlagValues } from "flags/react"
+import { combine, evaluate } from "flags/next"
 import { analyticsFlags } from "@/flags"
 import ClarityInit from "@/app/components/ClarityInit"
 export const metadata = {

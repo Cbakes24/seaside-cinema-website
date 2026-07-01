@@ -26,6 +26,14 @@ export const discountCodes: DiscountCode[] = [
     isActive: true,
     validUntil: new Date("2026-07-14T23:59:59"),
   },
+  {
+    code: ["July10"],
+    name: "July 10% Special",
+    description: "10% off your total booking",
+    percentage: 10,
+    isActive: true,
+    validUntil: new Date("2026-08-01T23:59:59"),
+  },
   // {
   //   code: ["Autumn25", "pumpkinSpice", "pumpkin spice"],
   //   name: "Autumn Special",
