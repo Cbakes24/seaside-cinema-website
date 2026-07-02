@@ -116,7 +116,7 @@ export default function Home() {
  {/* MODALS */}
       {/* Summer Sale Modal */}
       {/* <ValentinesDayModal /> */}
-      <SummerSaleModal enabled={isJulyWeek1Enabled} />
+      <SummerSaleModal enabled={true} />
       
 
       
@@ -199,24 +199,91 @@ export default function Home() {
         </div>
       </section>
       {isSummerSaleEnabled && (
-        <section className="py-20 px-6 bg-lightblue">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-teal mb-12">
-              Exclusive Feature
-            </h2>
-            <p className="text-lg text-teal mb-8">
-              This is an exclusive feature available only when the feature flag
-              is enabled.
+        <section className="py-20 px-6 bg-gradient-to-r from-lightblue via-offwhite to-peach border-y border-teal/20">
+          <div className="max-w-5xl mx-auto text-center">
+            <p className="inline-flex items-center rounded-full bg-sky-100 px-4 py-1 text-xs font-semibold tracking-wide text-sky-700 mb-4">
+              JULY SUMMER SALE
             </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-4">
+              Save 10% On Your Summer Movie Night
+            </h2>
+            <p className="text-lg text-teal/90 mb-6 max-w-3xl mx-auto">
+              Use code <span className="font-bold text-sky-700">SeasideSummer26</span> at checkout for
+              a limited-time July offer.
+            </p>
+            <div className="bg-white/80 max-w-xl mx-auto p-4 rounded-xl border border-teal/20 shadow-sm mb-6">
+              <p className="text-sm text-gray-700">
+                Offer valid through <span className="font-semibold">July 14, 2026</span> for bookings made
+                before <span className="font-semibold">7/15/26</span>.
+              </p>
+            </div>
             <Link
-              href="/exclusive"
+              href="/book"
+              onClick={() => trackBookNowClick("july-sale-section")}
               className="bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
             >
-              Explore Now
+              Claim 10% Off
             </Link>
           </div>
         </section>
       )}
+      {/* Birthday Setups Section */}
+      <section className="py-20 px-6 bg-offwhite text-center">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            <div className="relative">
+              <BirthdayCarousel
+                images={birthdayImages}
+                autoRotateInterval={5000}
+                className=""
+              />
+            </div>
+            <div className="text-left">
+              <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">
+                Birthday Party Magic
+              </h2>
+              <p className="text-lg text-teal/80 mb-6 leading-relaxed">
+                Make every birthday unforgettable with our themed beach movie
+                night setups. From kids&apos; parties to milestone celebrations,
+                we create the perfect atmosphere for your special day with
+                custom decorations, themed snacks, and magical beachside
+                ambiance.
+              </p>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">
+                    Kids birthday parties (ages 3-12)
+                  </span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">
+                    Teen celebrations &amp; sweet 16s
+                  </span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">Adult milestone birthdays</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="text-teal text-xl">✓</span>
+                  <span className="text-teal">
+                    Themed decorations & party favors
+                  </span>
+                </div>
+              </div>
+              <Link
+                href="/book?package=birthday"
+                onClick={() => trackBookNowClick("birthday-section")}
+                className="bg-peach text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
+              >
+                Plan Your Birthday Party
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* How It Works / Booking Steps */}
       <section className="pb-20 pt-20 px-6 bg-offwhite">
@@ -354,12 +421,12 @@ export default function Home() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
-              <div className="text-center mb-6">
+              <Link href="/experiences" className="block text-center mb-6" aria-label="View experiences">
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   🎬
                 </div>
                 <div className="w-16 h-1 bg-gradient-to-r from-teal to-orange mx-auto rounded-full"></div>
-              </div>
+              </Link>
               <h3 className="text-xl font-playfair font-bold text-teal mb-4 text-center">
                 Outdoor Movie Nights
               </h3>
@@ -369,17 +436,13 @@ export default function Home() {
               </p>
             </div>
 
-            <Link
-              href="/book?package=birthday"
-              onClick={() => trackBookNowClick("birthday-card")}
-              className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 block"
-            >
-              <div className="text-center mb-6">
+            <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20 block">
+              <Link href="/experiences" className="block text-center mb-6" aria-label="View experiences">
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   🎂
                 </div>
                 <div className="w-16 h-1 bg-gradient-to-r from-teal to-orange mx-auto rounded-full"></div>
-              </div>
+              </Link>
               <h3 className="text-xl font-playfair font-bold text-teal mb-4 text-center">
                 Birthday Party Magic
               </h3>
@@ -388,15 +451,15 @@ export default function Home() {
                 sunsets - it doesn&apos;t get better than this. The perfect
                 celebration under the stars.
               </p>
-            </Link>
+            </div>
 
             <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
-              <div className="text-center mb-6">
+              <Link href="/experiences" className="block text-center mb-6" aria-label="View experiences">
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   ✨
                 </div>
                 <div className="w-16 h-1 bg-gradient-to-r from-teal to-orange mx-auto rounded-full"></div>
-              </div>
+              </Link>
               <h3 className="text-xl font-playfair font-bold text-teal mb-4 text-center">
                 Custom Add-Ons
               </h3>
@@ -408,12 +471,12 @@ export default function Home() {
             </div>
 
             <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
-              <div className="text-center mb-6">
+              <Link href="/experiences" className="block text-center mb-6" aria-label="View experiences">
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   🎄
                 </div>
                 <div className="w-10 h-1 bg-gradient-to-r from-teal to-orange mx-auto rounded-full"></div>
-              </div>
+              </Link>
               <h3 className="text-xl font-playfair font-bold text-teal mb-4 text-center">
                 Seasonal Themes
               </h3>
@@ -421,63 +484,6 @@ export default function Home() {
                 Special packages for holidays and seasonal celebrations with
                 themed decor and ambiance.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Birthday Setups Section */}
-      <section className="py-20 px-6 bg-offwhite text-center">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid gap-12 lg:grid-cols-2 items-center">
-            <div className="relative">
-              <BirthdayCarousel
-                images={birthdayImages}
-                autoRotateInterval={5000}
-                className=""
-              />
-            </div>
-            <div className="text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">
-                Birthday Party Magic
-              </h2>
-              <p className="text-lg text-teal/80 mb-6 leading-relaxed">
-                Make every birthday unforgettable with our themed beach movie
-                night setups. From kids&apos; parties to milestone celebrations,
-                we create the perfect atmosphere for your special day with
-                custom decorations, themed snacks, and magical beachside
-                ambiance.
-              </p>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center space-x-3">
-                  <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">
-                    Kids birthday parties (ages 3-12)
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">
-                    Teen celebrations &amp; sweet 16s
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">Adult milestone birthdays</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-teal text-xl">✓</span>
-                  <span className="text-teal">
-                    Themed decorations & party favors
-                  </span>
-                </div>
-              </div>
-              <Link
-                href="/book?package=birthday"
-                onClick={() => trackBookNowClick("birthday-section")}
-                className="bg-peach text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
-              >
-                Plan Your Birthday Party
-              </Link>
             </div>
           </div>
         </div>

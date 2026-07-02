@@ -107,7 +107,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose, enabled = fa
             <div className="modal-action flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleBookNow}
-                className="btn bg-teal text-white hover:bg-orange transition-colors flex-1 py-2"
+                className="btn bg-teal text-white hover:bg-orange transition-colors flex-1 py-6"
               >
                 🎬 Book Now & Save 10%
               </button>
