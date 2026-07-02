@@ -68,7 +68,7 @@ const BirthdayCarousel: React.FC<BirthdayCarouselProps> = ({
 
     <style jsx>{`
       #birthdayCarousel {
-    margin-top: -100px;
+    margin-top: -10px;
     box-shadow: 10px 5px 60px -27px;
         border: 10px solid white;
       }

@@ -232,6 +232,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div className="relative">
+            <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">
+                Birthday Party Magic
+              </h2>
               <BirthdayCarousel
                 images={birthdayImages}
                 autoRotateInterval={5000}
@@ -239,9 +242,7 @@ export default function Home() {
               />
             </div>
             <div className="text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-6">
-                Birthday Party Magic
-              </h2>
+            
               <p className="text-lg text-teal/80 mb-6 leading-relaxed">
                 Make every birthday unforgettable with our themed beach movie
                 night setups. From kids&apos; parties to milestone celebrations,
