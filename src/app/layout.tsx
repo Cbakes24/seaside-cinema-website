@@ -5,9 +5,9 @@ import Header from './components/header'
 import Footer from './components/footer'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
-import { FlagValues } from "@vercel/flags/react"
-import { combine, evaluate } from "@vercel/flags/next"
-import { analyticsFlags } from "@/flags"
+import { FlagValues } from "flags/react"
+import { evaluate } from "flags/next"
+import { julyweek1, summerSaleFlag } from "@/flags"
 import ClarityInit from "@/app/components/ClarityInit"
 export const metadata = {
   title: 'Seaside Cinema',
@@ -15,9 +15,10 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-  const values = combine(analyticsFlags, await evaluate(analyticsFlags))
-  const isSummerSaleEnabled = values["summer-sale"] === true
-  const isJulyWeek1Enabled = values["julyweek1"] === true
+  const { isSummerSaleEnabled, isJulyWeek1Enabled } = await evaluate({
+    isSummerSaleEnabled: summerSaleFlag,
+    isJulyWeek1Enabled: julyweek1,
+  })
 
   return (
     <html lang="en">
@@ -35,7 +36,12 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <main className="min-h-[calc(100vh-80px)]">
           {children}
           <ClarityInit />
-          <FlagValues values={values} />
+          <FlagValues
+            values={{
+              "summer-sale": isSummerSaleEnabled,
+              julyweek1: isJulyWeek1Enabled,
+            }}
+          />
           <Analytics />
           <SpeedInsights />
         </main>
