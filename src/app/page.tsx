@@ -212,8 +212,7 @@ export default function Home() {
             </p>
             <div className="bg-white/80 max-w-xl mx-auto p-4 rounded-xl border border-teal/20 shadow-sm mb-6">
               <p className="text-sm text-gray-700">
-                Offer valid through <span className="font-semibold">July 14, 2026</span> for bookings made
-                before <span className="font-semibold">7/15/26</span>.
+                Offer valid through the end of <span className="font-semibold">August 2026</span>.
               </p>
             </div>
             <Link

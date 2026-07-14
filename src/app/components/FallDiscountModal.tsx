@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Clarity from "@microsoft/clarity";
 
-const PROMO_CUTOFF_TIMESTAMP = new Date("2026-07-15T00:00:00").getTime();
+const PROMO_CUTOFF_TIMESTAMP = new Date("2026-09-01T00:00:00").getTime();
 
 interface SummerSaleModalProps {
   onClose?: () => void;
@@ -99,7 +99,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose, enabled = fa
               </p>
               <div className="bg-gradient-to-br from-peach/60 to-offwhite p-4 rounded-xl mb-4 border border-orange/20">
                 <p className="text-sm text-gray-600">
-                  Sale prices are applied automatically at booking. Offer valid for bookings made before 7/15/26.
+                  Sale prices are applied automatically at booking. Offer valid through the end of August 2026.
                 </p>
               </div>
             </div>

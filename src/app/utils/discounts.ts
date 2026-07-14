@@ -21,10 +21,10 @@ export const discountCodes: DiscountCode[] = [
   {
     code: ["SeasideSummer26"],
     name: "Early Bird Summer Special",
-    description: "10% off summer movie night bookings made before 7/15/26",
+    description: "10% off summer movie night bookings through the end of August 2026",
     percentage: 10,
     isActive: true,
-    validUntil: new Date("2026-07-14T23:59:59"),
+    validUntil: new Date("2026-08-31T23:59:59"),
   },
   {
     code: ["July10"],
