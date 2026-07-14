@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import Image from "next/image";
 import React from "react";
@@ -11,7 +10,7 @@ import Gallery from "./components/Gallery";
 import InstagramSection from "./components/InstagramSection";
 import BirthdayCarousel from "./components/BirthdayCarousel";
 import SummerSaleModal from "./components/FallDiscountModal";
-import { useJulyWeek1Flag, useSummerSaleFlag } from "./hooks/useSummerSaleFlag";
+import { SUMMER_SALE_ENABLED, SUMMER_SALE_MODAL_ENABLED } from "./utils/campaign";
 
 import {
   formatPrice,
@@ -26,10 +25,9 @@ import {
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const isSummerSaleEnabled = useSummerSaleFlag();
-  const isJulyWeek1Enabled = useJulyWeek1Flag();
+  const isSummerSaleEnabled = SUMMER_SALE_ENABLED;
   const trackBookNowClick = (source: string) => {
-    track("Home Book Now Click", { source }, { flags: ["summer-sale"] });
+    track("Home Book Now Click", { source });
     Clarity.event(`book-now-click-${source}`);
   };
 
@@ -116,7 +114,7 @@ export default function Home() {
  {/* MODALS */}
       {/* Summer Sale Modal */}
       {/* <ValentinesDayModal /> */}
-      <SummerSaleModal enabled={true} />
+      <SummerSaleModal enabled={SUMMER_SALE_MODAL_ENABLED} />
       
 
       
@@ -205,11 +203,12 @@ export default function Home() {
               JULY SUMMER SALE
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-teal mb-4">
-              Save 10% On Your Summer Movie Night
+              $50 Off Classic & Bali Setups
             </h2>
             <p className="text-lg text-teal/90 mb-6 max-w-3xl mx-auto">
-              Use code <span className="font-bold text-sky-700">SeasideSummer26</span> at checkout for
-              a limited-time July offer.
+              Classic is now <span className="font-bold">$249</span> (was $299) and Bali is{" "}
+              <span className="font-bold">$349</span> (was $399). Sale prices apply automatically
+              at booking.
             </p>
             <div className="bg-white/80 max-w-xl mx-auto p-4 rounded-xl border border-teal/20 shadow-sm mb-6">
               <p className="text-sm text-gray-700">
@@ -222,7 +221,7 @@ export default function Home() {
               onClick={() => trackBookNowClick("july-sale-section")}
               className="bg-teal text-white px-8 py-3 rounded-lg font-medium hover:bg-orange transition inline-block"
             >
-              Claim 10% Off
+              Book & Save $50
             </Link>
           </div>
         </section>

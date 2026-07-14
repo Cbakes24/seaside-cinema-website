@@ -76,29 +76,30 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose, enabled = fa
                 </div>
               </div>
               <p className="inline-flex items-center rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold tracking-wide text-sky-700 mb-3">
-                SUMMER EARLY BIRD
+                JULY SUMMER SALE
               </p>
               <h3 className="text-2xl font-bold text-teal mb-2 leading-tight">
-                Early Bird Summer Movie Night
+                $50 Off Classic & Bali Setups
               </h3>
               <div className="w-16 h-1 bg-gradient-to-r from-orange to-teal mx-auto rounded-full mb-4"></div>
             </div>
 
             {/* Content */}
             <div className="text-center mb-6">
-              <p className="text-lg text-gray-700 mb-4">
-                <span className="font-bold text-sky-600 text-4xl">10% OFF</span>
+              <p className="text-lg text-gray-700 mb-2">
+                <span className="font-bold text-sky-600 text-4xl">$50 OFF</span>
+              </p>
+              <p className="text-gray-600 mb-1">
+                Classic <span className="line-through text-gray-400">$299</span>{" "}
+                <span className="font-semibold text-teal">$249</span>
               </p>
               <p className="text-gray-600 mb-4">
-                Book your summer movie night before July 15, 2026.
+                Bali <span className="line-through text-gray-400">$399</span>{" "}
+                <span className="font-semibold text-teal">$349</span>
               </p>
               <div className="bg-gradient-to-br from-peach/60 to-offwhite p-4 rounded-xl mb-4 border border-orange/20">
-                <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">Promo code</p>
-                <p className="text-lg text-teal font-bold">
-                  Use code: <span className="text-sky-700">SeasideSummer26</span>
-                </p>
-                <p className="text-sm text-gray-600 mt-2">
-                  Offer valid for bookings made before 7/15/26.
+                <p className="text-sm text-gray-600">
+                  Sale prices are applied automatically at booking. Offer valid for bookings made before 7/15/26.
                 </p>
               </div>
             </div>
@@ -109,7 +110,7 @@ const SummerSaleModal: React.FC<SummerSaleModalProps> = ({ onClose, enabled = fa
                 onClick={handleBookNow}
                 className="btn bg-teal text-white hover:bg-orange transition-colors flex-1 py-6"
               >
-                🎬 Book Now & Save 10%
+                Book Now & Save $50
               </button>
               <button
                 onClick={handleClose}

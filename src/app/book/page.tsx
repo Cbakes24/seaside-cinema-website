@@ -18,12 +18,12 @@ import {
 } from "../utils/pricing";
 import { validateDiscountCode, calculateDiscountAmount, type DiscountCode } from "../utils/discounts";
 import SeasonalSelectionModal from "../components/SeasonalSelectionModal";
-import { useSummerSaleFlag } from "../hooks/useSummerSaleFlag";
+import { SUMMER_SALE_ENABLED } from "../utils/campaign";
 
 function BookingPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const isSummerSaleEnabled = useSummerSaleFlag();
+  const isSummerSaleEnabled = SUMMER_SALE_ENABLED;
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [tableCount, setTableCount] = useState(0);
   const [extraHalfHours, setExtraHalfHours] = useState(0);
@@ -248,21 +248,6 @@ function BookingPageContent() {
     // Redirect to home page
     router.push("/");
   };
-
-  console.log("***  SELECTED EXPERIENCE  ***", selectedExperience);
-  console.log(
-    "***  SELECTED EXPERIENCE price ***",
-    experiences.find((e) => e.id === selectedExperience)?.price
-  );
-  console.log("***  SELECTED PACKAGE  ***", selectedPackage);
-  console.log(
-    "***  SELECTED PACKAGE price ***",
-    packages.find((p) => p.id === selectedPackage)?.price
-  );
-  console.log("***  SELECTED SEASONAL HOLIDAY  ***", selectedSeasonalHoliday);
-  console.log("***  SELECTED ADDONS  ***", selectedAddons);
-  console.log("***  TOTAL PRICE  ***", totalPrice);
-  console.log("***  CURRENT PACKAGE  ***", currentPackage);
 
   // Handle discount code validation
   const handleDiscountCode = () => {
