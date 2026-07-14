@@ -13,25 +13,15 @@ console.log("formDataaaaa Server sideee!!!!", formData);
       email,
       phone,
       date,
-      time,
       guestCount,
       selectedExperience,
       selectedPackage,
       selectedSeasonalHoliday,
-      phoneType,
       addons,
       discountCode,
       discountAmount,
       totalPrice,
     } = formData;
-
-    // Parse the time to 12-hour format
-    const parsedTime = time.replace(/^(\d{2}):(\d{2})$/, (_: string, hours: string, minutes: string) => {
-      const hour = parseInt(hours, 10);
-      const ampm = hour >= 12 ? 'PM' : 'AM';
-      const hour12 = hour % 12 || 12;
-      return `${hour12}:${minutes} ${ampm}`;
-    });
 
     // Format add-ons as bullet list
     const addonsList = addons?.length > 0 
@@ -45,12 +35,10 @@ Full Name: ${fullName}
 Email: ${email}
 Phone: ${phone}
 Date: ${date}
-Time: ${time}
 Guest Count: ${guestCount}
 Experience: ${selectedExperience}
 Package: ${selectedPackage}
 Seasonal Holiday: ${selectedSeasonalHoliday || 'None'}
-Phone Type: ${phoneType}
 Add-ons: ${addons?.join(', ') || 'None'}
 Discount Code: ${discountCode}
 Discount Amount: ${discountAmount}
@@ -211,7 +199,7 @@ Total Price: ${totalPrice}
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Phone:</span>
-                    <span class="detail-value">${phone} (${phoneType})</span>
+                    <span class="detail-value">${phone}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">How Heard:</span>
@@ -224,10 +212,6 @@ Total Price: ${totalPrice}
                 <div class="detail-row">
                     <span class="detail-label">Date:</span>
                     <span class="detail-value">${date}</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Time:</span>
-                    <span class="detail-value">${parsedTime}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Guests:</span>

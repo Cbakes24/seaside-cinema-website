@@ -41,7 +41,7 @@ await page.getByRole('button', { name: /Submit Booking/ }).click();
 await expect(page.locator('text=🎉 Success! Your booking has been submitted. Thank you for choosing us! 🎬')).toBeVisible();
 });
 
-//Discount Code Autumn25
+//Discount Code SeasideSumeer26
   test('complete booking form submission with a discount code', async ({ page }) => {
     // Navigate to booking page
     // Wait for the page to load
@@ -59,9 +59,9 @@ await expect(page.locator('text=🎉 Success! Your booking has been submitted. T
   await page.waitForLoadState('domcontentloaded');
   await page.getByRole('button', { name: 'Classic' }).click();
   await page.getByRole('button', { name: 'Bali' }).click();
-  await page.getByPlaceholder('Enter discount code').fill('Autumn25');
+  await page.getByPlaceholder('Enter discount code').fill('SeasideSumeer26');
   await page.getByRole('button', { name: 'Apply' }).click();
-  await expect(page.locator('text=🎉 Discount Applied: AUTUMN25')).toBeVisible();
+  await expect(page.locator('text=🎉 Discount Applied: SeasideSumeer26')).toBeVisible();
   await expect(page.locator('text=-$35')).toBeVisible();
   await page.getByPlaceholder('Enter your full name').fill('Cory Baker');
   await page.locator('select[name="howHeard"]').selectOption('Instagram');

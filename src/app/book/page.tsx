@@ -36,9 +36,7 @@ function BookingPageContent() {
   const [howHeardOther, setHowHeardOther] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [phoneType, setPhoneType] = useState("");
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
   const [guestCount, setGuestCount] = useState("");
   const [discountCode, setDiscountCode] = useState("");
   const [hasDiscount, setHasDiscount] = useState(false);
@@ -166,14 +164,8 @@ function BookingPageContent() {
     if (!phone.trim()) {
       errors.phone = "Phone number is required";
     }
-    if (!phoneType) {
-      errors.phoneType = "Please select your phone type";
-    }
     if (!date) {
       errors.date = "Please select a preferred date";
-    }
-    if (!time) {
-      errors.time = "Please select a start time";
     }
     if (!selectedExperience) {
       errors.experience = "Please select an experience";
@@ -209,9 +201,7 @@ function BookingPageContent() {
       howHeard: howHeard === "other" ? howHeardOther : howHeard,
       email,
       phone,
-      phoneType,
       date,
-      time,
       guestCount,
       selectedExperience,
       selectedPackage,
@@ -1019,29 +1009,6 @@ function BookingPageContent() {
                 <p className="text-red-500 text-xs mt-1">{validationErrors.phone}</p>
               )}
           </div>
-          <div>
-              <label className="block font-medium mb-1">
-                Type Of Phone <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="type"
-                className="w-full p-2 border-b-2 rounded"
-                required
-                value={phoneType}
-                onChange={(e) => {
-                  setPhoneType(e.target.value);
-                  clearValidationError('phoneType');
-                }}
-                data-field="phoneType"
-              >
-              <option value="">Select phone type</option>
-              <option value="iphone">iPhone</option>
-              <option value="android">Android</option>
-            </select>
-            {validationErrors.phoneType && (
-              <p className="text-red-500 text-xs mt-1">{validationErrors.phoneType}</p>
-            )}
-          </div>
             <div>
               <label className="block font-medium mb-1">
                 Preferred Date <span className="text-red-500">*</span>
@@ -1059,25 +1026,6 @@ function BookingPageContent() {
               />
               {validationErrors.date && (
                 <p className="text-red-500 text-xs mt-1">{validationErrors.date}</p>
-              )}
-            </div>
-            <div>
-              <label className="block font-medium mb-1">
-                Start Time <span className="text-red-500">*</span>
-                </label>
-              <input
-                type="time"
-                className="w-full p-2 border-b-2 rounded"
-                required
-                value={time}
-                onChange={(e) => {
-                  setTime(e.target.value);
-                  clearValidationError('time');
-                }}
-                data-field="time"
-              />
-              {validationErrors.time && (
-                <p className="text-red-500 text-xs mt-1">{validationErrors.time}</p>
               )}
             </div>
             <div className="md:col-span-2">
@@ -1116,7 +1064,7 @@ function BookingPageContent() {
             type="submit"
             className="w-full bg-teal text-white font-semibold py-3 rounded hover:bg-orange transition mt-6 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
-            Submit Booking - {formatPrice(totalPrice)}
+            Request Booking - {formatPrice(totalPrice)}
           </button>
         </form>
       </div>
