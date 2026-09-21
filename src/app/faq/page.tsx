@@ -17,7 +17,7 @@ export default function FAQPage() {
   const faqData = [
     {
       question: "How do I secure my booking?",
-      answer: "You have a choice of paying upfront or paying a security deposit ($125) and then paying the total amount 7 days prior to your event date. The security deposit will be refunded to you the day after the event."
+      answer: "You have a choice of pay full price up front or paying 50% upfront and the remaining total amount 7 days prior to your event date"
     },
     {
       question: "What is included in my booking?",
