@@ -11,29 +11,29 @@ export interface DiscountCode {
 }
 
 export const discountCodes: DiscountCode[] = [
+  // {
+  //   code: ["SpringMovies26"],
+  //   name: "Spring Time Special",
+  //   description: "10% off your total booking",
+  //   percentage: 10,
+  //   isActive: true,
+  // },
   {
-    code: ["SpringMovies26"],
-    name: "Spring Time Special",
-    description: "10% off your total booking",
+    code: ["SeasideFall26"],
+    name: "Early Bird Fall Special",
+    description: "10% off fall movie night bookings through the end of November 2026",
     percentage: 10,
     isActive: true,
+    validUntil: new Date("2026-11-30T23:59:59"),
   },
-  {
-    code: ["SeasideSummer26"],
-    name: "Early Bird Summer Special",
-    description: "10% off summer movie night bookings through the end of August 2026",
-    percentage: 10,
-    isActive: true,
-    validUntil: new Date("2026-08-31T23:59:59"),
-  },
-  {
-    code: ["July10"],
-    name: "July 10% Special",
-    description: "10% off your total booking",
-    percentage: 10,
-    isActive: true,
-    validUntil: new Date("2026-08-01T23:59:59"),
-  },
+  // {
+  //   code: ["July10"],
+  //   name: "July 10% Special",
+  //   description: "10% off your total booking",
+  //   percentage: 10,
+  //   isActive: true,
+  //   validUntil: new Date("2026-08-01T23:59:59"),
+  // },
   // {
   //   code: ["Autumn25", "pumpkinSpice", "pumpkin spice"],
   //   name: "Autumn Special",

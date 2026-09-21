@@ -180,7 +180,7 @@ export const packages = [
   {
     id: "drive-in",
     name: "Drive-in",
-    price: 199,
+    price: 149,
     description: "Popcorn, candy trays, retro film signs for a nostalgic feel.",
     image: "/verticalSunset.jpeg",
     includes: [
